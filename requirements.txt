@@ -1,0 +1,14 @@
+django
+psycopg2
+django-extensions
+django-grappelli
+django-bootstrap4
+django-filter
+django-tables2
+django-crispy-forms
+django-simple-history
+django-debug-toolbar
+django-import-export
+django-taggit
+django-generic-scaffold
+django-model-utils
