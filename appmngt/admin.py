@@ -14,12 +14,6 @@ from .models.release import Release
 from .models.univers import Univers
 
 
-# Global
-admin.site.site_header = "Ref Flux"
-admin.site.site_title = "Ref Flux"
-admin.site.index_title = "Bienvenue"
-
-
 #  Inlines
 
 class EnvironmentInline(BaseStackedInline):
@@ -29,6 +23,8 @@ class EnvironmentInline(BaseStackedInline):
 
     model = Environment
     extra = 0
+
+
 
 class ApplicationInline(BaseStackedInline):
     """
@@ -47,7 +43,6 @@ class ApplicationAdmin(BaseAdmin):
     """
     Admin Partner
     """
-    fieldsets = [('Informations', {'fields' : ('univers', 'partner')}),]
 
     base_fields = ['univers', 'partner']
 
@@ -58,17 +53,16 @@ class ApplicationAdmin(BaseAdmin):
     inlines=[EnvironmentInline]
 
 
-
 @admin.register(Environment)
 class EnvironmentAdmin(BaseAdmin):
     """
     Admin Environment
     """
     fieldsets = [('Application', {'fields': ('application', )}),
-                 ('Gateways', {'fields': ('gateways',)}),
+                 ('Servers', {'fields': ('servers',)}),
                  ]
     list_display = ['application']
-    filter_horizontal = ['gateways']
+    filter_horizontal = ['servers']
 
 @admin.register(Partner)
 class PartnerAdmin(BaseAdmin):

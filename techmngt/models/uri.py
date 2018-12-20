@@ -7,10 +7,7 @@ from django.db import models
 from base.models.base import Base
 from model_utils import Choices
 
-from appmngt.models.environment import Environment
 from funcmngt.models.funcflow import SubFuncFlow
-
-from .protocol import Protocol
 
 
 #Web Service : Method://domaine/uri

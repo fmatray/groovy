@@ -4,12 +4,8 @@
 Module Batch
 """
 from django.db import models
-from simple_history.models import HistoricalRecords
 
 from base.models.base import Base
-from appmngt.models.environment import Environment
-from appmngt.models.partner import Partner
-from appmngt.models.release import Release
 from funcmngt.models.funcflow import SubFuncFlow
 
 from .asynchronous import AsynchronousFlow

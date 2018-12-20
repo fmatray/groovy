@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$ae78=j=s^cp71-awl!jj21j%c8gs!r9^$bfe&$%66#e8i%--h'
+SECRET_KEY = 'SECRETKEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -95,8 +95,8 @@ WSGI_APPLICATION = 'groovy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'username',
+        'USER': 'password',
         'HOST': 'db',
         'PORT': 5432,
     },

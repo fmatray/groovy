@@ -7,11 +7,7 @@ To activate your index dashboard add the following to your settings.py::
 """
 
 from django.utils.translation import ugettext_lazy as _
-from django.urls import reverse
-
 from grappelli.dashboard import modules, Dashboard
-from grappelli.dashboard.utils import get_admin_site_name
-
 
 class CustomIndexDashboard(Dashboard):
     """
@@ -60,8 +56,7 @@ class CustomIndexDashboard(Dashboard):
                 modules.ModelList('',
                     column=1,
                     models=(
-                            'techmngt.models.gateway.GatewayCFT',
-                            'techmngt.models.gateway.GatewayWS',
+                            'techmngt.models.server.Server',
                             'techmngt.models.network.NetworkFlow',
 
                             ),
@@ -73,9 +68,10 @@ class CustomIndexDashboard(Dashboard):
                 modules.AppList('',
                     column=2,
                     collapsible=False,
-                    models=('techmngt.models.protocol.Protocol',),
-                )
-        )
+                    models=('techmngt.models.protocol.Protocol',
+                            'techmngt.models.server.ServerType',
+                            )
+        ))
 
         # append a group for "Administration"
         self.children.append(

@@ -12,7 +12,7 @@ from .models.network import NetworkFlow
 from .models.uri import URIFlow
 from .models.batch import Batch
 from .models.asynchronous import AsynchronousFlow
-from .models.gateway import Gateway, GatewayCFT, GatewayWS
+from .models.server import Server, ServerType
 
 
 @admin.register(AsynchronousFlow)
@@ -22,25 +22,7 @@ class AsynchronousFlowAdmin(BaseAdmin):
     """
     pass
 
-@admin.register(GatewayWS)
-class GatewayWSAdmin(BaseAdmin):
-    """
-    Admin GatewayWS
-    """
-    fieldsets = [
-                 ('Technical informations', {'fields' : ('dns', 'protocol')}),
-                 ]
-    filter_horizontal= ['protocol']
 
-@admin.register(GatewayCFT)
-class GatewayCFTAdmin(BaseAdmin):
-    """
-    Admin GatewayCFT
-    """
-    fieldsets = [
-                 ('Technical informations', {'fields' : ('protocol', )}),
-                 ]
-    filter_horizontal= ['protocol']
 
 @admin.register(Batch)
 class BatchAdmin(BaseAdmin):
@@ -58,11 +40,10 @@ class NetworkFlowAdmin(BaseAdmin):
     """
     Admin Network
     """
-    fieldsets = [('Applications', {'fields': ('source_gateway', 'destination_gateway')}),
-                 ('Technical informations', {'fields' : (('source_ip', 'source_nat_ip'),
-                                                         ('destination_nat_ip', 'destination_ip'))}),
+    fieldsets = [('Applications', {'fields': ('source_server', 'destination_server')}),
+                 ('Technical informations', {'fields' : ('source_nat_ip', 'destination_nat_ip', )}),
                  ]
-    list_display = ['source_ip', 'source_nat_ip', 'destination_nat_ip', 'destination_ip']
+    list_display = ['source_server', 'source_nat_ip', 'destination_nat_ip', 'destination_server']
 
 @admin.register(Protocol)
 class ProtocolAdmin(BaseAdmin):
@@ -74,6 +55,25 @@ class ProtocolAdmin(BaseAdmin):
                  ]
     list_display = ['type']
     list_filter = ['type']
+
+
+@admin.register(ServerType)
+class ServerTypeAdmin(BaseAdmin):
+    """
+    Admin Server Type
+    """
+    pass
+
+@admin.register(Server)
+class ServerAdmin(BaseAdmin):
+    """
+    Admin Server
+    """
+    fieldsets = [
+                 ('Technical informations', {'fields' : ('server_type', ('dns', 'ip'))}),
+                 ]
+    list_display = ['server_type', 'dns', 'ip']
+
 
 @admin.register(URIFlow)
 class URIFlowAdmin(BaseAdmin):
