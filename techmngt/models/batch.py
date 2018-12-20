@@ -5,15 +5,11 @@ Module Batch
 """
 from django.db import models
 
-from base.models.base import Base
-from funcmngt.models.funcflow import SubFuncFlow
-
 from .asynchronous import AsynchronousFlow
+from .techflow import TechFlow
 
-class Batch(Base):
-    subfunc_flow = models.ForeignKey(SubFuncFlow, on_delete=models.CASCADE, verbose_name="Functional Sub Flow",
-                             default=None, blank=True, null=True, related_name="batch_subflow")
 
+class BatchFlow(TechFlow):
     batch_name = models.CharField("Batch name", max_length=200, unique=True, default="")
     ord_name = models.CharField("Ord. name", max_length=200, unique=True, default="")
     script_name = models.CharField("Script name", max_length=200, unique=True, default="")
@@ -22,6 +18,3 @@ class Batch(Base):
                                       default=None, blank=True, null=True, related_name="batch_input_flow")
     output_flow = models.OneToOneField(AsynchronousFlow, on_delete=models.CASCADE, verbose_name="Output Flow",
                                        default=None, blank=True, null=True, related_name="batch_output_flow")
-
-    class Meta:
-        ordering = ["name"]

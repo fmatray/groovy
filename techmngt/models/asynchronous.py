@@ -3,9 +3,8 @@
 """
 Module Network
 """
-from django.db import models
 from base.models.base import Base
-from model_utils import Choices
+
 
 class AsynchronousFlow(Base):
     class Meta(object):

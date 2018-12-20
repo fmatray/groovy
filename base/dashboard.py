@@ -50,9 +50,8 @@ class CustomIndexDashboard(Dashboard):
             children=[
                 modules.ModelList('',
                     column=1,
-                    models=('techmngt.models.asynchronous.AsynchronousFlow',
-                            'techmngt.models.batch.Batch',
-                            'techmngt.models.uri.URIFlow')),
+                    models=('techmngt.models.techflow.TechFlow',
+                            'techmngt.models.asynchronous.AsynchronousFlow')),
                 modules.ModelList('',
                     column=1,
                     models=(

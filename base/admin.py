@@ -4,17 +4,14 @@
 Base admin module
 """
 from django.contrib import admin
-from django.contrib.auth.models import User, Group
-from django.contrib.auth.admin import UserAdmin, GroupAdmin
-from django.contrib.contenttypes.admin import  GenericTabularInline, GenericStackedInline
-from django.utils.translation import gettext, gettext_lazy as _
-from django import forms
-from django.db import models
-
-from taggit.models import Tag
-from simple_history.admin import SimpleHistoryAdmin
-
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+from django.contrib.contenttypes.admin import GenericTabularInline, GenericStackedInline
+from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportMixin
+from simple_history.admin import SimpleHistoryAdmin
+from taggit.models import Tag
+
 # Register your models here.
 
 

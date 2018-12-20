@@ -12,3 +12,4 @@ django-import-export
 django-taggit
 django-generic-scaffold
 django-model-utils
+django-polymorphic
