@@ -14,19 +14,20 @@ class SubFuncFlowInline(BaseStackedInline):
     """
     Admin sub fuctional flows
     """
-    fieldsets = [('Sub flow', {'fields': ('subflow_id', )}),
-                 ('Applications', {'fields': (('requester', 'receiver'), )})
+    fieldsets = [('Sub flow', {'fields': ('subflow_id', 'vital')}),
+                 ('Applications', {'fields': (('requester', 'receiver'),)})
                  ]
 
     model = SubFuncFlow
     extra = 0
+
 
 @admin.register(FuncFlow)
 class FuncFlowAdmin(BaseAdmin):
     """
     Admin fuctional flows
     """
-    fieldsets = [('Flow', {'fields': ('flow_id',  'type')}),
+    fieldsets = [('Flow', {'fields': ('flow_id', 'type')}),
                  ]
 
     base_fields = ['name', 'flow_id', 'type']

@@ -4,8 +4,10 @@
 Module Network
 """
 from django.db import models
+
 from base.models.base import Base
 from .server import Server
+
 
 class NetworkFlow(Base):
 

@@ -8,7 +8,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.admin import GenericTabularInline, GenericStackedInline
 from django.utils.translation import gettext_lazy as _
-from import_export.admin import ImportExportMixin
+from import_export.admin import ImportExportModelAdmin
 from simple_history.admin import SimpleHistoryAdmin
 from taggit.models import Tag
 
@@ -73,7 +73,7 @@ class BaseAdminMixin():
             return set(BaseAdminMixin.SEARCH_FIELDS + list(search_fields))
         return BaseAdminMixin.SEARCH_FIELDS
 
-class BaseAdmin(BaseAdminMixin, SimpleHistoryAdmin,  admin.ModelAdmin, ImportExportMixin):
+class BaseAdmin(BaseAdminMixin, SimpleHistoryAdmin, ImportExportModelAdmin):
     pass
 
 class BaseStackedInline(BaseAdminMixin, admin.StackedInline):
@@ -87,3 +87,5 @@ class BaseGenericStackedInline(BaseAdminMixin, GenericStackedInline):
 
 class BaseGenericTabularInline(BaseAdminMixin, GenericTabularInline):
     pass
+#grp-object-tools
+#grp-add-link grp-state-focus

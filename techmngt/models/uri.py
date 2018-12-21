@@ -21,4 +21,5 @@ class URIFlow(TechFlow):
         """
         meta informations
         """
-        verbose_name_plural = "URI Flows"
+        verbose_name = "URI"
+        verbose_name_plural = "URI"

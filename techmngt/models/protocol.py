@@ -4,12 +4,17 @@
 Module Protocol
 """
 from django.db import models
-from base.models.base import Base
 from model_utils import Choices
+
+from base.models.base import Base
+
 
 class Protocol(Base):
     TYPE = Choices('Asynchronous', 'Synchronous')
     type = models.CharField(choices=TYPE, default=TYPE.Synchronous, max_length=20)
+
+    secure = models.BooleanField("Secure", default=False)
+    standard = models.BooleanField("Standard", default=False)
 
     class Meta(object):
         """

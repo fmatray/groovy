@@ -1,0 +1,80 @@
+[
+  {
+    "model": "techmngt.protocol",
+    "pk": 1,
+    "fields": {
+      "name": "HTTPS",
+      "description": "",
+      "comment": "",
+      "status": "Draft",
+      "type": "Synchronous",
+      "secure": true,
+      "standard": true
+    }
+  },
+  {
+    "model": "techmngt.protocol",
+    "pk": 2,
+    "fields": {
+      "name": "HTTP",
+      "description": "",
+      "comment": "",
+      "status": "Draft",
+      "type": "Synchronous",
+      "secure": false,
+      "standard": true
+    }
+  },
+  {
+    "model": "techmngt.protocol",
+    "pk": 3,
+    "fields": {
+      "name": "CFT",
+      "description": "",
+      "comment": "",
+      "status": "Draft",
+      "type": "Asynchronous",
+      "secure": true,
+      "standard": false
+    }
+  },
+  {
+    "model": "techmngt.protocol",
+    "pk": 4,
+    "fields": {
+      "name": "FTP",
+      "description": "",
+      "comment": "",
+      "status": "Draft",
+      "type": "Asynchronous",
+      "secure": false,
+      "standard": true
+    }
+  },
+  {
+    "model": "techmngt.protocol",
+    "pk": 5,
+    "fields": {
+      "name": "FTPs",
+      "description": "",
+      "comment": "",
+      "status": "Draft",
+      "type": "Asynchronous",
+      "secure": true,
+      "standard": true
+    }
+  },
+  {
+    "model": "techmngt.protocol",
+    "pk": 6,
+    "fields": {
+      "name": "sFTP",
+      "description": "",
+      "comment": "",
+      "status": "Draft",
+      "type": "Asynchronous",
+      "secure": true,
+      "standard": true
+    }
+  }
+]
