@@ -4,10 +4,11 @@
 Module Application
 """
 from django.db import models
-from base.models.base import Base
 
-from .univers import Univers
+from base.models import Base
 from .partner import Partner
+from .univers import Univers
+
 
 class Application(Base):
     univers = models.ForeignKey(Univers, on_delete=models.CASCADE, verbose_name="Univers",

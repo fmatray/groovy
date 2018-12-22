@@ -6,7 +6,7 @@ Module Batch
 from django.db import models
 from polymorphic.models import PolymorphicModel
 
-from base.models.base import Base
+from base.models import Base
 from funcmngt.models.funcflow import SubFuncFlow
 
 

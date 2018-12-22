@@ -4,10 +4,11 @@
 Module Environment
 """
 from django.db import models
-from base.models.base import Base
+
+from base.models import Base
+from techmngt.models.server import Server
 from .application import Application
 
-from techmngt.models.server import Server
 
 class Environment(Base):
     application = models.ForeignKey(Application, on_delete=models.CASCADE, verbose_name="Application",

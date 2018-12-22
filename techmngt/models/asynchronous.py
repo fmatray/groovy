@@ -6,7 +6,7 @@ Module Network
 from django.db import models
 from model_utils import Choices
 
-from base.models.base import Base
+from base.models import Base
 from .protocol import Protocol
 
 

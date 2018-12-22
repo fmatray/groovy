@@ -7,7 +7,7 @@ Tech Admin
 from django.contrib import admin
 
 from base.admin import BaseAdmin, BaseStackedInline
-from .models.funcflow import FuncFlow, SubFuncFlow
+from funcmngt.models.funcflow import FuncFlow, SubFuncFlow
 
 
 class SubFuncFlowInline(BaseStackedInline):
@@ -17,9 +17,7 @@ class SubFuncFlowInline(BaseStackedInline):
     fieldsets = [('Sub flow', {'fields': ('subflow_id', 'vital')}),
                  ('Applications', {'fields': (('requester', 'receiver'),)})
                  ]
-
     model = SubFuncFlow
-    extra = 0
 
 
 @admin.register(FuncFlow)

@@ -3,9 +3,8 @@
 """
 Module Partner
 """
-from django.db import models
 
-from base.models.base import Base
+from base.models import Base
 
 class Partner(Base):
     class Meta(object):

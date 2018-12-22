@@ -3,8 +3,7 @@
 """
 Module univers
 """
-from django.db import models
-from base.models.base import Base
+from base.models import Base
 
 class Univers(Base):
     class Meta(object):

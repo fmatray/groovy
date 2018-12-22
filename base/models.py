@@ -12,7 +12,7 @@ from taggit.managers import TaggableManager
 class Base(models.Model):
     STATUS = Choices('Draft', 'To do', 'Doing', 'Done', 'Abort', 'Retired')
 
-    name = models.CharField("Nom", max_length=200, blank=False, unique=True)
+    name = models.CharField("Name", max_length=200, blank=False, unique=True)
     description = models.TextField("Description", null=True, blank=True)
     comment = models.TextField("Comment", blank=True)
     status = models.CharField(choices=STATUS, default=STATUS.Draft, max_length=20)

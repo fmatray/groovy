@@ -7,7 +7,7 @@ from django.db import models
 from model_utils import Choices
 
 from appmngt.models.application import Application
-from base.models.base import Base
+from base.models import Base
 
 
 class FuncFlow(Base):

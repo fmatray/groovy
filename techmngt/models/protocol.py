@@ -6,7 +6,7 @@ Module Protocol
 from django.db import models
 from model_utils import Choices
 
-from base.models.base import Base
+from base.models import Base
 
 
 class Protocol(Base):

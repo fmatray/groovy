@@ -4,10 +4,12 @@
 Module Release
 """
 from datetime import datetime
+
 from django.db import models
 
-from base.models.base import Base
+from base.models import Base
 from .application import Application
+
 
 class Release(Base):
     applications = models.ManyToManyField(Application,
