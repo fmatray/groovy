@@ -1,0 +1,16 @@
+{% extends 'base/detail.html' %}
+{% load create_list %}
+
+{% block left %}
+    {% create_dict univers=object.univers partner=object.partner as body %}
+    {% include "base/card_dict.html" with title="Informations" body=body %}
+
+    {% include "base/card_list.html" with title="Requester (sub functional flows)" body=subfuncflow_req_app.all %}
+    {% include "base/card_list.html" with title="Receiver (sub functional flows)" body=subfuncflow_rec_app.all %}
+
+{% endblock %}
+
+{% block right %}
+    {% include "base/card_list.html" with title="Environment" body=object.env_app.all %}
+    {% include "base/card_list.html" with title="Releases" body=object.release_app.all %}
+{% endblock %}

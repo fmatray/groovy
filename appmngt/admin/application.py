@@ -25,6 +25,7 @@ class ApplicationAdmin(BaseAdmin):
     """
     Admin Partner
     """
+    fieldsets = [('Informations', {'fields': ('univers', 'partner')}), ]
 
     base_fields = ['univers', 'partner']
 

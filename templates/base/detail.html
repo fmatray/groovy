@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load create_list %}
+
+{% block title %}
+    {{ object.name }}
+    <small class="text-muted">{{ object.status }}</small>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6">
+        {% create_dict tags=object.tags.all|join:", " description=object.description as body %}
+        {% include "base/card_dict.html" with title="Identification" body=body %}
+        {% block left %}{% endblock %}
+    </div>
+
+    <div class="col-sm-6">
+        {% block right %}{% endblock %}
+        {% include "base/card_simple.html" with title="Comment" body=object.comment %}
+    </div>
+</div>
+
+
+{% endblock %}

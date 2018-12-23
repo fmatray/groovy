@@ -8,10 +8,11 @@
 {% block content %}
 
     {% if filter %}
+    <div class="mx-auto mb-3 w-75">
         <div class="form-row">
-                {% crispy filter.form  filter.helper %}
+                {% crispy filter.form filter.helper %}
         </div>
-        <br>
+    </div>
     {% endif %}
 
     {% render_table table %}

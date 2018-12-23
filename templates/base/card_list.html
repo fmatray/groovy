@@ -1,0 +1,10 @@
+{% extends "base/card_base.html" %}
+{% block content %}
+    <ul class="list-group list-group-flush">
+        {% for item in body %}
+            <li class="list-group-item">{{item}}</li>
+        {% empty %}
+            <li class="list-group-item">None</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
