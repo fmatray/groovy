@@ -23,6 +23,9 @@ class Base(models.Model):
     def __str__(self):
         return self.name
 
+    def meta(self):
+        return self._meta
+
     class Meta:
         abstract = True
         ordering = ["name"]

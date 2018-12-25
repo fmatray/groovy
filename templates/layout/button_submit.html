@@ -1,0 +1,8 @@
+{% spaceless %}
+<button type="submit" class="btn btn-primary  btn-nav ml-1 mr-1">
+{% if icon %}
+    <i class="{{icon}} mr-1"></i>
+{% endif %}
+{{label|default:"Submit"|title}}
+</button>
+{% endspaceless %}

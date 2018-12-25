@@ -1,0 +1,25 @@
+{% extends "layout/card_base.html" %}
+{% load verbose_names get_attr %}
+
+{% block title%} {{object.name}} {% endblock %}
+
+{% block content %}
+<ul class="list-group list-group-flush">
+    {% include "layout/card_header.html" %}
+    {% for field in fields %}
+    <li class="list-group-item"><strong>{{object|object_field_verbose_name:field|title}}</strong> : {{object|get_obj_attr:field}}</li>
+    {% endfor %}
+
+    {% for field in list_fields %}
+    <li class="list-group-item"><strong>{{object|object_field_verbose_name:field|title}}</strong> : {{object|get_obj_attr_list:field|join:", "}}</li>
+    {% endfor %}
+    <li class="list-group-item"><strong>{{object|object_field_verbose_name:"comment" }}</strong> : {{object.comment}}
+</ul>
+
+    <div class="card-footer text-right">
+        {% include "layout/button_link.html" with icon="far fa-eye" label="View"%}
+        {% include "layout/button_link.html" with icon="far fa-edit" label="Edit"%}
+
+    </div>
+
+{% endblock %}

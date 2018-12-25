@@ -1,16 +1,24 @@
 {% extends 'base/detail.html' %}
-{% load create_list %}
+{% load create_containers %}
 
-{% block left %}
-    {% create_dict univers=object.univers partner=object.partner as body %}
-    {% include "base/card_dict.html" with title="Informations" body=body %}
-
-    {% include "base/card_list.html" with title="Requester (sub functional flows)" body=subfuncflow_req_app.all %}
-    {% include "base/card_list.html" with title="Receiver (sub functional flows)" body=subfuncflow_rec_app.all %}
+{% block navigation %}
+{% create_list "Univers" "Partner" "div" "Environments" "Releases" "div" "Requester" "Receiver" as navs %}
+{% include "layout/navs_pills.html" with navs=navs %}
 
 {% endblock %}
 
-{% block right %}
-    {% include "base/card_list.html" with title="Environment" body=object.env_app.all %}
-    {% include "base/card_list.html" with title="Releases" body=object.release_app.all %}
+{% block detail_content %}
+
+<div class="tab-content" id="pills-tabContent">
+    {% include "layout/tabs_simple.html" with body=object.univers id="Univers" inline_template="appmngt/univers_inline.html" active=True%}
+    {% include "layout/tabs_simple.html" with body=object.partner id="Partner" inline_template="appmngt/partner_inline.html" %}
+    {% include "layout/tabs_list.html" with body=object.env_app.all id="Environments" inline_template="appmngt/environment_inline.html" %}
+    {% include "layout/tabs_list.html" with body=object.release_app.all id="Releases" inline_template="appmngt/release_inline.html"%}
+
+    {% include "layout/tabs_list.html" with body=object.subfuncflow_req_app.all id="Requester" inline_template="funcmngt/subfuncflow_inline.html" %}
+    {% include "layout/tabs_list.html" with body=object.subfuncflow_rec_app.all id="Receiver" inline_template="funcmngt/subfuncflow_inline.html" %}
+
+</div>
+
+
 {% endblock %}

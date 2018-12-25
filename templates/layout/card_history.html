@@ -1,0 +1,16 @@
+{% extends "layout/card_base.html" %}
+{% block title%}History{% endblock %}
+{% block content %}
+    <ul class="list-group list-group-flush">
+        {% for item in history %}
+            <li class="list-group-item">
+            {{ item.history_date|date}} : {{item.history_user}} {{item.get_history_type_display|lower}} {{item.name}}
+                {% if item.history_change_reason %}
+                    ({{item.history_change_reason}})
+                {% endif %}
+            </li>
+        {% empty %}
+            <li class="list-group-item">None</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

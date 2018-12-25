@@ -1,20 +1,37 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load django_tables2 %}
-{% load crispy_forms_tags %}
 
 {% block title %}List{% endblock %}
 
 {% block content %}
 
-    {% if filter %}
-    <div class="mx-auto mb-3 w-75">
+{% if filter %}
+<div class="d-flex justify-content-center mb-3">
+    <form class="form form-inline" action="" method="get">
         <div class="form-row">
-                {% crispy filter.form filter.helper %}
-        </div>
-    </div>
-    {% endif %}
+            <div class="col">
+                {% bootstrap_field filter.form.name layout="inline" %}
+            </div>
+            <div class="col">
+                {% bootstrap_field filter.form.status layout="inline" addon_before="Status" %}
+            </div>
+            {% for field in filter.form %}
+            {% if field.label != "Name" and field.label != "Status" %}
+                <div class="col">
+                    {% bootstrap_field field layout="inline"  addon_before=field.label %}
+                </div>
+            {% endif %}
+            {% endfor %}
+            <div class="col">
+                {% include "layout/button_submit.html" with icon="far fa-filter" label="Filter"%}
+            </div>
 
-    {% render_table table %}
+        </div>
+    </form>
+</div>
+{% endif %}
+
+{% render_table table %}
 
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout/card_base.html" %}
+{% block content %}
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Tags</strong> : {{object.tags.all|join:"," }}</li>
+            <li class="list-group-item"><strong>Description</strong> : {{object.description}}</li>
+
+        {% for key, value in body.items %}
+            <li class="list-group-item"><strong>{{key|title}}</strong> : {{value}}</li>
+        {% empty %}
+        {% endfor %}
+    </ul>
+{% endblock %}

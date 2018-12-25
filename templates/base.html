@@ -16,86 +16,16 @@
     font-size: 150%;
 }
 
+.btn-nav {
+    width: 140px;
+}
 
 </style>
 {% endblock %}
 
 {% block bootstrap4_content %}
-<!-- Menu du haut -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Groovy</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <!-- Application Management-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="appnavbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Application Management
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><i class="fas fa-mobile-alt"></i> Applications</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-leaf"></i> Environments</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-hands-helping"></i> Partners</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-code-branch"></i> Releases</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-globe"></i> Univers</a>
-                </div>
-            </li>
-            <!-- Functional Management-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="funcnavbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Functional Management
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><i class="fas fa-stream"></i> Functional flows</a>
-                </div>
-            </li>
-            <!-- Technical Management-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="technavbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Technical Management
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><i class="far fa-file"></i> Asynchronous flows</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-sync-alt"></i> Batches</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-arrows-alt-h"></i> URI</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fas fa-network-wired"></i> Network</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-server"></i> Servers</a>
-
-                </div>
-            </li>
-            <!-- Profile -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="profilenavbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Profile
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><i class="fas fa-unlock-alt"></i> Admin</a>
-                    <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item" href="#"><i class="fas fa-key"></i> Change password</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Disconnect</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="far fa-copyright"></i> Informations</a>
-
-                </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0 ">
-            <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
-
+{% include "layout/menu.html" %}
+{% include "layout/about.html" %}
 
 <div class="container-fluid fill">
     <h1>{% block title %}(no title){% endblock %}</h1>
@@ -104,18 +34,5 @@
     {% bootstrap_messages %}
     {% block content %}(no content){% endblock %}
 </div>
-<br><br><br>
-
-<!-- footer -->
-<nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light">
-    <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="https://www.djangoproject.com/">Django Power !!!</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://getbootstrap.com/">Bootstrap</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://fontawesome.com/">Font Awesome</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://www.chartjs.org/docs/latest/">ChartJS</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://clipboardjs.com/">Clipboard.js</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://colorbrewer2.org/">Colorbrewer 2.0</a></li>
-    </ul>
-</nav>
 
 {% endblock bootstrap4_content %}

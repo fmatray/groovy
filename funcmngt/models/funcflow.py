@@ -20,9 +20,6 @@ class FuncFlow(Base):
 
     type = models.CharField("Type", max_length=32, choices=type_choices)
 
-    def __str__(self):
-        return "%s (%s)" % (self.name, self.flow_id)
-
     class Meta:
         verbose_name = 'Functional flow'
 

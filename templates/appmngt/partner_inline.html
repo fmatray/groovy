@@ -1,0 +1,4 @@
+{% load create_containers %}
+{% create_list "app_partner" as list_fields %}
+
+{% include "layout/card_object.html" with fields=fields list_fields=list_fields %}
