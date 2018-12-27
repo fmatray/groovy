@@ -4,8 +4,14 @@ register = template.Library()
 
 @register.filter
 def get_obj_attr(obj, attr):
-    return getattr(obj, attr)
+    try:
+        return getattr(obj, attr)
+    except AttributeError:
+        return None
 
 @register.filter
 def get_obj_attr_list(obj, attr):
-    return getattr(obj, attr).all()
+    try:
+        return getattr(obj, attr).all()
+    except AttributeError:
+        return None

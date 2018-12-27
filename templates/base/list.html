@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load django_tables2 %}
+{% load static %}
+{% load verbose_names %}
 
-{% block title %}List{% endblock %}
+{% block title %}{{table|get_table_verbose_name_plural|title}}{% endblock %}
 
 {% block content %}
-
 {% if filter %}
 <div class="d-flex justify-content-center mb-3">
     <form class="form form-inline" action="" method="get">
@@ -26,12 +27,12 @@
             <div class="col">
                 {% include "layout/button_submit.html" with icon="far fa-filter" label="Filter"%}
             </div>
-
         </div>
     </form>
 </div>
 {% endif %}
 
-{% render_table table %}
 
+{% render_table table %}
+{% include "layout/button_modal.html" with url_name="application_create" icon="far fa-edit" label="Create" %}
 {% endblock %}

@@ -1,10 +1,12 @@
 {% extends "layout/card_base.html" %}
+{% load humanize %}
+
 {% block title%}History{% endblock %}
 {% block content %}
     <ul class="list-group list-group-flush">
         {% for item in history %}
-            <li class="list-group-item">
-            {{ item.history_date|date}} : {{item.history_user}} {{item.get_history_type_display|lower}} {{item.name}}
+            <li class="list-group-item {% if forloop.counter > 5 %}text-muted{% endif %}">
+            {{ item.history_date|naturaltime}} : {{item.history_user}} {{item.get_history_type_display|lower}} {{item.name}}
                 {% if item.history_change_reason %}
                     ({{item.history_change_reason}})
                 {% endif %}

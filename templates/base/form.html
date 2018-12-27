@@ -1,7 +1,26 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags  %}
-{% block title %}{{ object }}{% endblock %}
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}
+{% if object %}
+    Update {{object}}
+{% else%}
+    Create
+{% endif %}
+{% endblock %}
 
 {% block content %}
-    {% crispy form view.helper %}
+<form method="post" action="" class="form">
+    {% csrf_token %}
+    <div class="row mb-5">
+        <div class="col-sm-8 offset-sm-2 bg-light border border-dark p-3">
+            {% for field in form %}
+                {% bootstrap_field field %}
+            {% endfor %}
+            <div class="text-right">
+            {% include "layout/button_submit.html" %}
+                </div>
+        </div>
+    </div>
+</form>
 {% endblock %}

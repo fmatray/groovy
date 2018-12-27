@@ -5,6 +5,8 @@
 {% block bootstrap4_extra_head %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+
 <style>
 @font-face {
     font-family: "Rave";
@@ -26,13 +28,18 @@
 {% block bootstrap4_content %}
 {% include "layout/menu.html" %}
 {% include "layout/about.html" %}
+{% include "layout/modal_form.html" %}
 
 <div class="container-fluid fill">
-    <h1>{% block title %}(no title){% endblock %}</h1>
-    <hr>
+    <h1 class="mt-3 mb-3">{% block title %}(no title){% endblock %}</h1>
     {% block extra_messages %}{% endblock %}
     {% bootstrap_messages %}
     {% block content %}(no content){% endblock %}
 </div>
 
 {% endblock bootstrap4_content %}
+
+
+{% block bootstrap4_extra_script %}
+{% include "layout/js_modalform.html" %}
+{% endblock %}

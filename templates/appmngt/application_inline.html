@@ -1,0 +1,5 @@
+{% load create_containers %}
+{% create_list "univers" "partner" as fields %}
+{% create_list "env_app" "release_app" "subfuncflow_req_app" "subfuncflow_rec_app" as list_fields %}
+
+{% include "layout/card_object.html" with fields=fields list_fields=list_fields %}

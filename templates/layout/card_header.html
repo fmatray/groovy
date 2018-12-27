@@ -1,8 +1,11 @@
 {% load verbose_names %}
-<li class="list-group-item"><strong>{{object|object_field_verbose_name:"tags"|title }}</strong> : {{object.tags.all|join:"," }}
-</li>
-<li class="list-group-item"><strong>{{object|object_field_verbose_name:"status"|title }}</strong> : {{object.status }}
-</li>
-
-<li class="list-group-item"><strong>{{object|object_field_verbose_name:"description"|title }}</strong> : {{object.description}}
-</li>
+<div class="card-body">
+{% if object.tags.all %}
+<p>
+{% for tag in object.tags.all %}
+    {% include "layout/badge.html" %}
+{% endfor %}
+</p>
+{% endif %}
+<p class="mb-0 pb-0">{{object.description|default:'<span class="text-muted">No description</span>'}}</p>
+</div>

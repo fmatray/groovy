@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 {% load create_containers %}
-
+{% load static %}
 {% block title %}
 {{ object.name }}
 {% endblock %}
 
 {% block content %}
+<!-- Create univers button -->
 <div class="row">
     <div class="col-sm-12">
         {% block navigation %}{% endblock %}
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-4">
-        {% include "layout/card_identification.html"  %}
-        {% include "layout/card_simple.html" with title="Comment" body=object.comment %}
+    <div class="col-sm-5">
+        {% include "layout/card_identification.html" %}
+        {% include "layout/card_simple.html" with title="Comment" body=object.comment|default:'<span class="text-muted">No comment<span>' %}
         {% include "layout/card_history.html" with history=object.history.all %}
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-7">
         {% block detail_content %}{% endblock %}
     </div>
 </div>
-
 {% endblock %}

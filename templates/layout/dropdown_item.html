@@ -1,0 +1,8 @@
+{% spaceless %}
+<a class="dropdown-item {% if class%}{{class}}{%else%}btn-success{%endif%}" href="{{link|default:'#' }}">
+{% if icon %}
+    <i class="{{icon}} mr-1"></i>
+{% endif %}
+{{label}}
+</a>
+{% endspaceless %}

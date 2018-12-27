@@ -1,7 +1,11 @@
 {% extends "layout/card_base.html" %}
-{% block title%}Identification{% endblock %}
+{% load verbose_names %}
+
+{% block title%}
+{{object|object_verbose_name|title}}{% include "layout/badge.html" with tag=object.status class="badge-success ml-3"%}
+{% endblock %}
+
 {% block content %}
-<ul class="list-group list-group-flush">
     {% include "layout/card_header.html" %}
-</ul>
+{% include "layout/card_footer.html" %}
 {% endblock %}

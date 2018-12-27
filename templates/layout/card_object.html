@@ -1,25 +1,49 @@
 {% extends "layout/card_base.html" %}
 {% load verbose_names get_attr %}
 
-{% block title%} {{object.name}} {% endblock %}
+{% block title%}
+{{object.name|default:"None"}}{% include "layout/badge.html" with tag=object.status class="badge-success ml-3"%}
+{% endblock %}
 
 {% block content %}
-<ul class="list-group list-group-flush">
+{% if object %}
     {% include "layout/card_header.html" %}
-    {% for field in fields %}
-    <li class="list-group-item"><strong>{{object|object_field_verbose_name:field|title}}</strong> : {{object|get_obj_attr:field}}</li>
-    {% endfor %}
+    <hr class="m-0">
+    <div class="card-body">
 
-    {% for field in list_fields %}
-    <li class="list-group-item"><strong>{{object|object_field_verbose_name:field|title}}</strong> : {{object|get_obj_attr_list:field|join:", "}}</li>
-    {% endfor %}
-    <li class="list-group-item"><strong>{{object|object_field_verbose_name:"comment" }}</strong> : {{object.comment}}
-</ul>
+        <dl class="row mb-0 pb-0">
+            {% for field in fields %}
+            <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
+            <dd class="col-sm-9 mb-3">
+                {% with attr=object|get_obj_attr:field %}
+                {% if  attr == None %}
+                    <span class="text-muted">None</span>
+                {% elif attr == False %}
+                    <i class="fas fa-times"></i>
+                {% elif attr == True %}
+                    <i class="fas fa-check"></i>
+                {% else%}
+                    {{object|get_obj_attr:field}}
+                {% endif %}
+                {% endwith %}
+            </dd>
+            {% endfor %}
 
-    <div class="card-footer text-right">
-        {% include "layout/button_link.html" with icon="far fa-eye" label="View"%}
-        {% include "layout/button_link.html" with icon="far fa-edit" label="Edit"%}
-
+            {% for field in list_fields %}
+            <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
+            <dd class="col-sm-9 mb-3">
+                {% for tag in object|get_obj_attr_list:field %}
+                {% include "layout/badge.html" %}
+                {% empty %}
+                <span class="text-muted">None</span>
+                {% endfor %}
+            </dd>
+            {% endfor %}
+        </dl>
+        {% if object.comment %}
+            <p>{{object.comment</p>
+        {% endif %}
     </div>
-
+    {% include "layout/card_footer.html" %}
+{% endif %}
 {% endblock %}
