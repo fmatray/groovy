@@ -1,0 +1,8 @@
+<form action='{% url "application_export" %}' method="post">
+{% csrf_token %}
+    {{ form }}
+<input type="submit">
+</form>
+{% for obj in object_list %}
+ {{ obj }}
+{% endfor %}

@@ -5,10 +5,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django_filters.filters import CharFilter, ChoiceFilter
 from django_filters.views import FilterView
 from django_tables2 import SingleTableView
 from django_tables2.utils import A
+from import_export import mixins
 
 from base.models import Base
 
@@ -28,6 +30,7 @@ class BaseList(BaseMixin, FilterView, SingleTableView):
     class BaseFilter(django_filters.FilterSet):
         name = CharFilter(initial='')
         status = ChoiceFilter(choices=Base.STATUS)
+
         class Meta:
             fields = []
 
@@ -35,13 +38,15 @@ class BaseList(BaseMixin, FilterView, SingleTableView):
         name = tables.LinkColumn(args=[A('pk')])
 
         class Meta:
-            template_name = "django_tables2/bootstrap4.html"
+            template_name = "layout/table.html"
             exclude = ['id', 'description', 'comment']
 
     template_name = "base/list.html"
 
     filterset_class = BaseFilter
 
+class BaseExportView(mixins.ExportViewFormMixin, ListView):
+    pass
 
 class BaseDetailView(BaseMixin, DetailView):
     perm = 'view'
@@ -52,7 +57,7 @@ class BaseCreateView(PassRequestMixin, SuccessMessageMixin, generic.CreateView):
     template_name = 'base/form_modal.html'
 
 
-class BaseUpdateView(BaseMixin, SuccessMessageMixin, generic.UpdateView):
+class BaseUpdateView(PassRequestMixin, SuccessMessageMixin, generic.UpdateView):
     perm = 'change'
     template_name = 'base/form_modal.html'
 

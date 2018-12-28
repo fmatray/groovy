@@ -1,9 +1,4 @@
 {% spaceless %}
-<button class="btn btn-primary btn-sm btn-nav ml-1 mr-1 " type="button" name="button" id="modal-btn"
-        {% if object_id %}
-        data-id="{% url url_name object_id %}"
-        {% else %}
-        data-id="{% url url_name %}"
-        {% endif %}
->{% if icon %}<i class="{{icon}} mr-1"></i>{% endif %}{{label}}</button>
+<button class="btn btn-primary btn-sm btn-nav ml-1 mr-1 " type="button" name="button" id="modal-btn" data-id="{{data_id}}">
+    {% if icon %}<i class="{{icon}} mr-1"></i>{% endif %}{{label}}</button>
 {% endspaceless %}

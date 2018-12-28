@@ -16,9 +16,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{% url 'application_list' %}"><i class="fas fa-mobile-alt"></i> Applications</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-leaf"></i> Environments</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-hands-helping"></i> Partners</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-code-branch"></i> Releases</a>
+                    <a class="dropdown-item" href="{% url 'environment_list' %}"><i class="fas fa-leaf"></i> Environments</a>
+                    <a class="dropdown-item" href="{% url 'partner_list' %}"><i class="fas fa-hands-helping"></i> Partners</a>
+                    <a class="dropdown-item" href="{% url 'release_list' %}"><i class="fas fa-code-branch"></i> Releases</a>
                     <a class="dropdown-item" href="{% url 'univers_list' %}"><i class="fas fa-globe"></i> Univers</a>
                 </div>
             </li>

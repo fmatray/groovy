@@ -7,5 +7,7 @@
 
 {% block content %}
     {% include "layout/card_header.html" %}
-{% include "layout/card_footer.html" %}
+    {% include "layout/card_body.html" with fields=object.identification_fields %}
+
+    {% include "layout/card_footer.html" %}
 {% endblock %}

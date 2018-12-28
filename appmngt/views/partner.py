@@ -1,0 +1,52 @@
+# coding: utf-8
+"""
+Partner views
+"""
+from django.urls import reverse_lazy
+
+from appmngt.forms.partner import PartnerModalForm
+from appmngt.models.partner import Partner
+from base.views import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+
+
+# Partner
+
+class PartnerMixin:
+    pass
+
+class PartnerList(BaseList):
+    class PartnerFilter(BaseList.BaseFilter):
+        class Meta(BaseList.BaseFilter.Meta):
+            model = Partner
+
+    class PartnerTable(BaseList.BaseTable):
+        class Meta(BaseList.BaseTable.Meta):
+            model = Partner
+
+    table_class = PartnerTable
+    model = Partner
+    filterset_class = PartnerFilter
+
+
+# Detail
+class PartnerDetailView(BaseDetailView):
+    model = Partner
+
+
+# Create
+class PartnerCreateView(BaseCreateView):
+    model = Partner
+    success_message = 'Success: Partner was created.'
+    form_class = PartnerModalForm
+
+# Update
+class PartnerUpdateView(BaseUpdateView):
+    model = Partner
+    success_message = 'Success: Partner was updated.'
+    form_class = PartnerModalForm
+
+# Delete
+class PartnerDeleteView(BaseDeleteView):
+    model = Partner
+    success_message = 'Success: Partner was deleted.'
+    success_url = reverse_lazy('partner_list')

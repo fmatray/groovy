@@ -4,7 +4,7 @@
 Module Base
 """
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse, NoReverseMatch
 from model_utils import Choices
 from simple_history.models import HistoricalRecords
 from taggit.managers import TaggableManager
@@ -22,19 +22,36 @@ class Base(models.Model):
     history = HistoricalRecords(inherit=True)
 
     def get_list_url(self):
-        return reverse('{}_list'.format(self._meta.model_name))
+        try:
+            return reverse('{}_list'.format(self._meta.model_name))
+        except NoReverseMatch:
+           return None
+
 
     def get_absolute_url(self):
-        return reverse('{}_detail'.format(self._meta.model_name), args=(self.id,))
+        try:
+            return reverse('{}_detail'.format(self._meta.model_name), args=(self.id,))
+        except NoReverseMatch:
+            return None
 
     def get_create_url(self):
-        return reverse('{}_create'.format(self._meta.model_name), args=(self.id,))
+        try:
+            return reverse('{}_create'.format(self._meta.model_name))
+        except NoReverseMatch:
+            return None
+
 
     def get_update_url(self):
-        return reverse('{}_update'.format(self._meta.model_name), args=(self.id,))
+        try:
+            return reverse('{}_update'.format(self._meta.model_name), args=(self.id,))
+        except NoReverseMatch:
+            return None
 
     def get_delete_url(self):
-        return reverse('{}_delete'.format(self._meta.model_name), args=(self.id,))
+        try:
+            return reverse('{}_delete'.format(self._meta.model_name), args=(self.id,))
+        except NoReverseMatch:
+            return None
 
 
     def __str__(self):

@@ -33,7 +33,6 @@ class UniversList(BaseList):
 class UniversDetailView(BaseDetailView):
     model = Univers
 
-
 # Create
 class UniversCreateView(BaseCreateView):
     model = Univers
@@ -44,7 +43,7 @@ class UniversCreateView(BaseCreateView):
 class UniversUpdateView(BaseUpdateView):
     model = Univers
     success_message = 'Success: Univers was updated.'
-
+    form_class = UniversModalForm
 
 # Delete
 class UniversDeleteView(BaseDeleteView):

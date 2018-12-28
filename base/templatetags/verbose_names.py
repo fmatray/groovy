@@ -2,9 +2,11 @@ from django import template
 
 register = template.Library()
 
+
 @register.filter
 def object_verbose_name(object):
     return object._meta.verbose_name
+
 
 @register.filter
 def object_verbose_name_plural(object):
@@ -13,6 +15,7 @@ def object_verbose_name_plural(object):
     except AttributeError:
         return None
 
+
 @register.filter
 def get_table_verbose_name_plural(obj):
     try:
@@ -20,12 +23,14 @@ def get_table_verbose_name_plural(obj):
     except AttributeError:
         return None
 
+
 @register.filter
 def object_field_verbose_name(object, field):
     try:
         return object._meta.get_field(field).verbose_name
     except AttributeError:
         try:
-            return object._meta.get_field(field).field.verbose_name
+                return "{} {}".format(object._meta.get_field(field).field.verbose_name,
+                                      object._meta.get_field(field).field.model._meta.verbose_name_plural)
         except:
             return None

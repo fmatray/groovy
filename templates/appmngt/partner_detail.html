@@ -1,0 +1,16 @@
+{% extends 'base/detail.html' %}
+{% load create_containers %}
+
+{% block navigation %}
+{% create_list "Applications" as navs %}
+{% include "layout/navs_pills.html" with navs=navs %}
+{% endblock %}
+
+{% block detail_content %}
+
+<div class="tab-content" id="pills-tabContent">
+    {% include "layout/tabs_list.html" with body=object.app_partner.all id="Applications" inline_template="appmngt/application_inline.html" active=True %}
+</div>
+
+
+{% endblock %}

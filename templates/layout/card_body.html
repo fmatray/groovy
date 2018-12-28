@@ -1,0 +1,25 @@
+{% load verbose_names get_attr %}
+
+{% if fields %}
+    <hr class="m-0">
+    <div class="card-body">
+        <dl class="row mb-0 pb-0">
+            {% for field in fields %}
+            <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
+            <dd class="col-sm-9 mb-3">
+                {% with attr=object|get_obj_attr:field %}
+                {% if  attr == None %}
+                    <span class="text-muted">None</span>
+                {% elif attr == False %}
+                    <i class="fas fa-times"></i>
+                {% elif attr == True %}
+                    <i class="fas fa-check"></i>
+                {% else%}
+                    {{object|get_obj_attr:field}}
+                {% endif %}
+                {% endwith %}
+            </dd>
+            {% endfor %}
+        </dl>
+    </div>
+{% endif %}

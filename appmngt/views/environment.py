@@ -1,0 +1,53 @@
+# coding: utf-8
+"""
+Environment views
+"""
+from django.urls import reverse_lazy
+
+from appmngt.forms.environment import EnvironmentModalForm
+from appmngt.models.environment import Environment
+from base.views import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+
+
+# Environment
+
+class EnvironmentMixin:
+    fields = ['name', 'status', 'description', 'application', 'servers', 'comment']
+
+
+class EnvironmentList(BaseList):
+    class EnvironmentFilter(BaseList.BaseFilter):
+        class Meta(BaseList.BaseFilter.Meta):
+            model = Environment
+
+    class EnvironmentTable(BaseList.BaseTable):
+        class Meta(BaseList.BaseTable.Meta):
+            model = Environment
+
+    table_class = EnvironmentTable
+    model = Environment
+    filterset_class = EnvironmentFilter
+
+
+# Detail
+class EnvironmentDetailView(BaseDetailView):
+    model = Environment
+
+
+# Create
+class EnvironmentCreateView(BaseCreateView):
+    model = Environment
+    success_message = 'Success: Environment was created.'
+    form_class = EnvironmentModalForm
+
+# Update
+class EnvironmentUpdateView(BaseUpdateView):
+    model = Environment
+    success_message = 'Success: Environment was updated.'
+    form_class = EnvironmentModalForm
+
+# Delete
+class EnvironmentDeleteView(BaseDeleteView):
+    model = Environment
+    success_message = 'Success: Environment was deleted.'
+    success_url = reverse_lazy('environment_list')

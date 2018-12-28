@@ -3,6 +3,7 @@
 {% load django_tables2 %}
 {% load static %}
 {% load verbose_names %}
+{% load debug %}
 
 {% block title %}{{table|get_table_verbose_name_plural|title}}{% endblock %}
 
@@ -31,8 +32,6 @@
     </form>
 </div>
 {% endif %}
-
-
 {% render_table table %}
-{% include "layout/button_modal.html" with url_name="application_create" icon="far fa-edit" label="Create" %}
+{% include "layout/button_modal.html" with data_id=object_list.model.get_create_url icon="far fa-edit" label="Create" %}
 {% endblock %}
