@@ -1,4 +1,4 @@
 {% spaceless %}
 <button class="btn btn-primary btn-sm btn-nav ml-1 mr-1" type="button" name="button" id="modal-btn" data-id="{{data_id}}">
-    {% if icon %}<i class="{{icon}} mr-1"></i>{% endif %}{{label}}</button>
+    {% include "layout/icon_label.html" %}
 {% endspaceless %}

@@ -2,11 +2,12 @@
 """
 Partner views
 """
+import django_tables2 as tables
 from django.urls import reverse_lazy
 
 from appmngt.forms.partner import PartnerModalForm
 from appmngt.models.partner import Partner
-from base.views import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
 
 
 # Partner
@@ -14,12 +15,15 @@ from base.views import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView,
 class PartnerMixin:
     pass
 
+
 class PartnerList(BaseList):
     class PartnerFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = Partner
 
     class PartnerTable(BaseList.BaseTable):
+        app_partner = tables.ManyToManyColumn(verbose_name="Applications", linkify_item=True)
+
         class Meta(BaseList.BaseTable.Meta):
             model = Partner
 
@@ -39,11 +43,13 @@ class PartnerCreateView(BaseCreateView):
     success_message = 'Success: Partner was created.'
     form_class = PartnerModalForm
 
+
 # Update
 class PartnerUpdateView(BaseUpdateView):
     model = Partner
     success_message = 'Success: Partner was updated.'
     form_class = PartnerModalForm
+
 
 # Delete
 class PartnerDeleteView(BaseDeleteView):

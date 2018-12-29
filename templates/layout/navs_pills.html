@@ -1,3 +1,4 @@
+{% load icons %}
 <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
     {% for item in navs %}
         {% if item == "div" %}
@@ -10,7 +11,8 @@
                    href="#pills-{{item}}"
                    role="tab"
                    aria-controls="pills-{{item}}"
-                   aria-selected="true">{{item|title}}</a>
+                   aria-selected="true">{% include "layout/icon_label.html" with label=item %}
+                </a>
             </li>
         {% endif %}
     {% endfor %}

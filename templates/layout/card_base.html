@@ -1,6 +1,6 @@
 <div class="card border-dark mb-3">
     <div class="card-header bg-dark text-white">
-        {% block title%} {{title|default:"None"}} {% endblock %}
+        {% block title%}{% include "layout/icon_label.html" with label=title|default:"None" %}{% endblock %}
     </div>
     {% block content %}{% endblock %}
 </div>

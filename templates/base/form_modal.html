@@ -6,9 +6,9 @@
  <div class="modal-header">
     <h5 class="modal-title">
         {% if  form.instance.pk %}
-            Update {{object.name|title}}
-        {% else %}
-            Create new {{form.instance|object_verbose_name}}
+            {% include "layout/icon_label.html" with label="Edit"%} {{object.name|title}}
+        {% else%}
+            {% include "layout/icon_label.html" with label="Create"%} new {{form.instance|object_verbose_name}}
         {% endif %}
     </h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -21,7 +21,7 @@
   </div>
 
   <div class="modal-footer">
-      {% include "layout/button_submit.html" with type="button" class="submit-btn btn-success btn-sm" icon="far fa-edit" label="Submit" %}
+      {% include "layout/button_submit.html" with type="button" class="submit-btn btn-success btn-sm" label="Submit" %}
   </div>
 
 </form>

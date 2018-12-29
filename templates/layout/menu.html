@@ -15,11 +15,11 @@
                     Application Management
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% include "layout/menu_dropdown_item.html" with link="application_list"    icon="fas fa-mobile-alt"    label="Applications"%}
-                    {% include "layout/menu_dropdown_item.html" with link="environment_list"    icon="fas fa-leaf"          label="Environments"%}
-                    {% include "layout/menu_dropdown_item.html" with link="partner_list"        icon="fas fa-hands-helping" label="Partners"%}
-                    {% include "layout/menu_dropdown_item.html" with link="release_list"        icon="fas fa-code-branch"   label="Releases"%}
-                    {% include "layout/menu_dropdown_item.html" with link="univers_list"        icon="fas fa-globe"  label="Univers"%}
+                    {% include "layout/menu_dropdown_item.html" with link="application_list" label="Applications"%}
+                    {% include "layout/menu_dropdown_item.html" with link="environment_list" label="Environments"%}
+                    {% include "layout/menu_dropdown_item.html" with link="partner_list" label="Partners"%}
+                    {% include "layout/menu_dropdown_item.html" with link="release_list" label="Releases"%}
+                    {% include "layout/menu_dropdown_item.html" with link="univers_list" label="Univers"%}
                 </div>
             </li>
             <!-- Functional Management-->
@@ -29,7 +29,7 @@
                     Functional Management
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% include "layout/menu_dropdown_item.html" with link=""    icon="fas fa-stream"    label="Functional flows"%}
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Functional flows"%}
                 </div>
             </li>
             <!-- Technical Management-->
@@ -39,12 +39,12 @@
                     Technical Management
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% include "layout/menu_dropdown_item.html" with link=""    icon="far fa-file"          label="Async. flows"%}
-                    {% include "layout/menu_dropdown_item.html" with link=""    icon="fas fa-sync-alt"      label="Batches"%}
-                    {% include "layout/menu_dropdown_item.html" with link=""    icon="fas fa-arrows-alt-h"  label="URI"%}
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Async. flows"%}
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Batches"%}
+                    {% include "layout/menu_dropdown_item.html" with link="" label="URI"%}
                     <div class="dropdown-divider"></div>
-                    {% include "layout/menu_dropdown_item.html" with link=""    icon="fas fa-network-wired" label="Network"%}
-                    {% include "layout/menu_dropdown_item.html" with link=""    icon="fas fa-server"        label="Servers"%}</div>
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Network"%}
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Servers"%}</div>
             </li>
             <!-- Profile -->
             <li class="nav-item dropdown">
@@ -53,12 +53,13 @@
                     Profile
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% include "layout/menu_dropdown_item.html" with link="admin:index" icon="fas fa-unlock-alt"  label="Admin"%}
+                    {% include "layout/menu_dropdown_item.html" with link="admin:index" label="Admin"%}
                     <div class="dropdown-divider"></div>
-                    {% include "layout/menu_dropdown_item.html" with link=""    icon="fas fa-key"  label="Change password"%}
-                    {% include "layout/menu_dropdown_item.html" with link=""    icon="fas fa-sign-out-alt"  label="Disconnect"%}
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Change password"%}
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Disconnect"%}
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" data-toggle="modal" data-target="#aboutModal" href="#"><i class="far fa-copyright w-25 text-center"></i> About</a>
+
+                    <a class="dropdown-item" data-toggle="modal" data-target="#aboutModal" href="#">{% include "layout/icon_label.html" with label="About"%}</a>
 
                 </div>
             </li>

@@ -2,12 +2,13 @@
 """
 Release views
 """
+
 import django_tables2 as tables
 from django.urls import reverse_lazy
 
 from appmngt.forms.release import ReleaseModalForm
 from appmngt.models.release import Release
-from base.views import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
 
 
 # Release
@@ -23,6 +24,7 @@ class ReleaseList(BaseList):
 
     class ReleaseTable(BaseList.BaseTable):
         release_date = tables.DateColumn(format="D d/m/Y")
+        applications = tables.ManyToManyColumn(linkify_item=True)
 
         class Meta(BaseList.BaseTable.Meta):
             model = Release

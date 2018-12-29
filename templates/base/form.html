@@ -3,9 +3,9 @@
 
 {% block title %}
 {% if object %}
-    Update {{object}}
+    {% include "layout/icon_label.html" with label="Edit"%} {{object}}
 {% else%}
-    Create
+    {% include "layout/icon_label.html" with label="Create"%}
 {% endif %}
 {% endblock %}
 

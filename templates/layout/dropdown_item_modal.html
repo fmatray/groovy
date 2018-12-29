@@ -1,8 +1,4 @@
 {% spaceless %}
-<a class="dropdown-item {% if class%}{{class}}{%else%}btn-success{%endif%}" id="modal-btn" data-id="{{data_id}}">
-{% if icon %}
-    <i class="{{icon}} mr-1"></i>
-{% endif %}
-{{label}}
-</a>
+<a class="dropdown-item {{class}}" id="modal-btn" data-id="{{data_id}}">
+{% include "layout/icon_label.html" %}</a>
 {% endspaceless %}

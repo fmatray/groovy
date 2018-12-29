@@ -11,7 +11,7 @@
 {% if create_url %}
 <button class="btn btn-primary btn-sm btn-nav ml-1 mr-1 text-white" id="modal-btn"
    data-id="{% url create_url %}?{{object|object_verbose_name|lower}}={{object.id}}&{{object|object_verbose_name_plural|lower}}={{object.id}}">
-    <i class="fas fa-plus mr-1"></i>Add
+    {% include "layout/icon_label.html" with label="Add"%}
     {% block spaceless %}
         {% if id|slice:"-1:" == "s" %}
             {{ id|slice:"-1" }}

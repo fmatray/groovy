@@ -1,8 +1,5 @@
 {% spaceless %}
-<a class="btn {% if class%}{{class}}{%else%}btn-success{%endif%} btn-nav ml-1 mr-1" href="{{link|default:'#' }}" role="button">
-{% if icon %}
-    <i class="{{icon}} mr-1"></i>
-{% endif %}
-{{label}}
+<a class="btn {{class|default:'btn-success' btn-nav ml-1 mr-1" href="{{link|default:'#' }}" role="button">
+{% include "layout/icon_label.html" %}
 </a>
 {% endspaceless %}

@@ -1,11 +1,26 @@
 {% extends "base.html" %}
-<div class="modal fade" tabindex="-1" role="dialog" id="modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
 
+
+{% block title%}Welcome{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-5">
+        {% for item in next_releases %}
+        {% include "appmngt/release_inline.html" with object=item create_url="release_create" %}
+        {% empty %}
+        {% include "layout/card_simple.html"%}
+        {% endfor %}
     </div>
-  </div>
+
+    <div class="col-sm-7">
+        {% for item in univers %}
+        {% include "appmngt/univers_inline.html" with object=item create_url="univers_create" %}
+        {% empty %}
+        {% include "layout/card_simple.html"%}
+        {% endfor %}
+    </div>
 </div>
 
-<!-- Create book button -->
-<button class="create-book btn btn-primary" type="button" name="button">Create Book</button>
+
+{% endblock %}

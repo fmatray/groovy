@@ -2,7 +2,8 @@
 {% load verbose_names %}
 
 {% block title%}
-{{object|object_verbose_name|title}}{% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
+{% include "layout/icon_label.html" with label=object|object_verbose_name%}
+{% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
 {% endblock %}
 
 {% block content %}

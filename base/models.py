@@ -20,6 +20,7 @@ class Base(models.Model):
     tags = TaggableManager(blank=True)
     history = HistoricalRecords(inherit=True)
 
+
     def get_list_url(self):
         try:
             return reverse('{}_list'.format(self._meta.model_name))

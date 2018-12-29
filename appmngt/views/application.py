@@ -2,11 +2,14 @@
 """
 Application views
 """
+
+import django_tables2 as tables
 from django.urls import reverse_lazy
+from django_tables2.utils import A
 
 from appmngt.forms.application import ApplicationModalForm
 from appmngt.models.application import Application
-from base.views import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
 
 
 # Application
@@ -22,6 +25,13 @@ class ApplicationList(BaseList):
             fields = ['univers', 'partner']
 
     class ApplicationTable(BaseList.BaseTable):
+        univers = tables.LinkColumn(args=[A('pk')])
+        partner = tables.LinkColumn(args=[A('pk')])
+        env_app = tables.ManyToManyColumn(verbose_name="Environments", linkify_item=True)
+        release_app = tables.ManyToManyColumn(verbose_name="Releases", linkify_item=True)
+        subfuncflow_req_app = tables.ManyToManyColumn(verbose_name="Receiver", linkify_item=True)
+        subfuncflow_rec_app = tables.ManyToManyColumn(verbose_name="Requester", linkify_item=True)
+
         class Meta(BaseList.BaseTable.Meta):
             model = Application
 

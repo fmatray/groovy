@@ -35,6 +35,9 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
 
     class BaseTable(tables.Table):
         name = tables.LinkColumn(args=[A('pk')])
+        status = tables.Column()
+        tags = tables.ManyToManyColumn()
+        fields = ['name', 'status', 'tags']
         export_formats = ['csv', 'xls', 'json']
 
         class Meta:

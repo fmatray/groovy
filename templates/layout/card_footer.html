@@ -1,16 +1,16 @@
 <div class="card-footer text-right">
     <div class="dropdown">
-        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        <button class="btn btn-primary btn-sm dropdown-toggle btn-nav ml-1 mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-            Actions
+            {% include "layout/icon_label.html" with label="Actions"%}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {% if view %}
-                {% include "layout/dropdown_item.html" with icon="far fa-eye" label="View" link=object.get_absolute_url %}
+                {% include "layout/dropdown_item.html" with link=object.get_absolute_url label="View"%}
             {% endif %}
-            {% include "layout/dropdown_item_modal.html" with icon="far fa-edit" label="Edit" data_id=object.get_update_url %}
+            {% include "layout/dropdown_item_modal.html" with data_id=object.get_update_url label="Edit" %}
             <div class="dropdown-divider"></div>
-            {% include "layout/dropdown_item_modal.html" with icon="far fa-trash-alt" label="Delete" data_id=object.get_delete_url %}
+            {% include "layout/dropdown_item_modal.html" with data_id=object.get_delete_url label="Delete" %}
         </div>
     </div>
 </div>

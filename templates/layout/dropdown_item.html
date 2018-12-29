@@ -1,8 +1,5 @@
 {% spaceless %}
 <a class="dropdown-item {{class}}" href="{{link|default:'#' }}">
-{% if icon %}
-    <i class="{{icon}} mr-1"></i>
-{% endif %}
-{{label}}
+{% include "layout/icon_label.html" %}
 </a>
 {% endspaceless %}

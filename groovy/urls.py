@@ -21,9 +21,10 @@ from django.urls import path, include
 admin.autodiscover()
 
 urlpatterns = [
-    path('grappelli/', include('grappelli.urls')),
-    path('admin/', admin.site.urls),
-    path('appmngt/', include('appmngt.urls'))
+    path('grappelli/',  include('grappelli.urls')),
+    path('admin/',      admin.site.urls),
+    path('',            include('base.urls')),
+    path('appmngt/',    include('appmngt.urls'))
 ]
 
 if settings.DEBUG:

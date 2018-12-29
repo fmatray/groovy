@@ -1,1 +1,3 @@
-<a class="dropdown-item" href="{% if link %}{% url link %}{% endif %}"><i class="{{icon}} w-25 text-center"></i><span class="mr-2">{{label}}</span></a>
+<a class="dropdown-item" href="{% if link %}{% url link %}{% endif %}">
+    {% include "layout/icon_label.html" %}
+</span></a>
