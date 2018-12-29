@@ -2,9 +2,11 @@
 {% load humanize %}
 
 {% block title%}History
+    {% if history|length > 5%}
         <a class="badge badge-pill badge-success ml-3 " data-toggle="collapse" href="#collapseHistory" aria-expanded="false" aria-controls="collapseHistory">
             <i class="fas fa-history mr-1"></i>Full history
         </a>
+    {% endif%}
 {% endblock %}
 
 

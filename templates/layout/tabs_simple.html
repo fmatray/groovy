@@ -1,4 +1,8 @@
 {% extends "layout/tabs_base.html" %}
 {% block content %}
-    {% include inline_template with object=body %}
+    {% if body %}
+        {% include inline_template with object=body %}
+    {% else %}
+        {% include "layout/card_simple.html" with object=body %}
+    {% endif %}
 {% endblock %}

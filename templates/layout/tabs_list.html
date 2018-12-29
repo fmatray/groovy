@@ -5,7 +5,7 @@
         {% for item in body %}
             {% include inline_template with object=item %}
         {% empty %}
-            {% include "layout/card_simple.html" with title=None body="None"%}
+            {% include "layout/card_simple.html"%}
         {% endfor %}
 
 {% if create_url %}
