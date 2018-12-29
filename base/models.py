@@ -9,9 +9,8 @@ from model_utils import Choices
 from simple_history.models import HistoricalRecords
 from taggit.managers import TaggableManager
 
-
 class Base(models.Model):
-    STATUS = Choices('Draft', 'To do', 'Doing', 'Done', 'Abort', 'Retired')
+    STATUS = Choices('Draft', 'On going', 'Released', 'Retired', 'Abort')
 
     name = models.CharField("Name", max_length=200, blank=False, unique=True)
     description = models.TextField("Description", null=True, blank=True)
