@@ -6,6 +6,7 @@ django-grappelli
 django-bootstrap4
 django-filter
 django-tables2
+tablib
 django-simple-history
 django-debug-toolbar
 django-import-export

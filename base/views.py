@@ -5,12 +5,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
 from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
 from django_filters.filters import CharFilter, ChoiceFilter
 from django_filters.views import FilterView
 from django_tables2 import SingleTableView
+from django_tables2.export.views import ExportMixin
 from django_tables2.utils import A
-from import_export import mixins
 
 from base.models import Base
 
@@ -24,7 +23,7 @@ class BaseMixin(LoginRequiredMixin, PermissionRequiredMixin, AccessMixin):
         return "{}.{}_{}".format(app, self.perm, mdl)
 
 
-class BaseList(BaseMixin, FilterView, SingleTableView):
+class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
     perm = 'view'
 
     class BaseFilter(django_filters.FilterSet):
@@ -36,6 +35,7 @@ class BaseList(BaseMixin, FilterView, SingleTableView):
 
     class BaseTable(tables.Table):
         name = tables.LinkColumn(args=[A('pk')])
+        export_formats = ['csv', 'xls', 'json']
 
         class Meta:
             template_name = "layout/table.html"
@@ -45,19 +45,24 @@ class BaseList(BaseMixin, FilterView, SingleTableView):
 
     filterset_class = BaseFilter
 
-class BaseExportView(mixins.ExportViewFormMixin, ListView):
-    pass
 
 class BaseDetailView(BaseMixin, DetailView):
     perm = 'view'
 
 
-class BaseCreateView(PassRequestMixin, SuccessMessageMixin, generic.CreateView):
+class BaseCreateUpdateMixin():
+    def get_initial(self):
+        if self.request.GET:
+            return self.request.GET.dict()
+        return super().get_initial()
+
+
+class BaseCreateView(BaseCreateUpdateMixin, PassRequestMixin, SuccessMessageMixin, generic.CreateView):
     perm = 'add'
     template_name = 'base/form_modal.html'
 
 
-class BaseUpdateView(PassRequestMixin, SuccessMessageMixin, generic.UpdateView):
+class BaseUpdateView(BaseCreateUpdateMixin, PassRequestMixin, SuccessMessageMixin, generic.UpdateView):
     perm = 'change'
     template_name = 'base/form_modal.html'
 

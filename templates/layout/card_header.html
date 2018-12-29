@@ -3,7 +3,7 @@
 {% if object.tags.all %}
 <p>
 {% for tag in object.tags.all %}
-    {% include "layout/badge.html" %}
+    {% include "layout/badge.html" with object=tag %}
 {% endfor %}
 </p>
 {% endif %}

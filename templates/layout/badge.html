@@ -1,1 +1,1 @@
-<span class="badge badge-pill {% if class%}{{class}}{%else%}badge-primary{%endif%}">{{tag|title}}</span>
+<a href="{{object.get_absolute_url}}" ><span class="badge badge-pill {{class|default:'badge-primary'}}">{{object|title}}</span></a>

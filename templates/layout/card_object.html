@@ -2,7 +2,7 @@
 {% load verbose_names get_attr %}
 
 {% block title%}
-{{object.name|default:"None"}}{% include "layout/badge.html" with tag=object.status class="badge-success ml-3"%}
+{{object.name|default:"None"}}{% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
 {% endblock %}
 
 {% block content %}
@@ -32,8 +32,8 @@
             {% for field in list_fields %}
             <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
             <dd class="col-sm-9 mb-3">
-                {% for tag in object|get_obj_attr_list:field %}
-                {% include "layout/badge.html" %}
+                {% for obj in object|get_obj_attr_list:field %}
+                {% include "layout/badge.html" with object=obj %}
                 {% empty %}
                 <span class="text-muted">None</span>
                 {% endfor %}
@@ -44,6 +44,6 @@
             <p>{{object.comment</p>
         {% endif %}
     </div>
-    {% include "layout/card_footer.html" %}
+    {% include "layout/card_footer.html" with view=True %}
 {% endif %}
 {% endblock %}

@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 
 from appmngt.forms.application import ApplicationModalForm
 from appmngt.models.application import Application
-from base.views import BaseList, BaseExportView, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+from base.views import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
 
 
 # Application
@@ -29,13 +29,11 @@ class ApplicationList(BaseList):
     model = Application
     filterset_class = ApplicationFilter
 
-class ApplicationExportView(BaseExportView):
-    template_name = "base/export.html"
-    model = Application
 
 # Detail
 class ApplicationDetailView(BaseDetailView):
     model = Application
+
 
 # Create
 class ApplicationCreateView(BaseCreateView):
@@ -43,11 +41,13 @@ class ApplicationCreateView(BaseCreateView):
     success_message = 'Success: Application was created.'
     form_class = ApplicationModalForm
 
+
 # Update
 class ApplicationUpdateView(BaseUpdateView):
     model = Application
     success_message = 'Success: Application was updated.'
     form_class = ApplicationModalForm
+
 
 # Delete
 class ApplicationDeleteView(BaseDeleteView):

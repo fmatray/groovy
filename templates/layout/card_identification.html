@@ -2,12 +2,12 @@
 {% load verbose_names %}
 
 {% block title%}
-{{object|object_verbose_name|title}}{% include "layout/badge.html" with tag=object.status class="badge-success ml-3"%}
+{{object|object_verbose_name|title}}{% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
 {% endblock %}
 
 {% block content %}
     {% include "layout/card_header.html" %}
     {% include "layout/card_body.html" with fields=object.identification_fields %}
 
-    {% include "layout/card_footer.html" %}
+    {% include "layout/card_footer.html" with view=False %}
 {% endblock %}

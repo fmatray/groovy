@@ -1,11 +1,17 @@
 {% extends "layout/card_base.html" %}
 {% load humanize %}
 
-{% block title%}History{% endblock %}
+{% block title%}History
+        <a class="badge badge-pill badge-success ml-3 " data-toggle="collapse" href="#collapseHistory" aria-expanded="false" aria-controls="collapseHistory">
+            <i class="fas fa-history mr-1"></i>Full history
+        </a>
+{% endblock %}
+
+
 {% block content %}
     <ul class="list-group list-group-flush">
-        {% for item in history %}
-            <li class="list-group-item {% if forloop.counter > 5 %}text-muted{% endif %}">
+        {% for item in history|slice:"5" %}
+            <li class="list-group-item">
             {{ item.history_date|naturaltime}} : {{item.history_user}} {{item.get_history_type_display|lower}} {{item.name}}
                 {% if item.history_change_reason %}
                     ({{item.history_change_reason}})
@@ -15,4 +21,17 @@
             <li class="list-group-item">None</li>
         {% endfor %}
     </ul>
+    {% if history|length > 5%}
+        <ul class="list-group list-group-flush collapse" id="collapseHistory">
+        {% for item in history|slice:"5:" %}
+            <li class="list-group-item">
+            {{ item.history_date|naturaltime}} : {{item.history_user}} {{item.get_history_type_display|lower}} {{item.name}}
+                {% if item.history_change_reason %}
+                    ({{item.history_change_reason}})
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
 {% endblock %}

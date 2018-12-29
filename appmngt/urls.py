@@ -4,7 +4,7 @@ URLS
 """
 from django.urls import path
 
-from .views.application import ApplicationList, ApplicationExportView, ApplicationDetailView, \
+from .views.application import ApplicationList, ApplicationDetailView, \
     ApplicationCreateView, ApplicationUpdateView, ApplicationDeleteView
 from .views.environment import EnvironmentList, EnvironmentDetailView, \
     EnvironmentCreateView, EnvironmentUpdateView, EnvironmentDeleteView
@@ -17,7 +17,6 @@ from .views.univers import UniversList, UniversDetailView, \
 
 urlpatterns = [
     path('application_list',            ApplicationList.as_view(),          name='application_list'),
-    path('application_export',          ApplicationExportView.as_view(),    name='application_export'),
     path('application_detail/<int:pk>', ApplicationDetailView.as_view(),    name='application_detail'),
     path('application_create',          ApplicationCreateView.as_view(),    name='application_create'),
     path('application_update/<int:pk>', ApplicationUpdateView.as_view(),    name='application_update'),

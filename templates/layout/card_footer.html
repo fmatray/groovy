@@ -5,7 +5,9 @@
             Actions
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {% include "layout/dropdown_item.html" with icon="far fa-eye" label="View" link=object.get_absolute_url%}
+            {% if view %}
+                {% include "layout/dropdown_item.html" with icon="far fa-eye" label="View" link=object.get_absolute_url %}
+            {% endif %}
             {% include "layout/dropdown_item_modal.html" with icon="far fa-edit" label="Edit" data_id=object.get_update_url %}
             <div class="dropdown-divider"></div>
             {% include "layout/dropdown_item_modal.html" with icon="far fa-trash-alt" label="Delete" data_id=object.get_delete_url %}
