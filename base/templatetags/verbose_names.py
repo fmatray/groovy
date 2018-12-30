@@ -26,11 +26,14 @@ def get_table_verbose_name_plural(obj):
 
 @register.filter
 def object_field_verbose_name(object, field):
-    try:
-        return object._meta.get_field(field).verbose_name
-    except AttributeError:
+    if hasattr(object, field) and callable(getattr(object, field)) and hasattr(getattr(object, field), "verbose_name"):
+        return getattr(object, field).verbose_name
+    else:
         try:
+            return object._meta.get_field(field).verbose_name
+        except AttributeError:
+            try:
                 return "{} {}".format(object._meta.get_field(field).field.verbose_name,
                                       object._meta.get_field(field).field.model._meta.verbose_name_plural)
-        except:
-            return None
+            except:
+                return None

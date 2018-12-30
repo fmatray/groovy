@@ -1,4 +1,4 @@
-{% load create_containers %}
+{% load containers %}
 {% create_list "func_flow" "subflow_id" "vital" as fields %}
 
 {% include "layout/card_object.html" with fields=fields list_fields=list_fields %}

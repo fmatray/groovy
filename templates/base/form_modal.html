@@ -1,27 +1,34 @@
+{% extends "layout/modal_content.html" %}
 {% load verbose_names %}
 {% load bootstrap4 %}
+{% load containers %}
 
-<form method="post" action="" id="modal-form">
-  {% csrf_token %}
- <div class="modal-header">
-    <h5 class="modal-title">
-        {% if  form.instance.pk %}
-            {% include "layout/icon_label.html" with label="Edit"%} {{object.name|title}}
-        {% else%}
-            {% include "layout/icon_label.html" with label="Create"%} new {{form.instance|object_verbose_name}}
-        {% endif %}
-    </h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+{% block title %}
+    {% if  form.instance.pk %}
+        {% include "layout/icon_label.html" with label="Edit"%} {{object.name|title}}
+    {% else%}
+        {% include "layout/icon_label.html" with label="Create"%} new {{form.instance|object_verbose_name}}
+    {% endif %}
+{%endblock%}
 
-  <div class="modal-body">
-      {% bootstrap_form form %}
-  </div>
+{% block content %}
+        {% csrf_token %}
+        {% bootstrap_field form.name size="small" %}
+        {% bootstrap_field form.status size="small" %}
+        {% bootstrap_field form.tags size="small" %}
+        {% bootstrap_field form.description size="small" %}
+        {% if form.fields|length > 5 %}
+        <hr>{% endif %}
+        {% for field in form %}
+        {% if not field.name|in_list:"name,status,tags,comment,description" %}
+        {% bootstrap_field field size="small" %}
+        {% endif%}
+        {% endfor %}
+        {% if form.fields|length > 5 %}
+        <hr>{% endif %}
+        {% bootstrap_field form.comment size="small" %}
+{%endblock%}
 
-  <div class="modal-footer">
-      {% include "layout/button_submit.html" with type="button" class="submit-btn btn-success btn-sm" label="Submit" %}
-  </div>
-
-</form>
+{% block footer %}
+    {% include "layout/button_submit.html" with type="button" class="submit-btn btn-success btn-sm" label="Submit" %}
+{% endblock %}

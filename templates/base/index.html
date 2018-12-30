@@ -6,11 +6,13 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-5">
-        {% for item in next_releases %}
-        {% include "appmngt/release_inline.html" with object=item create_url="release_create" %}
-        {% empty %}
-        {% include "layout/card_simple.html"%}
-        {% endfor %}
+        {% if perms.appmngt.view_release %}
+            {% for item in next_releases %}
+            {% include "appmngt/release_inline.html" with object=item create_url="release_create" %}
+            {% empty %}
+            {% include "layout/card_simple.html"%}
+            {% endfor %}
+        {% endif %}
     </div>
 
     <div class="col-sm-7">

@@ -3,5 +3,10 @@ from django import forms
 
 
 class BaseModalForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
+
+    @classmethod
+    def add_fields(cls, extra_fields):
+        return ['name', 'status', 'tags', 'description'] + extra_fields + ['comment']
+
     class Meta:
-        fields = ['name', 'status', 'description', 'comment']
+        fields = '__all__'

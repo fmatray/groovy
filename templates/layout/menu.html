@@ -53,7 +53,9 @@
                     Profile
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% include "layout/menu_dropdown_item.html" with link="admin:index" label="Admin"%}
+                    {% if user.is_staff %}
+                        {% include "layout/menu_dropdown_item.html" with link="admin:index" label="Admin"%}
+                    {% endif %}
                     <div class="dropdown-divider"></div>
                     {% include "layout/menu_dropdown_item.html" with link="" label="Change password"%}
                     {% include "layout/menu_dropdown_item.html" with link="" label="Disconnect"%}
