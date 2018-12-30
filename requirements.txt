@@ -1,5 +1,6 @@
 ipython
 django
+jinja2
 psycopg2
 django-extensions
 django-grappelli
@@ -13,3 +14,4 @@ django-import-export
 django-taggit
 django-model-utils
 django-polymorphic
+django-bootstrap-modal-forms

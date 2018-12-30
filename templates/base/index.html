@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 
 
 {% block title%}Welcome{% endblock %}
@@ -8,9 +8,9 @@
     <div class="col-sm-5">
         {% if perms.appmngt.view_release %}
             {% for item in next_releases %}
-            {% include "appmngt/release_inline.html" with object=item create_url="release_create" %}
+                {% include "appmngt/release_inline.html" with object=item create_url="release_create" %}
             {% empty %}
-            {% include "layout/card_simple.html"%}
+                {% include "layout/card_simple.html"%}
             {% endfor %}
         {% endif %}
     </div>
