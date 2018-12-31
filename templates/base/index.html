@@ -16,11 +16,13 @@
     </div>
 
     <div class="col-sm-7">
-        {% for item in univers %}
-        {% include "appmngt/univers_inline.html" with object=item create_url="univers_create" %}
-        {% empty %}
-        {% include "layout/card_simple.html"%}
-        {% endfor %}
+        {% if perms.appmngt.view_univers %}
+            {% for item in univers %}
+                {% include "appmngt/univers_inline.html" with object=item create_url="univers_create" %}
+            {% empty %}
+              {% include "layout/card_simple.html"%}
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
 

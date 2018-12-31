@@ -28,6 +28,7 @@ class Base(models.Model):
     def get_status_badge(self):
         return "<span class='badge badge-pill {}'>{}</span>".format(get_status_color(self.status), self.status)
 
+    # URLS
     def get_list_url(self):
         try:
             return reverse('{}_list'.format(self._meta.model_name))
@@ -59,6 +60,29 @@ class Base(models.Model):
             return reverse('{}_delete'.format(self._meta.model_name), args=(self.id,))
         except NoReverseMatch:
             return None
+
+    # Permissions
+    @classmethod
+    def get_perm(cls, perm):
+        app, mdl = cls._meta.label_lower.split('.')
+        return "{}.{}_{}".format(app, perm, mdl)
+
+    @classmethod
+    def get_view_perm(cls):
+        return cls.get_perm('view')
+
+    @classmethod
+    def get_create_perm(cls):
+        return cls.get_perm('add')
+
+    @classmethod
+    def get_update_perm(cls):
+        return cls.get_perm('change')
+
+    @classmethod
+    def get_delete_perm(cls):
+        return cls.get_perm('delete')
+
 
     def __str__(self):
         return self.name

@@ -16,12 +16,20 @@ from base.helpers import get_status_color
 from base.models import Base
 
 
-class BaseMixin(LoginRequiredMixin,PermissionRequiredMixin, AccessMixin):
+class BaseMixin(LoginRequiredMixin, PermissionRequiredMixin, AccessMixin):
     perm = ''
 
     def get_permission_required(self):
         app, mdl = self.model._meta.label_lower.split('.')
-        return ("{}.{}_{}".format(app, self.perm, mdl), )
+        return ("{}.{}_{}".format(app, self.perm, mdl),)
+
+
+class SingleBadgeColumn(tables.Column):
+    def render(self, value):
+        content = "<span class='badge badge-pill badge-primary'>{}</span>".format(value)
+        if hasattr(value, "get_absolute_url"):
+            content = "<a href='{}'>{}</a>".format(value.get_absolute_url(), content)
+        return content
 
 
 class StatusColumn(tables.Column):
@@ -30,11 +38,12 @@ class StatusColumn(tables.Column):
         return value
 
 
-class BadgeColumn(tables.ManyToManyColumn):
+class BadgesColumn(tables.ManyToManyColumn):
     def render(self, value):
         # if value is None or not value.exists():
         if not value.exists():
             return "-"
+
         tags = ""
         for item in self.filter(value):
             content = conditional_escape(self.transform(item))
@@ -47,27 +56,48 @@ class BadgeColumn(tables.ManyToManyColumn):
 
 class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
     perm = 'view'
+    # all data if no filter
+    strict = False
+
+    def get_filterset(self, filterset_class):
+        """get filterset with permissions"""
+        _filterset_class = super().get_filterset(filterset_class)
+
+        for f in list(_filterset_class.filters.keys()):
+            try:
+                if not self.request.user.has_perm(_filterset_class.filters[f].field._queryset.model.get_view_perm()):
+                    print("deleting", f)
+                    del _filterset_class.filters[f]
+            except AttributeError:
+                pass
+        return _filterset_class
 
     class BaseFilter(django_filters.FilterSet):
-        name = CharFilter(initial='')
+        name = CharFilter(lookup_expr='contains')
         status = ChoiceFilter(choices=Base.STATUS)
 
         class Meta:
-            fields = []
+            exclude = ['id', 'tags', 'description', 'comment']
 
     class BaseTable(tables.Table):
         name = tables.LinkColumn(args=[A('pk')])
         status = StatusColumn()
-        tags = BadgeColumn()
+        tags = BadgesColumn()
         fields = ['name', 'status', 'tags']
         export_formats = ['csv', 'xls', 'json']
+        view_perms = {}
+
+        def before_render(self, request):
+            """implement permissions"""
+            for col, perm in self.view_perms.items():
+                if not request.user.has_perm(perm):
+                    self.columns.hide(col)
 
         class Meta:
             template_name = "layout/table.html"
             exclude = ['id', 'description', 'comment']
 
     template_name = "base/list.html"
-
     filterset_class = BaseFilter
 
 

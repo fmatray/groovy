@@ -9,7 +9,7 @@ from django_tables2.utils import A
 
 from appmngt.forms.application import ApplicationModalForm
 from appmngt.models.application import Application
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgeColumn
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
 
 
 # Application
@@ -22,15 +22,23 @@ class ApplicationList(BaseList):
     class ApplicationFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = Application
-            fields = ['univers', 'partner']
 
     class ApplicationTable(BaseList.BaseTable):
         univers = tables.LinkColumn(args=[A('pk')])
         partner = tables.LinkColumn(args=[A('pk')])
-        env_app = BadgeColumn(verbose_name="Environments", linkify_item=True)
-        release_app = BadgeColumn(verbose_name="Releases", linkify_item=True)
-        subfuncflow_req_app = BadgeColumn(verbose_name="Receiver", linkify_item=True)
-        subfuncflow_rec_app = BadgeColumn(verbose_name="Requester", linkify_item=True)
+        env_app = BadgesColumn(verbose_name="Environments", linkify_item=True)
+        release_app = BadgesColumn(verbose_name="Releases", linkify_item=True)
+        subfuncflow_req_app = BadgesColumn(verbose_name="Receiver", linkify_item=True)
+        subfuncflow_rec_app = BadgesColumn(verbose_name="Requester", linkify_item=True)
+
+        view_perms = {
+            'univers': 'appmngt.view_univers',
+            'partner': 'appmngt.view_partner',
+            'env_app': 'appmngt.view_envrionment',
+            'release_app': 'appmngt.view_release',
+            'subfuncflow_req_app': 'funcmngt.view_subfuncflow',
+            'subfuncflow_rec_app': 'funcmngt.view_subfuncflow',
+        }
 
         class Meta(BaseList.BaseTable.Meta):
             model = Application

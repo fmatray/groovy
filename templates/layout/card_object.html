@@ -10,42 +10,7 @@
 {% block content %}
 {% if object %}
     {% include "layout/card_header.html" %}
-    <hr class="m-0">
-    <div class="card-body">
-
-        <dl class="row mb-0 pb-0">
-            {% for field in fields %}
-            <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
-            <dd class="col-sm-9 mb-3">
-                {% with attr=object|get_obj_attr:field %}
-                {% if  attr == None %}
-                    <span class="text-muted">None</span>
-                {% elif attr == False %}
-                    <i class="fas fa-times"></i>
-                {% elif attr == True %}
-                    <i class="fas fa-check"></i>
-                {% else%}
-                    {{object|get_obj_attr:field}}
-                {% endif %}
-                {% endwith %}
-            </dd>
-            {% endfor %}
-
-            {% for field in list_fields %}
-            <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
-            <dd class="col-sm-9 mb-3">
-                {% for obj in object|get_obj_attr_list:field %}
-                {% include "layout/badge.html" with object=obj %}
-                {% empty %}
-                <span class="text-muted">None</span>
-                {% endfor %}
-            </dd>
-            {% endfor %}
-        </dl>
-        {% if object.comment %}
-            <p>{{object.comment</p>
-        {% endif %}
-    </div>
+    {% include "layout/card_body.html" with fields=fields list_fields=list_fields %}
     {% include "layout/card_footer.html" with view=True %}
 {% endif %}
 {% endblock %}

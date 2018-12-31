@@ -5,12 +5,17 @@
             {% include "layout/icon_label.html" with label="Actions"%}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {% if view %}
+
+            {% if view and object.get_view_perm in perms %}
                 {% include "layout/dropdown_item.html" with link=object.get_absolute_url label="View"%}
             {% endif %}
-            {% include "layout/dropdown_item_modal.html" with data_id=object.get_update_url label="Edit" %}
-            <div class="dropdown-divider"></div>
-            {% include "layout/dropdown_item_modal.html" with data_id=object.get_delete_url label="Delete" %}
+            {% if object.get_update_perm in perms %}
+                {% include "layout/dropdown_item_modal.html" with data_id=object.get_update_url label="Edit" %}
+            {% endif %}
+            {% if object.get_delete_perm in perms %}
+                <div class="dropdown-divider"></div>
+                {% include "layout/dropdown_item_modal.html" with data_id=object.get_delete_url label="Delete" %}
+            {% endif %}
         </div>
     </div>
 </div>

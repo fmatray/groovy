@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 
 from appmngt.forms.release import ReleaseModalForm
 from appmngt.models.release import Release
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
 
 
 # Release
@@ -24,7 +24,10 @@ class ReleaseList(BaseList):
 
     class ReleaseTable(BaseList.BaseTable):
         release_date = tables.DateColumn(format="D d/m/Y")
-        applications = tables.ManyToManyColumn(linkify_item=True)
+        applications = BadgesColumn(linkify_item=True)
+        view_perms = {
+            'applications': 'appmngt.view_application',
+        }
 
         class Meta(BaseList.BaseTable.Meta):
             model = Release

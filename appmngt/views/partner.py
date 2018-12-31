@@ -2,12 +2,11 @@
 """
 Partner views
 """
-import django_tables2 as tables
 from django.urls import reverse_lazy
 
 from appmngt.forms.partner import PartnerModalForm
 from appmngt.models.partner import Partner
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
 
 
 # Partner
@@ -22,7 +21,10 @@ class PartnerList(BaseList):
             model = Partner
 
     class PartnerTable(BaseList.BaseTable):
-        app_partner = tables.ManyToManyColumn(verbose_name="Applications", linkify_item=True)
+        app_partner = BadgesColumn(verbose_name="Applications", linkify_item=True)
+        view_perms = {
+            'app_partner': 'appmngt.view_application',
+        }
 
         class Meta(BaseList.BaseTable.Meta):
             model = Partner

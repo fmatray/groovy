@@ -2,24 +2,28 @@
 {% load verbose_names %}
 
 {% block content %}
-        {% for item in body %}
-            {% include inline_template with object=item %}
-        {% empty %}
-            {% include "layout/card_simple.html"%}
-        {% endfor %}
+{% if body.model.get_view_perm in perms %}
+    {% for item in body %}
+        {% include inline_template with object=item %}
+    {% empty %}
+        {% include "layout/card_simple.html"%}
+    {% endfor %}
+{% else %}
+{% include "layout/no_rights.html" %}
+{% endif %}
 
-{% if create_url %}
-<button class="btn btn-primary btn-sm btn-nav ml-1 mr-1 text-white" id="modal-btn"
-   data-id="{% url create_url %}?{{object|object_verbose_name|lower}}={{object.id}}&{{object|object_verbose_name_plural|lower}}={{object.id}}">
-    {% include "layout/icon_label.html" with label="Add"%}
-    {% block spaceless %}
-        {% if id|slice:"-1:" == "s" %}
-            {{ id|slice:"-1" }}
-        {% else %}
-            {{ id }}
-        {% endif %}
-    {% endblock %}
-</button>
+{% if create_url and body.model.get_create_perm in perms %}
+    <button class="btn btn-primary btn-sm btn-nav ml-1 mr-1 text-white" id="modal-btn"
+       data-id="{% url create_url %}?{{object|object_verbose_name|lower}}={{object.id}}&{{object|object_verbose_name_plural|lower}}={{object.id}}">
+        {% include "layout/icon_label.html" with label="Add"%}
+        {% block spaceless %}
+            {% if id|slice:"-1:" == "s" %}
+                {{ id|slice:"-1" }}
+            {% else %}
+                {{ id }}
+            {% endif %}
+        {% endblock %}
+    </button>
 {% endif %}
 
 {% endblock %}

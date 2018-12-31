@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
 {% load bootstrap4 %}
 {% load django_tables2 %}
 {% load static %}
@@ -12,18 +12,10 @@
 <div class="d-flex justify-content-center mb-3">
     <form class="form form-inline" action="" method="get">
         <div class="form-row">
-            <div class="col">
-                {% bootstrap_field filter.form.name layout="inline" %}
-            </div>
-            <div class="col">
-                {% bootstrap_field filter.form.status layout="inline" addon_before="Status" %}
-            </div>
             {% for field in filter.form %}
-            {% if field.label != "Name" and field.label != "Status" %}
             <div class="col">
                 {% bootstrap_field field layout="inline" addon_before=field.label %}
             </div>
-            {% endif %}
             {% endfor %}
             <div class="col">
                 {% include "layout/button_submit.html" with label="Filter"%}
@@ -35,9 +27,12 @@
 
 
 {% render_table table %}
-<div class="dropdown">
-    {% include "layout/button_modal.html" with data_id=object_list.model.get_create_url label="Create" %}
 
+
+<div class="dropdown">
+    {% if object_list.model.get_create_perm in perms %}
+        {% include "layout/button_modal.html" with data_id=object_list.model.get_create_url label="Create" %}
+    {% endif %}
     <div class="btn-group" role="group">
         <button class="btn btn-secondary btn-sm btn-nav dropdown-toggle" type="button" id="dropdownMenuLink"
                 data-toggle="dropdown"

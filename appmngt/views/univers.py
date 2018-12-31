@@ -2,12 +2,11 @@
 """
 Univers views
 """
-import django_tables2 as tables
 from django.urls import reverse_lazy
 
 from appmngt.forms.univers import UniversModalForm
 from appmngt.models.univers import Univers
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
 
 
 # Univers
@@ -22,7 +21,10 @@ class UniversList(BaseList):
             model = Univers
 
     class UniversTable(BaseList.BaseTable):
-        app_univers = tables.ManyToManyColumn(verbose_name="Applications", linkify_item=True)
+        app_univers = BadgesColumn(verbose_name="Applications", linkify_item=True)
+        view_perms = {
+            'app_univers': 'appmngt.view_application',
+        }
 
         class Meta(BaseList.BaseTable.Meta):
             model = Univers

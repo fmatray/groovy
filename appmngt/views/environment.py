@@ -2,13 +2,12 @@
 """
 Environment views
 """
-import django_tables2 as tables
 from django.urls import reverse_lazy
-from django_tables2.utils import A
 
 from appmngt.forms.environment import EnvironmentModalForm
 from appmngt.models.environment import Environment
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
+    BadgesColumn, SingleBadgeColumn
 
 
 # Environment
@@ -23,11 +22,16 @@ class EnvironmentList(BaseList):
             model = Environment
 
     class EnvironmentTable(BaseList.BaseTable):
-        application = tables.LinkColumn(args=[A('pk')])
+        application = SingleBadgeColumn()
+        servers = BadgesColumn(linkify_item=True)
+
+        view_perms = {
+            'application': 'appmngt.view_application',
+            'servers': 'techmngt.view_server',
+        }
 
         class Meta(BaseList.BaseTable.Meta):
             model = Environment
-            fields = ['name', 'status', 'tags', 'application']
 
     table_class = EnvironmentTable
     model = Environment
