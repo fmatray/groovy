@@ -4,7 +4,7 @@ Environment views
 """
 from django.urls import reverse_lazy
 
-from appmngt.forms.environment import EnvironmentModalForm
+from appmngt.forms.environment import EnvironmentForm
 from appmngt.models.environment import Environment
 from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
     BadgesColumn, SingleBadgeColumn
@@ -20,6 +20,7 @@ class EnvironmentList(BaseList):
     class EnvironmentFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = Environment
+            exclude = ['id', 'tags', 'description', 'comment', 'servers']
 
     class EnvironmentTable(BaseList.BaseTable):
         application = SingleBadgeColumn()
@@ -47,14 +48,14 @@ class EnvironmentDetailView(BaseDetailView):
 class EnvironmentCreateView(BaseCreateView):
     model = Environment
     success_message = 'Success: Environment was created.'
-    form_class = EnvironmentModalForm
+    form_class = EnvironmentForm
 
 
 # Update
 class EnvironmentUpdateView(BaseUpdateView):
     model = Environment
     success_message = 'Success: Environment was updated.'
-    form_class = EnvironmentModalForm
+    form_class = EnvironmentForm
 
 
 # Delete

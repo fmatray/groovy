@@ -10,11 +10,11 @@
                 {% include "layout/dropdown_item.html" with link=object.get_absolute_url label="View"%}
             {% endif %}
             {% if object.get_update_perm in perms %}
-                {% include "layout/dropdown_item_modal.html" with data_id=object.get_update_url label="Edit" %}
+                {% include "layout/dropdown_item.html" with link=object.get_update_url label="Edit" %}
             {% endif %}
-            {% if object.get_delete_perm in perms %}
+            {% if delete and object.get_delete_perm in perms %}
                 <div class="dropdown-divider"></div>
-                {% include "layout/dropdown_item_modal.html" with data_id=object.get_delete_url label="Delete" %}
+                {% include "layout/dropdown_item_modal.html" with target="#deleteModal" label="Delete" %}
             {% endif %}
         </div>
     </div>

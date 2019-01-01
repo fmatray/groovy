@@ -6,8 +6,6 @@
 <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
-<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 <script src="{% static 'js/base.js' %}"></script>
 
 {% endblock %}
@@ -15,7 +13,6 @@
 {% block bootstrap4_content %}
 {% include "layout/menu.html" %}
 {% include "layout/about.html" %}
-{% include "layout/modal_form.html" %}
 
 <div class="container-fluid fill mb-5">
     <h1 class="mt-3 mb-3">{% block title %}(no title){% endblock %}</h1>

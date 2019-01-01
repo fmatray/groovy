@@ -31,7 +31,7 @@
 
 <div class="dropdown">
     {% if object_list.model.get_create_perm in perms %}
-        {% include "layout/button_modal.html" with data_id=object_list.model.get_create_url label="Create" %}
+        {% include "layout/button_link.html" with link=object_list.model.get_create_url label="Create" %}
     {% endif %}
     <div class="btn-group" role="group">
         <button class="btn btn-secondary btn-sm btn-nav dropdown-toggle" type="button" id="dropdownMenuLink"

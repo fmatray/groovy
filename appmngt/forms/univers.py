@@ -1,7 +1,7 @@
 from appmngt.models.univers import Univers
-from base.forms import BaseModalForm
+from base.forms import BaseForm
 
 
-class UniversModalForm(BaseModalForm):
-    class Meta (BaseModalForm.Meta):
+class UniversForm(BaseForm):
+    class Meta (BaseForm.Meta):
         model = Univers

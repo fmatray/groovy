@@ -13,8 +13,9 @@
 {% endif %}
 
 {% if create_url and body.model.get_create_perm in perms %}
-    <button class="btn btn-primary btn-sm btn-nav ml-1 mr-1 text-white" id="modal-btn"
-       data-id="{% url create_url %}?{{object|object_verbose_name|lower}}={{object.id}}&{{object|object_verbose_name_plural|lower}}={{object.id}}">
+
+<a class="btn btn-success btn-sm btn-nav ml-1 mr-1" role="button"
+       href="{% url create_url %}?{{object|object_verbose_name|lower}}={{object.id}}&{{object|object_verbose_name_plural|lower}}={{object.id}}">
         {% include "layout/icon_label.html" with label="Add"%}
         {% block spaceless %}
             {% if id|slice:"-1:" == "s" %}
@@ -23,7 +24,7 @@
                 {{ id }}
             {% endif %}
         {% endblock %}
-    </button>
+    </a>
 {% endif %}
 
 {% endblock %}

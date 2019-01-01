@@ -1,7 +1,7 @@
 from appmngt.models.partner import Partner
-from base.forms import BaseModalForm
+from base.forms import BaseForm
 
 
-class PartnerModalForm(BaseModalForm):
-    class Meta(BaseModalForm.Meta):
+class PartnerForm(BaseForm):
+    class Meta(BaseForm.Meta):
         model = Partner

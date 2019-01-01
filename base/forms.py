@@ -1,8 +1,7 @@
-from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
 from django import forms
 
 
-class BaseModalForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
+class BaseForm(forms.ModelForm):
 
     @classmethod
     def add_fields(cls, extra_fields):

@@ -44,13 +44,15 @@ class Base(models.Model):
     def get_create_url(self, params=None):
         try:
             if params:
-                return reverse('{}_update'.format(self._meta.model_name), args=(self.id,)) + "?{}".format(params)
+                return reverse('{}_create'.format(self._meta.model_name), args=(self.id,)) + "?{}".format(params)
             return reverse('{}_create'.format(self._meta.model_name))
         except NoReverseMatch:
             return None
 
-    def get_update_url(self):
+    def get_update_url(self, params=None):
         try:
+            if params:
+                return reverse('{}_update'.format(self._meta.model_name), args=(self.id,)) + "?{}".format(params)
             return reverse('{}_update'.format(self._meta.model_name), args=(self.id,))
         except NoReverseMatch:
             return None

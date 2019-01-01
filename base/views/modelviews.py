@@ -1,6 +1,5 @@
 import django_filters
 import django_tables2 as tables
-from bootstrap_modal_forms.mixins import PassRequestMixin, DeleteAjaxMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, AccessMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.html import conditional_escape
@@ -112,16 +111,16 @@ class BaseCreateUpdateMixin(BaseMixin):
         return super().get_initial()
 
 
-class BaseCreateView(BaseCreateUpdateMixin, PassRequestMixin, SuccessMessageMixin, generic.CreateView):
+class BaseCreateView(BaseCreateUpdateMixin, SuccessMessageMixin, generic.CreateView):
     perm = 'add'
-    template_name = 'base/form_modal.html'
+    template_name = 'base/form.html'
 
 
-class BaseUpdateView(BaseCreateUpdateMixin, PassRequestMixin, SuccessMessageMixin, generic.UpdateView):
+class BaseUpdateView(BaseCreateUpdateMixin, SuccessMessageMixin, generic.UpdateView):
     perm = 'change'
-    template_name = 'base/form_modal.html'
+    template_name = 'base/form.html'
 
 
-class BaseDeleteView(BaseMixin, DeleteAjaxMixin, generic.DeleteView):
+class BaseDeleteView(BaseMixin, generic.DeleteView):
     perm = 'delete'
     template_name = "base/confirm_delete.html"

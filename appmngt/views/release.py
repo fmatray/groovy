@@ -6,7 +6,7 @@ Release views
 import django_tables2 as tables
 from django.urls import reverse_lazy
 
-from appmngt.forms.release import ReleaseModalForm
+from appmngt.forms.release import ReleaseForm
 from appmngt.models.release import Release
 from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
 
@@ -46,14 +46,14 @@ class ReleaseDetailView(BaseDetailView):
 class ReleaseCreateView(BaseCreateView):
     model = Release
     success_message = 'Success: Release was created.'
-    form_class = ReleaseModalForm
+    form_class = ReleaseForm
 
 
 # Update
 class ReleaseUpdateView(BaseUpdateView):
     model = Release
     success_message = 'Success: Release was updated.'
-    form_class = ReleaseModalForm
+    form_class = ReleaseForm
 
 
 # Delete

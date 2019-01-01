@@ -11,6 +11,6 @@
 {% if object %}
     {% include "layout/card_header.html" %}
     {% include "layout/card_body.html" with fields=fields list_fields=list_fields %}
-    {% include "layout/card_footer.html" with view=True %}
+    {% include "layout/card_footer.html" with view=True delete=False %}
 {% endif %}
 {% endblock %}

@@ -1,7 +1,7 @@
 from appmngt.models.release import Release
-from base.forms import BaseModalForm
+from base.forms import BaseForm
 
 
-class ReleaseModalForm(BaseModalForm):
-    class Meta (BaseModalForm.Meta):
+class ReleaseForm(BaseForm):
+    class Meta (BaseForm.Meta):
         model = Release
