@@ -105,6 +105,7 @@ class BaseDetailView(BaseMixin, DetailView):
 
 
 class BaseCreateUpdateMixin(BaseMixin):
+    fields = '__all__'
     def get_initial(self):
         if self.request.GET:
             return self.request.GET.dict()

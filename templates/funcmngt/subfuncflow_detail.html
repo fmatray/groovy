@@ -1,0 +1,19 @@
+{% extends 'base/detail.html' %}
+{% load containers %}
+
+{% block navigation %}
+{% create_list "Functional Flow" "div" "Requester" "Receiver" as navs %}
+{% include "layout/navs_pills.html" with navs=navs %}
+{% endblock %}
+
+
+{% block detail_content %}
+
+<div class="tab-content" id="pills-tabContent">
+    {% include "layout/tabs_simple.html" with body=object.func_flow id="Functional Flow" inline_template="funcmngt/funcflow_inline.html" active=True %}
+    {% include "layout/tabs_simple.html" with body=object.requester id="Requester" inline_template="appmngt/application_inline.html" %}
+    {% include "layout/tabs_simple.html" with body=object.receiver id="Receiver" inline_template="appmngt/application_inline.html" %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,4 @@
+{% load containers %}
+{% create_list "flow_id" "type" as fields %}
+
+{% include "layout/card_object.html" with fields=fields list_fields=list_fields %}

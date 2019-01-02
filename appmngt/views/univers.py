@@ -4,17 +4,11 @@ Univers views
 """
 from django.urls import reverse_lazy
 
-from appmngt.forms.univers import UniversForm
 from appmngt.models.univers import Univers
 from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
 
 
 # Univers
-
-class UniversMixin:
-    pass
-
-
 class UniversList(BaseList):
     class UniversFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
@@ -43,14 +37,12 @@ class UniversDetailView(BaseDetailView):
 class UniversCreateView(BaseCreateView):
     model = Univers
     success_message = 'Success: Univers was created.'
-    form_class = UniversForm
 
 
 # Update
 class UniversUpdateView(BaseUpdateView):
     model = Univers
     success_message = 'Success: Univers was updated.'
-    form_class = UniversForm
 
 
 # Delete

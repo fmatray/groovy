@@ -7,8 +7,8 @@ Tech Admin
 from django.contrib import admin
 
 from base.admin import BaseAdmin, BaseStackedInline
-from funcmngt.models.funcflow import FuncFlow, SubFuncFlow
-
+from funcmngt.models.funcflow import FuncFlow
+from funcmngt.models.subfuncflow import SubFuncFlow
 
 class SubFuncFlowInline(BaseStackedInline):
     """

@@ -4,16 +4,11 @@ Partner views
 """
 from django.urls import reverse_lazy
 
-from appmngt.forms.partner import PartnerForm
 from appmngt.models.partner import Partner
 from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
 
 
 # Partner
-
-class PartnerMixin:
-    pass
-
 
 class PartnerList(BaseList):
     class PartnerFilter(BaseList.BaseFilter):
@@ -43,14 +38,12 @@ class PartnerDetailView(BaseDetailView):
 class PartnerCreateView(BaseCreateView):
     model = Partner
     success_message = 'Success: Partner was created.'
-    form_class = PartnerForm
 
 
 # Update
 class PartnerUpdateView(BaseUpdateView):
     model = Partner
     success_message = 'Success: Partner was updated.'
-    form_class = PartnerForm
 
 
 # Delete

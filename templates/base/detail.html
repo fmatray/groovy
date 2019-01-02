@@ -2,18 +2,14 @@
 {% load containers %}
 {% load static %}
 {% block title %}
-{{ object.name }}
+{{ object.name|title }}
 {% endblock %}
 
 {% block content %}
 <div class="row">
-    <div class="col-sm-12">
-        {% block navigation %}{% endblock %}
-    </div>
-</div>
-<div class="row">
     <div class="col-sm-5">
         {% include "layout/card_identification.html" %}
+        {% block navigation %}{% endblock %}
         {% include "layout/card_simple.html" with title="Comment" body=object.comment|default:'<span class="text-muted">No comment<span>' %}
         {% include "layout/card_history.html" with history=object.history.all %}
     </div>

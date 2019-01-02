@@ -1,17 +1,17 @@
 {% load icons %}
-<ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
     {% for item in navs %}
         {% if item == "div" %}
             <li class="nav-item mr-3"></li>
         {% else %}
-            <li class="nav-item">
-                <a class="nav-link btn-nav {% if forloop.first %} active{% endif %} badge-secondary ml-1 mr-1 text-center"
+            <li class="nav-item" data-toggle="tooltip" data-placement="top" title="{{item}}">
+                <a class="nav-link  {% if forloop.first %} active{% endif %} badge-secondary ml-1 mr-1 text-center"
                    id="pills-{{item}}-tab"
                    data-toggle="pill"
                    href="#pills-{{item}}"
                    role="tab"
                    aria-controls="pills-{{item}}"
-                   aria-selected="true">{% include "layout/icon_label.html" with label=item %}
+                   aria-selected="true">{% include "layout/icon.html" with label=item %}
                 </a>
             </li>
         {% endif %}

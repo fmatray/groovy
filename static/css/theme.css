@@ -7,12 +7,10 @@ body,html {
     height: 100%;
 }
 
-
 .login-title {
     font-family: "Rave";
     font-size: 500%;
 }
-
 
 .navbar-brand{
     font-family: "Rave";
@@ -22,9 +20,9 @@ body,html {
 }
 
 .btn-nav {
-    width: 170px;
+    width: 11em;
 }
 
-.w-20px {
-    width: 25px;
+.w-1em {
+    width: 1em;
 }

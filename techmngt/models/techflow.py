@@ -7,7 +7,7 @@ from django.db import models
 from polymorphic.models import PolymorphicModel
 
 from base.models import Base
-from funcmngt.models.funcflow import SubFuncFlow
+from funcmngt.models.subfuncflow import SubFuncFlow
 
 
 class TechFlow(Base, PolymorphicModel):
@@ -25,5 +25,5 @@ class TechFlow(Base, PolymorphicModel):
     get_vital.short_description = 'Vital'
     get_vital.boolean = True
 
-    class Meta:
+    class Meta(Base.Meta):
         verbose_name = 'Technical flow'

@@ -8,18 +8,12 @@ from django.urls import reverse_lazy
 from django_filters.filters import ModelChoiceFilter
 from django_tables2.utils import A
 
-from appmngt.forms.application import ApplicationForm
 from appmngt.models.application import Application
 from appmngt.models.environment import Environment
 from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
 
 
 # Application
-
-class ApplicationMixin:
-    fields = ['name', 'status', 'description', 'univers', 'partner', 'comment']
-
-
 class ApplicationList(BaseList):
     class ApplicationFilter(BaseList.BaseFilter):
         env_app = ModelChoiceFilter(queryset=Environment.objects.all())
@@ -61,14 +55,12 @@ class ApplicationDetailView(BaseDetailView):
 class ApplicationCreateView(BaseCreateView):
     model = Application
     success_message = 'Success: Application was created.'
-    form_class = ApplicationForm
 
 
 # Update
 class ApplicationUpdateView(BaseUpdateView):
     model = Application
     success_message = 'Success: Application was updated.'
-    form_class = ApplicationForm
 
 
 # Delete

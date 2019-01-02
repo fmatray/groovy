@@ -11,11 +11,6 @@ from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, Base
 
 
 # Environment
-
-class EnvironmentMixin:
-    fields = ['name', 'status', 'description', 'application', 'servers', 'comment']
-
-
 class EnvironmentList(BaseList):
     class EnvironmentFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
@@ -48,6 +43,7 @@ class EnvironmentDetailView(BaseDetailView):
 class EnvironmentCreateView(BaseCreateView):
     model = Environment
     success_message = 'Success: Environment was created.'
+    fields = None
     form_class = EnvironmentForm
 
 
@@ -55,6 +51,7 @@ class EnvironmentCreateView(BaseCreateView):
 class EnvironmentUpdateView(BaseUpdateView):
     model = Environment
     success_message = 'Success: Environment was updated.'
+    fields = None
     form_class = EnvironmentForm
 
 
