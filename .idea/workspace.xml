@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21fc664e-4e87-461d-a04e-daf7e1ba71ff" name="Default Changelist" comment="removed modal forms&#10;updated enviroment">
-      <change afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/templatetags/icons.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/templatetags/icons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/views/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/views/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/groovy/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/groovy/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/menu.html" afterDir="false" />
+    <list default="true" id="21fc664e-4e87-461d-a04e-daf7e1ba71ff" name="Default Changelist" comment="ADD CSS and JS">
+      <change beforePath="$PROJECT_DIR$/static/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/base.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/theme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="330">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/base.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="10" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -128,7 +133,6 @@
         <option value="$PROJECT_DIR$/templates/layout/modal_content.html" />
         <option value="$PROJECT_DIR$/templates/base/form_modal.html" />
         <option value="$PROJECT_DIR$/base/views/modelviews.py" />
-        <option value="$PROJECT_DIR$/static/js/base.js" />
         <option value="$PROJECT_DIR$/templates/base/list.html" />
         <option value="$PROJECT_DIR$/templates/layout/button_link.html" />
         <option value="$PROJECT_DIR$/templates/layout/card_identification.html" />
@@ -164,6 +168,7 @@
         <option value="$PROJECT_DIR$/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/templates/layout/menu.html" />
         <option value="$PROJECT_DIR$/static/css/theme.css" />
+        <option value="$PROJECT_DIR$/static/js/base.js" />
       </list>
     </option>
   </component>
@@ -218,6 +223,12 @@
               <item name="groovy" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
@@ -450,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1546365244947</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="login pages">
+      <created>1546426300879</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1546426300880</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -528,7 +546,8 @@
     <MESSAGE value="moved base.html" />
     <MESSAGE value="permissions included in tables and filters" />
     <MESSAGE value="removed modal forms&#10;updated enviroment" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed modal forms&#10;updated enviroment" />
+    <MESSAGE value="login pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="login pages" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -573,13 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -882,8 +894,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/theme.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
