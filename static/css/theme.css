@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "Rave";
+    src: url("/static/fonts/Rave.ttf");
+}
+
+body,html {
+    height: 100%;
+}
+
+
+.login-title {
+    font-family: "Rave";
+    font-size: 500%;
+}
+
+
+.navbar-brand{
+    font-family: "Rave";
+    font-size: 175%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.btn-nav {
+    width: 170px;
+}
+
+.w-20px {
+    width: 25px;
+}
