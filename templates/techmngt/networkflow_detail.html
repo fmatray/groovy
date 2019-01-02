@@ -1,0 +1,18 @@
+{% extends 'base/detail.html' %}
+{% load containers %}
+
+{% block navigation %}
+{% create_list "Source server" "Destination server" as navs %}
+{% include "layout/navs_pills.html" with navs=navs %}
+{% endblock %}
+
+
+{% block detail_content %}
+
+<div class="tab-content" id="pills-tabContent">
+    {% include "layout/tabs_simple.html" with body=object.source_server id="Source server" inline_template="techmngt/server_inline.html" active=True %}
+    {% include "layout/tabs_simple.html" with body=object.destination_server id="Destination server" inline_template="techmngt/server_inline.html" %}
+</div>
+
+
+{% endblock %}

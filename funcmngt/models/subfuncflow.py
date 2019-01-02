@@ -24,5 +24,13 @@ class SubFuncFlow(Base):
                                  default=None, blank=True, null=True, related_name="subfuncflow_rec_app")
 
     identification_fields = ['subflow_id', 'vital']
+
+
+    @property
+    def techflow(self):
+        if self.techflow_subflow:
+            return self.techflow_subflow.get_real_instance()
+        return None
+
     class Meta:
         verbose_name = 'Sub functional flow'

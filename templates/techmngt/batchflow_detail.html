@@ -1,0 +1,21 @@
+{% extends 'base/detail.html' %}
+{% load containers %}
+
+{% block navigation %}
+{% create_list "Sub functional flow" "div" "Input Flow" "Output Flow" as navs %}
+{% include "layout/navs_pills.html" with navs=navs %}
+{% endblock %}
+
+
+{% block detail_content %}
+
+<div class="tab-content" id="pills-tabContent">
+
+   {% include "layout/tabs_simple.html" with body=object.subfunc_flow id="Sub functional flow" inline_template="funcmngt/subfuncflow_inline.html" active=True%}
+
+    {% include "layout/tabs_simple.html" with body=object.input_flow id="Input Flow" inline_template="techmngt/asynchronousflow_inline.html" %}
+    {% include "layout/tabs_simple.html" with body=object.output_flow id="Output Flow" inline_template="techmngt/asynchronousflow_inline.html" %}
+</div>
+
+
+{% endblock %}

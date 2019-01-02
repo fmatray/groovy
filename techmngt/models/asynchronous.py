@@ -21,6 +21,16 @@ class AsynchronousFlow(Base):
     filename = models.CharField("File name", max_length=256, blank=True, null=True)
     codepage = models.CharField("Code page", max_length=64, choices=CODEPAGE, null=True, blank=True)
 
+    identification_fields = ['flow_id', 'protocol', 'filename', 'codepage']
+
+    @property
+    def batch(self):
+        if hasattr(self, 'batch_input_flow'):
+            return self.batch_input_flow
+        elif hasattr(self, 'batch_output_flow'):
+            return self.batch_output_flow
+        return None
+
     class Meta(object):
         """
         meta informations

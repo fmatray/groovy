@@ -22,6 +22,7 @@ class SubFuncFlowList(BaseList):
 
     class SubFuncFlowTable(BaseList.BaseTable):
         func_flow = SingleBadgeColumn()
+        techflow = SingleBadgeColumn(verbose_name="Technical flow", order_by=('techflow_subflow', ))
         requester = SingleBadgeColumn()
         receiver = SingleBadgeColumn()
         view_perms = {

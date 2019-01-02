@@ -25,22 +25,27 @@ def get_icon(label):
         "filter": "fas fa-filter",
         "functional flow": "fas fa-stream",
         "history": "fas fa-history",
+        "output flow": "fas fa-sign-out-alt",
+        "input flow": "fas fa-sign-in-alt",
         "let me in": "fas fa-play",
         "network": "fas fa-network-wired",
+        "network flow": "fas fa-network-wired",
         "partner": "fas fa-hands-helping",
         "release": "fas fa-code-branch",
         "requester": "fas fa-sign-out-alt",
         "receiver": "fas fa-sign-in-alt",
         "server": "fas fa-server",
-        "sub functional flows":"fas fa-arrows-alt-h",
+        "source server": "fas fa-sign-out-alt",
+        "destination server": "fas fa-sign-in-alt",
+        "sub functional flow": "fas fa-arrows-alt-h",
         "submit": "far fa-edit",
         "univers": "fas fa-globe",
         "uri": "fas fa-cloud",
         "view": "far fa-eye",
         "xls": "fas fa-file-excel",
     }
-    label = label.lower()
 
+    label = label.lower()
     if label in icons:
         return icons[label]
     if label[:-1] in icons:

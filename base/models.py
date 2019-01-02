@@ -3,13 +3,12 @@
 """
 Module Base
 """
+from base.helpers import get_status_color
 from django.db import models
 from django.urls import reverse, NoReverseMatch
 from model_utils import Choices
 from simple_history.models import HistoricalRecords
 from taggit.managers import TaggableManager
-
-from base.helpers import get_status_color
 
 
 class Base(models.Model):
@@ -20,8 +19,6 @@ class Base(models.Model):
     tags = TaggableManager(blank=True)
     description = models.TextField("Description", null=True, blank=True)
     comment = models.TextField("Comment", blank=True)
-
-
 
     history = HistoricalRecords(inherit=True)
 
@@ -84,7 +81,6 @@ class Base(models.Model):
     @classmethod
     def get_delete_perm(cls):
         return cls.get_perm('delete')
-
 
     def __str__(self):
         return self.name

@@ -14,9 +14,10 @@ from .techflow import TechFlow
 class URIFlow(TechFlow):
     HTTP_METHOD = Choices('HEAD', 'GET', 'POST','PUT', 'DELETE')
 
-    uri = models.CharField("URI", max_length=512, blank=False, null=False)
     method = models.CharField("method", choices=HTTP_METHOD, max_length=32, default="")
+    uri = models.CharField("URI", max_length=512, blank=False, null=False)
 
+    identification_fields = ['method', 'uri']
     class Meta(object):
         """
         meta informations

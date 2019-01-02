@@ -26,6 +26,8 @@ class BatchFlow(TechFlow):
     output_flow = models.OneToOneField(AsynchronousFlow, on_delete=models.CASCADE, verbose_name="Output Flow",
                                        default=None, blank=True, null=True, related_name="batch_output_flow")
 
+    identification_fields = ['frequency', 'hours', 'batch_name', 'ord_name', 'script_name']
+
     class Meta:
         verbose_name = "Batch"
         verbose_name_plural = "Batches"

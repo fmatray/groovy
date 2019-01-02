@@ -40,11 +40,11 @@
                     Technical Management
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% include "layout/menu_dropdown_item.html" with link="" label="Async. flows"%}
-                    {% include "layout/menu_dropdown_item.html" with link="" label="Batches"%}
-                    {% include "layout/menu_dropdown_item.html" with link="" label="URI"%}
+                    {% include "layout/menu_dropdown_item.html" with link="asynchronousflow_list" label="Async. flows"%}
+                    {% include "layout/menu_dropdown_item.html" with link="batchflow_list" label="Batches"%}
+                    {% include "layout/menu_dropdown_item.html" with link="uriflow_list" label="URI"%}
                     <div class="dropdown-divider"></div>
-                    {% include "layout/menu_dropdown_item.html" with link="" label="Network"%}
+                    {% include "layout/menu_dropdown_item.html" with link="networkflow_list" label="Network"%}
                     {% include "layout/menu_dropdown_item.html" with link="" label="Servers"%}</div>
             </li>
             <!-- Profile -->
@@ -58,7 +58,7 @@
                         {% include "layout/menu_dropdown_item.html" with link="admin:index" label="Admin"%}
                     {% endif %}
                     <div class="dropdown-divider"></div>
-                    {% include "layout/menu_dropdown_item.html" with link="" label="Change password"%}
+                    {% include "layout/menu_dropdown_item.html" with link="password_change" label="Change password"%}
                     {% include "layout/menu_dropdown_item.html" with link="logout" label="Disconnect"%}
                     <div class="dropdown-divider"></div>
 
@@ -67,9 +67,5 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 ">
-            <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 </nav>

@@ -10,7 +10,7 @@ from django_tables2.utils import A
 
 from appmngt.models.application import Application
 from appmngt.models.environment import Environment
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn, SingleBadgeColumn
 
 
 # Application
@@ -22,8 +22,8 @@ class ApplicationList(BaseList):
             model = Application
 
     class ApplicationTable(BaseList.BaseTable):
-        univers = tables.LinkColumn(args=[A('pk')])
-        partner = tables.LinkColumn(args=[A('pk')])
+        univers = SingleBadgeColumn()
+        partner = SingleBadgeColumn()
         env_app = BadgesColumn(verbose_name="Environments", linkify_item=True)
         release_app = BadgesColumn(verbose_name="Releases", linkify_item=True)
         subfuncflow_req_app = BadgesColumn(verbose_name="Receiver", linkify_item=True)
