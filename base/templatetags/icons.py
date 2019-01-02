@@ -25,6 +25,7 @@ def get_icon(label):
         "filter": "far fa-filter",
         "functional flow": "fas fa-stream",
         "history": "fas fa-history",
+        "let me in": "fas fa-play",
         "network": "fas fa-network-wired",
         "partner": "fas fa-hands-helping",
         "release": "fas fa-code-branch",
