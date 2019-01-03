@@ -19,6 +19,9 @@ class Environment(Base):
     servers = models.ManyToManyField(Server, verbose_name="Servers",
                                      default=None, blank=True, related_name="env_servers")
 
+    identification_fields = ['application']
+    identification_list_fields = ['servers']
+
     class Meta(object):
         """
         meta informations

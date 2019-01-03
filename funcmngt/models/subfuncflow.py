@@ -23,8 +23,8 @@ class SubFuncFlow(Base):
     receiver = models.ForeignKey(Application, on_delete=models.CASCADE, verbose_name="Receiver",
                                  default=None, blank=True, null=True, related_name="subfuncflow_rec_app")
 
-    identification_fields = ['subflow_id', 'vital']
-
+    identification_fields = ['func_flow', 'subflow_id', 'vital']
+    identification_list_fields = []
 
     @property
     def techflow(self):

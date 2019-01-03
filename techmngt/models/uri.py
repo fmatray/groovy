@@ -18,6 +18,7 @@ class URIFlow(TechFlow):
     uri = models.CharField("URI", max_length=512, blank=False, null=False)
 
     identification_fields = ['method', 'uri']
+    identification_list_fields = []
     class Meta(object):
         """
         meta informations

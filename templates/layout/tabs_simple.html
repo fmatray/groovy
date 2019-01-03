@@ -1,7 +1,7 @@
 {% extends "layout/tabs_base.html" %}
 {% block content %}
     {% if body %}
-        {% include inline_template with object=body %}
+        {% include "layout/card_object.html" with object=body %}
     {% else %}
         {% include "layout/card_simple.html" with object=body %}
     {% endif %}

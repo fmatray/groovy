@@ -21,6 +21,8 @@ class Base(models.Model):
     comment = models.TextField("Comment", blank=True)
 
     history = HistoricalRecords(inherit=True)
+    identification_fields = []
+    identification_list_fields = []
 
     def get_status_badge(self):
         return "<span class='badge badge-pill {}'>{}</span>".format(get_status_color(self.status), self.status)

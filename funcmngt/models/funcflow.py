@@ -20,6 +20,7 @@ class FuncFlow(Base):
     type = models.CharField("Type", max_length=32, choices=type_choices)
 
     identification_fields = ['flow_id', 'type']
+    identification_list_fields = ['subfuncflow_flow']
 
     class Meta:
         verbose_name = 'Functional flow'

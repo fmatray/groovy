@@ -18,6 +18,7 @@ class Release(Base):
     release_date = models.DateField("Release date", blank=False, null=False, default=datetime.now)
 
     identification_fields = ['release_date']
+    identification_list_fields = ['applications']
 
     class Meta(object):
         """

@@ -14,6 +14,9 @@ from .views.uri import URIFlowList, URIFlowDetailView, \
 from .views.network import NetworkFlowList, NetworkFlowDetailView, \
     NetworkFlowCreateView, NetworkFlowUpdateView, NetworkFlowDeleteView
 
+from .views.server import ServerList, ServerDetailView, \
+    ServerCreateView, ServerUpdateView, ServerDeleteView
+
 urlpatterns = [
     path('asynchronous_list', AsynchronousFlowList.as_view(), name='asynchronousflow_list'),
     path('asynchronous_detail/<int:pk>', AsynchronousFlowDetailView.as_view(), name='asynchronousflow_detail'),
@@ -38,4 +41,10 @@ urlpatterns = [
     path('network_create/', NetworkFlowCreateView.as_view(), name='networkflow_create'),
     path('network_update/<int:pk>', NetworkFlowUpdateView.as_view(), name='networkflow_update'),
     path('network_delete/<int:pk>', NetworkFlowDeleteView.as_view(), name='networkflow_delete'),
+    
+    path('server_list', ServerList.as_view(), name='server_list'),
+    path('server_detail/<int:pk>', ServerDetailView.as_view(), name='server_detail'),
+    path('server_create/', ServerCreateView.as_view(), name='server_create'),
+    path('server_update/<int:pk>', ServerUpdateView.as_view(), name='server_update'),
+    path('server_delete/<int:pk>', ServerDeleteView.as_view(), name='server_delete'),
 ]

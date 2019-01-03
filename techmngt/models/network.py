@@ -22,7 +22,7 @@ class NetworkFlow(Base):
     destination_nat_ip = models.CharField("Destination NAT IP", max_length=64, blank=True)
 
     identification_fields = ['source_nat_ip', 'destination_nat_ip']
-
+    identification_list_fields = []
     class Meta(Base.Meta):
         """
         meta informations

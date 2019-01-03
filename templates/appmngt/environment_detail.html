@@ -9,8 +9,8 @@
 {% block detail_content %}
 
 <div class="tab-content" id="pills-tabContent">
-    {% include "layout/tabs_simple.html" with body=object.application id="Application" inline_template="appmngt/application_inline.html" active=True %}
-    {% include "layout/tabs_list.html" with body=object.servers.all id="Servers" inline_template="techmngt/server_inline.html" create_url="server_create" %}
+    {% include "layout/tabs_simple.html" with body=object.application id="Application" active=True %}
+    {% include "layout/tabs_list.html" with body=object.servers.all id="Servers" create_url="server_create" %}
 </div>
 
 

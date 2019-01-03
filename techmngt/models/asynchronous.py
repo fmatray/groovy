@@ -22,6 +22,7 @@ class AsynchronousFlow(Base):
     codepage = models.CharField("Code page", max_length=64, choices=CODEPAGE, null=True, blank=True)
 
     identification_fields = ['flow_id', 'protocol', 'filename', 'codepage']
+    identification_list_fields = []
 
     @property
     def batch(self):
