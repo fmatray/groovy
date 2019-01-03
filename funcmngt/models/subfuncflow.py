@@ -15,12 +15,15 @@ class SubFuncFlow(Base):
     subflow_id = models.CharField("Sub flow ID", max_length=64, unique=True,
                                   default="", null=False, blank=False)
     func_flow = models.ForeignKey(FuncFlow, on_delete=models.CASCADE, verbose_name="Functional Flow",
+                                  limit_choices_to=Base.LIMIT_STATUS,
                                   default=None, blank=True, null=True, related_name="subfuncflow_flow")
     vital = models.BooleanField("Vital", default=False)
 
     requester = models.ForeignKey(Application, on_delete=models.CASCADE, verbose_name="Requester",
+                                  limit_choices_to=Base.LIMIT_STATUS,
                                   default=None, blank=True, null=True, related_name="subfuncflow_req_app")
     receiver = models.ForeignKey(Application, on_delete=models.CASCADE, verbose_name="Receiver",
+                                 limit_choices_to=Base.LIMIT_STATUS,
                                  default=None, blank=True, null=True, related_name="subfuncflow_rec_app")
 
     identification_fields = ['func_flow', 'subflow_id', 'vital']

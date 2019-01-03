@@ -1,5 +1,7 @@
 import django_filters
 import django_tables2 as tables
+from base.helpers import get_status_color
+from base.models import Base
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, AccessMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.html import conditional_escape
@@ -9,10 +11,7 @@ from django_filters.filters import CharFilter, ChoiceFilter
 from django_filters.views import FilterView
 from django_tables2 import SingleTableView
 from django_tables2.export.views import ExportMixin
-from django_tables2.utils import A
-
-from base.helpers import get_status_color
-from base.models import Base
+from django_tables2.utils import A, call_with_appropriate
 
 
 class BaseMixin(LoginRequiredMixin, PermissionRequiredMixin, AccessMixin):
@@ -25,32 +24,42 @@ class BaseMixin(LoginRequiredMixin, PermissionRequiredMixin, AccessMixin):
 
 class SingleBadgeColumn(tables.Column):
     def render(self, value):
+        if not value:
+            return "—"
+
         content = "<span class='badge badge-pill badge-primary'>{}</span>".format(value)
         if hasattr(value, "get_absolute_url"):
             content = "<a href='{}'>{}</a>".format(value.get_absolute_url(), content)
         return content
 
+    def value(self, **kwargs):
+        return kwargs['value']
+
 
 class StatusColumn(tables.Column):
     def render(self, value):
         return "<span class='badge badge-pill {}'>{}</span>".format(get_status_color(value), value)
-        return value
+
+    def value(self, **kwargs):
+        return kwargs['value']
 
 
 class BadgesColumn(tables.ManyToManyColumn):
     def render(self, value):
         # if value is None or not value.exists():
         if not value.exists():
-            return "-"
-
+            return "—"
         tags = ""
         for item in self.filter(value):
             content = conditional_escape(self.transform(item))
-            content = "<span class='badge badge-pill badge-primary'>{}</span>".format(content)
+            content = "<span class='badge badge-pill badge-primary mx-1'>{}</span>".format(content)
             if hasattr(item, "get_absolute_url"):
                 content = "<a href='{}'>{}</a>".format(item.get_absolute_url(), content)
             tags += content
         return tags
+
+    def value(self, **kwargs):
+        return ", ".join([i.name for i in kwargs['value'].all()])
 
 
 class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
@@ -79,7 +88,7 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
             exclude = ['id', 'tags', 'description', 'comment']
 
     class BaseTable(tables.Table):
-        name = tables.LinkColumn(args=[A('pk')])
+        name = SingleBadgeColumn()
         status = StatusColumn()
         tags = BadgesColumn()
         fields = ['name', 'status', 'tags']
@@ -106,6 +115,7 @@ class BaseDetailView(BaseMixin, DetailView):
 
 class BaseCreateUpdateMixin(BaseMixin):
     fields = '__all__'
+
     def get_initial(self):
         if self.request.GET:
             return self.request.GET.dict()

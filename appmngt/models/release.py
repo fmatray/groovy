@@ -13,6 +13,7 @@ from .application import Application
 
 class Release(Base):
     applications = models.ManyToManyField(Application, verbose_name="Applications", default=None, blank=True,
+                                          limit_choices_to=Base.LIMIT_STATUS,
                                           related_name="release_app")
 
     release_date = models.DateField("Release date", blank=False, null=False, default=datetime.now)

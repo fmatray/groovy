@@ -3,6 +3,7 @@
 """
 Module Batch
 """
+from base.models import Base
 from django.db import models
 from model_utils import Choices
 
@@ -22,12 +23,15 @@ class BatchFlow(TechFlow):
     script_name = models.CharField("Script name", max_length=256, unique=True, default="")
 
     input_flow = models.OneToOneField(AsynchronousFlow, on_delete=models.CASCADE, verbose_name="Input Flow",
+                                      limit_choices_to=Base.LIMIT_STATUS,
                                       default=None, blank=True, null=True, related_name="batch_input_flow")
     output_flow = models.OneToOneField(AsynchronousFlow, on_delete=models.CASCADE, verbose_name="Output Flow",
+                                       limit_choices_to=Base.LIMIT_STATUS,
                                        default=None, blank=True, null=True, related_name="batch_output_flow")
 
     identification_fields = ['frequency', 'hours', 'batch_name', 'ord_name', 'script_name']
     identification_list_fields = []
+
     class Meta:
         verbose_name = "Batch"
         verbose_name_plural = "Batches"

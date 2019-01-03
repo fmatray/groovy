@@ -9,13 +9,15 @@
             {% with attr=object|get_obj_attr:field perm=attr.get_view_perm %}
             {% if not perm or perm in perms %}
                 {% if attr == None %}
-                <span class="text-muted">None</span>
+                    <span class="text-muted">None</span>
                 {% elif attr == False %}
-                <i class="fas fa-times"></i>
+                    <i class="fas fa-times"></i>
                 {% elif attr == True %}
-                <i class="fas fa-check"></i>
-                {% else%}
-                {{object|get_obj_attr:field}}
+                    <i class="fas fa-check"></i>
+                {% elif attr.get_absolute_url %}
+                    {% include "layout/badge.html" with object=attr %}
+                {% else %}
+                    {{attr}}
                 {% endif %}
             {% else %}
                 {% include "layout/no_rights.html" %}

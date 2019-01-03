@@ -3,19 +3,19 @@
 """
 Module Network
 """
+from base.models import Base
 from django.db import models
 
-from base.models import Base
 from .server import Server
 
 
 class NetworkFlow(Base):
-
     source_server = models.ForeignKey(Server, on_delete=models.CASCADE, verbose_name="Source server",
-                                 default=None, blank=True, null=True, related_name="source_server_env")
+                                      limit_choices_to=Base.LIMIT_STATUS,
+                                      default=None, blank=True, null=True, related_name="source_server_env")
     destination_server = models.ForeignKey(Server, on_delete=models.CASCADE, verbose_name="Destination server",
-                                 default=None, blank=True, null=True, related_name="destination_server_env")
-
+                                           limit_choices_to=Base.LIMIT_STATUS,
+                                           default=None, blank=True, null=True, related_name="destination_server_env")
 
     source_nat_ip = models.CharField("Source NAT IP", max_length=64, blank=True)
 
@@ -23,6 +23,7 @@ class NetworkFlow(Base):
 
     identification_fields = ['source_nat_ip', 'destination_nat_ip']
     identification_list_fields = []
+
     class Meta(Base.Meta):
         """
         meta informations

@@ -11,16 +11,10 @@
 {% if filter %}
 <div class="d-flex justify-content-center mb-3">
     <form class="form form-inline" action="" method="get">
-        <div class="form-row">
-            {% for field in filter.form %}
-            <div class="col">
-                {% bootstrap_field field layout="inline" addon_before=field.label %}
-            </div>
-            {% endfor %}
-            <div class="col">
-                {% include "layout/button_submit.html" with label="Filter"%}
-            </div>
-        </div>
+        {% for field in filter.form %}
+            {% bootstrap_field field layout="inline" addon_before=field.label form_group_class="form-group mx-1" %}
+        {% endfor %}
+        {% include "layout/button_submit.html" with label="Filter"%}
     </form>
 </div>
 {% endif %}
@@ -43,6 +37,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href='{% export_url "csv" %}'>{% include "layout/icon_label.html" with label="CSV"%}</a>
             <a class="dropdown-item" href='{% export_url "xls" %}'>{% include "layout/icon_label.html" with label="XLS"%}</a>
+            <a class="dropdown-item" href='{% export_url "xlsx" %}'>{% include "layout/icon_label.html" with label="XLSX"%}</a>
         </div>
     </div>
 </div>

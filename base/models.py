@@ -13,6 +13,7 @@ from taggit.managers import TaggableManager
 
 class Base(models.Model):
     STATUS = Choices('Draft', 'On going', 'Released', 'Retired', 'Abort')
+    LIMIT_STATUS = {'status__in':('On going', 'Released')}
 
     name = models.CharField("Name", max_length=200, blank=False, unique=True)
     status = models.CharField(choices=STATUS, default=STATUS.Draft, max_length=20)
