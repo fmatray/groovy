@@ -88,7 +88,7 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
             exclude = ['id', 'tags', 'description', 'comment']
 
     class BaseTable(tables.Table):
-        name = SingleBadgeColumn()
+        name =tables.LinkColumn()
         status = StatusColumn()
         tags = BadgesColumn()
         fields = ['name', 'status', 'tags']

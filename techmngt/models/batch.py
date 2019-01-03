@@ -29,7 +29,7 @@ class BatchFlow(TechFlow):
                                        limit_choices_to=Base.LIMIT_STATUS,
                                        default=None, blank=True, null=True, related_name="batch_output_flow")
 
-    identification_fields = ['frequency', 'hours', 'batch_name', 'ord_name', 'script_name']
+    identification_fields = ['frequency', 'hours', 'batch_name', 'ord_name', 'script_name', 'input_flow', 'output_flow']
     identification_list_fields = []
 
     class Meta:

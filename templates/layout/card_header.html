@@ -1,11 +1,14 @@
 {% load verbose_names %}
 <div class="card-body">
-{% if object.tags.all %}
-<p>
-{% for tag in object.tags.all %}
-    {% include "layout/badge.html" with object=tag %}
-{% endfor %}
-</p>
-{% endif %}
-<p class="mb-0 pb-0">{{object.description|default:'<span class="text-muted">No description</span>'}}</p>
+    {% if object.tags.all %}
+    <p>
+        {% for tag in object.tags.all %}
+        {% include "layout/badge.html" with object=tag %}
+        {% endfor %}
+    </p>
+    {% endif %}
+    <p class="mb-0 pb-0">{{object.description|default:'<span class="text-muted">No description</span>'}}</p>
+    {% if object.documentation %}
+        <a href="{{object.documentation}}" class="badge badge-pill badge-info">Documentation</a>
+    {% endif %}
 </div>

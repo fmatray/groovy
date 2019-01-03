@@ -32,6 +32,11 @@ class UserAdmin(UserAdmin):
     readonly_fields = ('last_login', 'date_joined')
 
 
+    def has_delete_permission(self, request, obj=None):
+        """
+        pas de suppression possible
+        """
+        return False
 
 class BaseAdminMixin():
     FIELDSET_HEADER = [('Identification', {'fields': (('name', 'status'), 'tags', 'description')})]

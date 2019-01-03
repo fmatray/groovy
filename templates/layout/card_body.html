@@ -1,52 +1,59 @@
 {% load verbose_names get_attr %}
-{% if fields or list_fields %}
 <hr class="m-0">
 <div class="card-body">
     <dl class="row mb-0 pb-0">
-        {% for field in fields %}
-        <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
-        <dd class="col-sm-9 mb-3">
-            {% with attr=object|get_obj_attr:field perm=attr.get_view_perm %}
-            {% if not perm or perm in perms %}
-                {% if attr == None %}
-                    <span class="text-muted">None</span>
-                {% elif attr == False %}
-                    <i class="fas fa-times"></i>
-                {% elif attr == True %}
-                    <i class="fas fa-check"></i>
-                {% elif attr.get_absolute_url %}
-                    {% include "layout/badge.html" with object=attr %}
-                {% else %}
-                    {{attr}}
-                {% endif %}
+        {% for field in object.identification_fields %}
+            {% if field == "div" %}
+                <dt class="col-sm-3 my-0">&nbsp;</dt>
+                <dd class="col-sm-9 my-0"></dd>
             {% else %}
-                {% include "layout/no_rights.html" %}
-            {% endif %}
-            {% endwith %}
-        </dd>
-        {% endfor %}
-
-        {% for field in list_fields %}
-        <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
-        <dd class="col-sm-9 mb-3">
-            {% with objs=object|get_obj_attr_list:field %}
-                {% if objs.model.get_view_perm in perms %}
-                    {% for obj in objs %}
-                        {% if obj.get_view_perm in perms %}
-                            {% include "layout/badge.html" with object=obj %}
+                <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
+                <dd class="col-sm-9 mb-3">
+                    {% with attr=object|get_obj_attr:field perm=attr.get_view_perm %}
+                    {% if not perm or perm in perms %}
+                        {% if attr == None %}
+                            <span class="text-muted">None</span>
+                        {% elif attr == False %}
+                            <i class="fas fa-times"></i>
+                        {% elif attr == True %}
+                            <i class="fas fa-check"></i>
+                        {% elif attr.get_absolute_url %}
+                            {% include "layout/badge.html" with object=attr %}
+                        {% else %}
+                            {{attr}}
                         {% endif %}
-                    {% empty %}
-                    <span class="text-muted">None</span>
-                    {% endfor %}
-                {% else %}
-                    {% include "layout/no_rights.html" %}
-                {% endif %}
-            {% endwith %}
-        </dd>
+                    {% else %}
+                        {% include "layout/no_rights.html" %}
+                    {% endif %}
+                    {% endwith %}
+                </dd>
+            {% endif %}
+        {% endfor %}
+        {% for field in object.identification_list_fields %}
+            {% if field == "div" %}
+                <dt class="col-sm-3 my-0">&nbsp;</dt>
+                <dd class="col-sm-9 my-0"></dd>
+            {% else %}
+                <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
+                <dd class="col-sm-9 mb-3">
+                    {% with objs=object|get_obj_attr_list:field %}
+                        {% if objs.model.get_view_perm in perms %}
+                            {% for obj in objs %}
+                                {% if obj.get_view_perm in perms %}
+                                    {% include "layout/badge.html" with object=obj %}
+                                {% endif %}
+                            {% empty %}
+                            <span class="text-muted">None</span>
+                            {% endfor %}
+                        {% else %}
+                            {% include "layout/no_rights.html" %}
+                        {% endif %}
+                    {% endwith %}
+                </dd>
+            {% endif %}
         {% endfor %}
     </dl>
 </div>
-{% endif %}
 
 {% if object.comment %}
 <hr class="m-0">

@@ -3,9 +3,8 @@
 """
 Module Network
 """
-from django.db import models
-
 from base.models import Base
+from django.db import models
 
 
 class ServerType(Base):
@@ -25,6 +24,7 @@ class Server(Base):
 
     identification_fields = ['server_type', 'dns', 'ip']
     identification_list_fields = []
+
     class Meta(object):
         """
         meta informations

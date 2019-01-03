@@ -6,7 +6,7 @@
       "name": "HTTPS",
       "description": "",
       "comment": "",
-      "status": "Draft",
+      "status": "Released",
       "type": "Synchronous",
       "secure": true,
       "standard": true
@@ -19,7 +19,7 @@
       "name": "HTTP",
       "description": "",
       "comment": "",
-      "status": "Draft",
+      "status": "Released",
       "type": "Synchronous",
       "secure": false,
       "standard": true
@@ -32,7 +32,7 @@
       "name": "CFT",
       "description": "",
       "comment": "",
-      "status": "Draft",
+      "status": "Released",
       "type": "Asynchronous",
       "secure": true,
       "standard": false
@@ -45,7 +45,7 @@
       "name": "FTP",
       "description": "",
       "comment": "",
-      "status": "Draft",
+      "status": "Released",
       "type": "Asynchronous",
       "secure": false,
       "standard": true
@@ -58,7 +58,7 @@
       "name": "FTPs",
       "description": "",
       "comment": "",
-      "status": "Draft",
+      "status": "Released",
       "type": "Asynchronous",
       "secure": true,
       "standard": true
@@ -71,7 +71,7 @@
       "name": "sFTP",
       "description": "",
       "comment": "",
-      "status": "Draft",
+      "status": "Released",
       "type": "Asynchronous",
       "secure": true,
       "standard": true

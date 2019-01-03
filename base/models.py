@@ -19,6 +19,7 @@ class Base(models.Model):
     status = models.CharField(choices=STATUS, default=STATUS.Draft, max_length=20)
     tags = TaggableManager(blank=True)
     description = models.TextField("Description", null=True, blank=True)
+    documentation = models.URLField("Documentation",  null=True, blank=True)
     comment = models.TextField("Comment", blank=True)
 
     history = HistoricalRecords(inherit=True)

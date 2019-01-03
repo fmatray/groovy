@@ -8,7 +8,7 @@
     <div class="col-sm-5">
         {% if perms.appmngt.view_release %}
             {% for item in next_releases %}
-                {% include "appmngt/release_inline.html" with object=item create_url="release_create" %}
+                {% include "layout/card_object.html" with object=item %}
             {% empty %}
                 {% include "layout/card_simple.html"%}
             {% endfor %}
@@ -18,7 +18,7 @@
     <div class="col-sm-7">
         {% if perms.appmngt.view_univers %}
             {% for item in univers %}
-                {% include "appmngt/univers_inline.html" with object=item create_url="univers_create" %}
+                {% include "layout/card_object.html" with object=item %}
             {% empty %}
               {% include "layout/card_simple.html"%}
             {% endfor %}

@@ -10,7 +10,7 @@
 {% block content %}
 {% if object %}
     {% include "layout/card_header.html" %}
-    {% include "layout/card_body.html" with fields=object.identification_fields list_fields=object.identification_list_fields %}
+    {% include "layout/card_body.html" %}
 
     {% if object.get_update_perm in perms or object.get_delete_perm in perms %}
         {% include "layout/card_footer.html" with view=True delete=False %}

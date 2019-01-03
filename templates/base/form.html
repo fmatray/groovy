@@ -13,13 +13,13 @@
             {% bootstrap_field form.status size="small" %}
             {% bootstrap_field form.tags size="small" %}
             {% bootstrap_field form.description size="small" %}
-
+            {% bootstrap_field form.documentation size="small" %}
             {% if form.fields|length > 5 %}
             <hr>
             {% endif %}
 
             {% for field in form %}
-            {% if not field.name|in_list:"name,status,tags,comment,description" %}
+            {% if not field.name|in_list:"name,status,tags,comment,description,documentation" %}
             {% bootstrap_field field size="small" %}
             {% endif%}
             {% endfor %}
