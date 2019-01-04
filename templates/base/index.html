@@ -29,51 +29,15 @@
     </div>
 
     {% if perms.appmngt.view_univers %}
-    <div class="col-sm-2">
-        <div class="card border-dark mb-3">
-            <div class="card-header bg-dark text-white">Univers</div>
-            <ul class="list-group list-group-flush ">
-                {% for item in univers %}
-                <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
-                {% empty %}
-                No Release
-                {% endfor %}
-
-            </ul>
-        </div>
-    </div>
+        {% include "layout/card_index.html" with title="Univers" list_item=univers %}
     {% endif %}
 
     {% if perms.appmngt.view_partner %}
-    <div class="col-sm-2">
-        <div class="card border-dark mb-3">
-            <div class="card-header bg-dark text-white">Partners</div>
-            <ul class="list-group list-group-flush ">
-                {% for item in partners %}
-                <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
-                {% empty %}
-                No Release
-                {% endfor %}
-
-            </ul>
-        </div>
-    </div>
+        {% include "layout/card_index.html" with title="Partners" list_item=partners %}
     {% endif %}
 
     {% if perms.appmngt.view_release %}
-    <div class="col-sm-2">
-        <div class="card border-dark mb-3">
-            <div class="card-header bg-dark text-white">Next Releases</div>
-            <ul class="list-group list-group-flush ">
-                {% for item in next_releases %}
-                <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
-                {% empty %}
-                No Release
-                {% endfor %}
-
-            </ul>
-        </div>
-    </div>
+        {% include "layout/card_index.html" with title="Next Releases" list_item=next_releases %}
     {% endif %}
 </div>
 {% endblock %}

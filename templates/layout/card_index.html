@@ -1,0 +1,13 @@
+<div class="col-sm-2">
+    <div class="card border-dark mb-3">
+        <div class="card-header bg-dark text-white">{{title}}</div>
+        <ul class="list-group list-group-flush ">
+            {% for item in list_item %}
+            <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
+            {% empty %}
+            No Release
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>

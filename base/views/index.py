@@ -26,11 +26,13 @@ class IndexView(LoginRequiredMixin, TemplateView):
         context['next_releases'] = Release.objects.filter(release_date__gte=datetime.now()).all()
         context['univers'] = Univers.objects.all()
         context['partners'] = Partner.objects.all()
+
+        # Retreive last changes
         models = [Application, Environment, Partner, Release, Univers,
                   FuncFlow, SubFuncFlow,
                   AsynchronousFlow, BatchFlow,NetworkFlow, URIFlow, Server]
-
         last_changes = [m.history.all()[:10] for m in models]
         last_changes = sorted(list(chain(*last_changes)), key=attrgetter('history_date'), reverse=True)[:10]
         context['last_changes'] = last_changes
+
         return context
