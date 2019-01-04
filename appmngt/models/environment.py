@@ -21,8 +21,12 @@ class Environment(Base):
                                      limit_choices_to=Base.LIMIT_STATUS,
                                      default=None, blank=True, related_name="env_servers")
 
-    identification_fields = ['application']
+    identification_fields = ['get_partner', 'application']
     identification_list_fields = ['servers']
+
+    def get_partner(self):
+        return self.application.partner
+    get_partner.verbose_name = "Partner"
 
     class Meta(object):
         """

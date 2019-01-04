@@ -1,40 +1,79 @@
 {% extends "base/base.html" %}
+{% load humanize %}
 
 
 {% block title%}Welcome{% endblock %}
 
 {% block content %}
 <div class="row">
-    <div class="col-sm-4">
-        {% if perms.appmngt.view_release %}
-            {% for item in next_releases %}
-                {% include "layout/card_object.html" with object=item %}
-            {% empty %}
-                {% include "layout/card_simple.html"%}
-            {% endfor %}
-        {% endif %}
+    <div class="col-sm-4 offset-sm-1">
+        <div class="card border-dark mb-3">
+            <div class="card-header bg-dark text-white">Last changes</div>
+            <ul class="list-group list-group-flush ">
+                {% for item in last_changes %}
+                <li class="list-group-item">
+                    <a href="{{item.instance.get_absolute_url}}">
+                        {{ item.history_date|naturaltime}} : {{item.history_user}}
+                        {{item.get_history_type_display|lower}}
+                        {{item.name}}
+                        {% if item.history_change_reason %}
+                        ({{item.history_change_reason}})
+                        {% endif %}
+                    </a>
+                </li>
+                {% empty %}
+                No Release
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
-    <div class="col-sm-4">
-        {% if perms.appmngt.view_univers %}
-            {% for item in univers %}
-                {% include "layout/card_object.html" with object=item %}
-            {% empty %}
-              {% include "layout/card_simple.html"%}
-            {% endfor %}
-        {% endif %}
-    </div>
+    {% if perms.appmngt.view_univers %}
+    <div class="col-sm-2">
+        <div class="card border-dark mb-3">
+            <div class="card-header bg-dark text-white">Univers</div>
+            <ul class="list-group list-group-flush ">
+                {% for item in univers %}
+                <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
+                {% empty %}
+                No Release
+                {% endfor %}
 
-    <div class="col-sm-4">
-        {% if perms.appmngt.view_partner %}
-            {% for item in partners %}
-                {% include "layout/card_object.html" with object=item %}
-            {% empty %}
-              {% include "layout/card_simple.html"%}
-            {% endfor %}
-        {% endif %}
+            </ul>
+        </div>
     </div>
+    {% endif %}
 
+    {% if perms.appmngt.view_partner %}
+    <div class="col-sm-2">
+        <div class="card border-dark mb-3">
+            <div class="card-header bg-dark text-white">Partners</div>
+            <ul class="list-group list-group-flush ">
+                {% for item in partners %}
+                <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
+                {% empty %}
+                No Release
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if perms.appmngt.view_release %}
+    <div class="col-sm-2">
+        <div class="card border-dark mb-3">
+            <div class="card-header bg-dark text-white">Next Releases</div>
+            <ul class="list-group list-group-flush ">
+                {% for item in next_releases %}
+                <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
+                {% empty %}
+                No Release
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+    {% endif %}
 </div>
-
 {% endblock %}

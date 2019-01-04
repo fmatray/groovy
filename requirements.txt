@@ -13,3 +13,4 @@ django-import-export
 django-taggit
 django-model-utils
 django-polymorphic
+django-markdownx

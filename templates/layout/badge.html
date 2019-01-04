@@ -1,1 +1,1 @@
-<a href="{{object.get_absolute_url}}" ><span class="badge badge-pill {{class|default:'badge-primary'}}" data-toggle="tooltip" title="{{object.description}}">{{object|title}}</span></a>
+<a href="{{object.get_absolute_url}}" ><span class="badge badge-pill {{class|default:'badge-primary'}}" data-toggle="tooltip" title="{{object.get_description_as_markdown|striptags}}">{{object|title}}</span></a>

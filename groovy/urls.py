@@ -23,6 +23,7 @@ admin.autodiscover()
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
+    path(r'markdownx/', include('markdownx.urls')),
 
     path('', include('base.urls')),
     path('appmngt/', include('appmngt.urls')),

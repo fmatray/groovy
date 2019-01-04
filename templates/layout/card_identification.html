@@ -8,7 +8,7 @@
 
 {% block content %}
     {% include "layout/card_header.html" %}
-    {% include "layout/card_body.html" with object=object %}
+    {% include "layout/card_body.html" with object=object no_comment=True %}
 
     {% if object.get_update_perm in perms or object.get_delete_perm in perms %}
         {% include "layout/card_footer.html" with view=False delete=True %}

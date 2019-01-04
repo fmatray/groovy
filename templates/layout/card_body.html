@@ -55,9 +55,9 @@
     </dl>
 </div>
 
-{% if object.comment %}
+{% if not no_comment and object.comment %}
 <hr class="m-0">
 <div class="card-body">
-    <p>{{object.comment</p>
+    <p>{{object.get_comment_as_markdown}}</p>
 </div>
 {% endif %}

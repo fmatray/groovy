@@ -11,7 +11,8 @@ from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportModelAdmin
 from simple_history.admin import SimpleHistoryAdmin
 from taggit.models import Tag
-
+from markdownx.widgets import AdminMarkdownxWidget
+from django.db import models
 # Register your models here.
 
 
@@ -47,6 +48,10 @@ class BaseAdminMixin():
     LIST_FILTER = ['status', 'tags']
     SEARCH_FIELDS = ['description', 'comment', 'tags']
     extra = 0
+
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMarkdownxWidget},
+    }
 
     def tag_list(self, obj):
         return u", ".join(o.name for o in obj.tags.all())

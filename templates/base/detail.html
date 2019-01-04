@@ -10,7 +10,7 @@
     <div class="col-sm-5">
         {% include "layout/card_identification.html" %}
         {% block navigation %}{% endblock %}
-        {% include "layout/card_simple.html" with title="Comment" body=object.comment|default:'<span class="text-muted">No comment<span>' %}
+        {% include "layout/card_simple.html" with title="Comment" body=object.get_comment_as_markdown|default:'<span class="text-muted">No comment<span>' %}
         {% include "layout/card_history.html" with history=object.history.all %}
     </div>
     <div class="col-sm-7">

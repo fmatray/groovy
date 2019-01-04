@@ -26,8 +26,17 @@ class SubFuncFlow(Base):
                                  limit_choices_to=Base.LIMIT_STATUS,
                                  default=None, blank=True, null=True, related_name="subfuncflow_rec_app")
 
-    identification_fields = ['func_flow', 'subflow_id', 'vital']
+    identification_fields = ['func_flow', 'subflow_id', 'vital', 'div', 'requester_partner', 'receiver_partner']
     identification_list_fields = []
+
+    def requester_partner(self):
+        return self.requester.partner
+
+    requester_partner.verbose_name = "Requester Partner"
+
+    def receiver_partner(self):
+        return self.receiver.partner
+    receiver_partner.verbose_name = "Receiver Partner"
 
     @property
     def techflow(self):

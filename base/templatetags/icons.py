@@ -39,6 +39,7 @@ def get_icon(label):
         "destination server": "fas fa-sign-in-alt",
         "sub functional flow": "fas fa-arrows-alt-h",
         "submit": "far fa-edit",
+        "techincal flow": "fas fa-wrench",
         "univers": "fas fa-globe",
         "uri": "fas fa-cloud",
         "view": "far fa-eye",

@@ -7,7 +7,7 @@
         {% endfor %}
     </p>
     {% endif %}
-    <p class="mb-0 pb-0">{{object.description|default:'<span class="text-muted">No description</span>'}}</p>
+    <p class="mb-0 pb-0">{{object.get_description_as_markdown|default:'<span class="text-muted">No description</span>'}}</p>
     {% if object.documentation %}
         <a href="{{object.documentation}}" class="badge badge-pill badge-info">Documentation</a>
     {% endif %}
