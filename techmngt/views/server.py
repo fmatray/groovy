@@ -17,7 +17,7 @@ class ServerList(BaseList):
     class ServerFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = Server
-            exclude = ['id', 'tags', 'description', 'comment', 'dns', 'ip']
+            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'dns', 'ip']
 
     class ServerTable(BaseList.BaseTable):
         env_servers = BadgesColumn(verbose_name="Environment")

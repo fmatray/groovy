@@ -29,6 +29,10 @@ class SingleBadgeColumn(tables.Column):
 
         content = "<span class='badge badge-pill badge-primary'>{}</span>".format(value)
         if hasattr(value, "get_absolute_url"):
+            link = value.get_absolute_url()
+        else:
+            link = self.link
+        if link:
             content = "<a href='{}'>{}</a>".format(value.get_absolute_url(), content)
         return content
 
@@ -85,15 +89,16 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
         status = ChoiceFilter(choices=Base.STATUS)
 
         class Meta:
-            exclude = ['id', 'tags', 'description', 'comment']
+            exclude = ['id', 'tags', 'description', 'documentation', 'comment']
 
     class BaseTable(tables.Table):
-        name =tables.LinkColumn()
+        name = tables.LinkColumn()
         status = StatusColumn()
         tags = BadgesColumn()
         fields = ['name', 'status', 'tags']
         export_formats = ['csv', 'xls', 'json']
         view_perms = {}
+
 
         def before_render(self, request):
             """implement permissions"""

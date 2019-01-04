@@ -15,7 +15,7 @@ class EnvironmentList(BaseList):
     class EnvironmentFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = Environment
-            exclude = ['id', 'tags', 'description', 'comment', 'servers']
+            exclude = ['id', 'tags', 'description', 'comment', 'documentation', 'servers']
 
     class EnvironmentTable(BaseList.BaseTable):
         application = SingleBadgeColumn()

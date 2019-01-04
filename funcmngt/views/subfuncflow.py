@@ -18,7 +18,7 @@ class SubFuncFlowList(BaseList):
     class SubFuncFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = SubFuncFlow
-            exclude = ['subflow_id', 'id', 'tags', 'description', 'comment']
+            exclude = ['subflow_id', 'id', 'tags', 'description', 'documentation', 'comment']
 
     class SubFuncFlowTable(BaseList.BaseTable):
         func_flow = SingleBadgeColumn()

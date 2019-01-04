@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-4">
         {% if perms.appmngt.view_release %}
             {% for item in next_releases %}
                 {% include "layout/card_object.html" with object=item %}
@@ -15,7 +15,7 @@
         {% endif %}
     </div>
 
-    <div class="col-sm-7">
+    <div class="col-sm-4">
         {% if perms.appmngt.view_univers %}
             {% for item in univers %}
                 {% include "layout/card_object.html" with object=item %}
@@ -24,6 +24,17 @@
             {% endfor %}
         {% endif %}
     </div>
+
+    <div class="col-sm-4">
+        {% if perms.appmngt.view_partner %}
+            {% for item in partners %}
+                {% include "layout/card_object.html" with object=item %}
+            {% empty %}
+              {% include "layout/card_simple.html"%}
+            {% endfor %}
+        {% endif %}
+    </div>
+
 </div>
 
 {% endblock %}

@@ -18,7 +18,7 @@ class FuncFlowList(BaseList):
     class FuncFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = FuncFlow
-            exclude = ['id', 'flow_id', 'tags', 'description', 'comment']
+            exclude = ['id', 'flow_id', 'tags', 'description', 'documentation', 'comment']
 
     class FuncFlowTable(BaseList.BaseTable):
         subfuncflow_flow = BadgesColumn(verbose_name="Sub functional flows", linkify_item=True)

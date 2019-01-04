@@ -18,10 +18,14 @@ class NetworkFlowList(BaseList):
 
         class Meta(BaseList.BaseFilter.Meta):
             model = NetworkFlow
-            exclude = ['id', 'tags', 'description', 'comment', 'servers', 'source_nat_ip', 'destination_nat_ip']
+            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'servers', 'source_nat_ip', 'destination_nat_ip']
 
     class NetworkFlowTable(BaseList.BaseTable):
+        source_server = SingleBadgeColumn()
+        destination_server = SingleBadgeColumn()
         view_perms = {
+            "source_server": "techmngt.view_server",
+            "destination_server": "techmngt.view_server",
         }
 
         class Meta(BaseList.BaseTable.Meta):

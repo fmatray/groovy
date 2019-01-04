@@ -17,7 +17,7 @@ class BatchFlowList(BaseList):
     class BatchFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = BatchFlow
-            exclude = ['id', 'tags', 'description', 'comment', 'hours', 'batch_name', 'ord_name', 'script_name',
+            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'hours', 'batch_name', 'ord_name', 'script_name',
                        'subfunc_flow', 'input_flow', 'input_flow', 'polymorphic_ctype']
 
     class BatchFlowTable(BaseList.BaseTable):

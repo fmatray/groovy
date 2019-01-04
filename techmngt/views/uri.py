@@ -17,7 +17,7 @@ class URIFlowList(BaseList):
     class URIFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = URIFlow
-            exclude = ['id', 'tags', 'description', 'comment', 'subfunc_flow',  'polymorphic_ctype', 'uri']
+            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'subfunc_flow',  'polymorphic_ctype', 'uri']
 
     class URIFlowTable(BaseList.BaseTable):
         get_vital = tables.BooleanColumn(verbose_name="Vital", order_by=('subfunc_flow__vital',))
