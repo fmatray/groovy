@@ -2,14 +2,14 @@
 {% load containers %}
 
 {% block navigation %}
-{% create_list "Applications" as navs %}
+{% create_list "Applications" "Contacts" as navs %}
 {% include "layout/navs_pills.html" with navs=navs %}
 {% endblock %}
 
 {% block detail_content %}
-
 <div class="tab-content" id="pills-tabContent">
     {% include "layout/tabs_list.html" with body=object.app_partner.all id="Applications" active=True %}
+    {% include "layout/tabs_list.html" with body=object.team_partner.all id="Contacts" template="layout/card_contact.html" %}
 </div>
 
 

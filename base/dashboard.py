@@ -72,6 +72,14 @@ class CustomIndexDashboard(Dashboard):
                             )
         ))
 
+        # append a group for "Contacts"
+        self.children.append(
+                modules.AppList('',
+                    column=2,
+                    collapsible=False,
+                    models=('contactmngt.models.*',),
+                )
+        )
         # append a group for "Administration"
         self.children.append(
                 modules.AppList('',

@@ -47,6 +47,18 @@
                     {% include "layout/menu_dropdown_item.html" with link="networkflow_list" label="Network"%}
                     {% include "layout/menu_dropdown_item.html" with link="server_list" label="Servers"%}</div>
             </li>
+            <!-- Contact Management-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="technavbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Contact Management
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Teams"%}
+                    {% include "layout/menu_dropdown_item.html" with link="" label="Persons"%}
+            </li>
+
+
             <!-- Profile -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profilenavbarDropdown" role="button" data-toggle="dropdown"

@@ -15,6 +15,7 @@ def get_icon(label):
         "batch": "fas fa-sync-alt",
         "change password": "fas fa-key",
         "comment": "far fa-comment",
+        "contact": "far fa-address-book",
         "create": "far fa-edit",
         "csv": "fas fa-file-csv",
         "delete": "far fa-trash-alt",

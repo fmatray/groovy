@@ -4,7 +4,11 @@
 {% block content %}
 {% if body.model.get_view_perm in perms %}
     {% for item in body %}
-        {% include "layout/card_object.html" with object=item %}
+        {% if template %}
+            {% include template with object=item %}
+        {% else %}
+            {% include "layout/card_object.html" with object=item %}
+        {% endif %}
     {% empty %}
         {% include "layout/card_simple.html"%}
     {% endfor %}

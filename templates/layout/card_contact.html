@@ -1,0 +1,32 @@
+{% extends "layout/card_base.html" %}
+{% load verbose_names get_attr %}
+
+{% block title%}
+{% with team=object %}
+<i class="fas fa-users w-1em text-center mr-2"></i>{{team.name|title}} ({{team.departement}})
+{% endwith %}
+{% endblock %}
+
+
+{% block content %}
+{% with team=object %}
+<div class="card-body">
+    {% include "layout/contact.html" with object=team %}
+</div>
+{% for person in team.person_team.all %}
+<div class="card-body border-top">
+    <div class="mb-3">
+        <i class="fas fa-user w-1em text-center mr-2"></i><strong>{{person}}</strong> {% if person.title%}({{person.title}}){% endif %}
+    </div>
+    {% include "layout/contact.html" with object=person %}
+</div>
+{% endfor %}
+
+{% if object %}
+{% if object.get_update_perm in perms or object.get_delete_perm in perms %}
+{% include "layout/card_footer.html" with view=True delete=False %}
+{% endif %}
+{% endif %}
+{% endwith %}
+{% endblock %}
+

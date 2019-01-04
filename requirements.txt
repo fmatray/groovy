@@ -14,3 +14,5 @@ django-taggit
 django-model-utils
 django-polymorphic
 django-markdownx
+django-phonenumber-field
+phonenumbers
