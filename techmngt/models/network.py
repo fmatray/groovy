@@ -3,13 +3,14 @@
 """
 Module Network
 """
-from base.models import Base
 from django.db import models
 
+from base.models import Base
 from .server import Server
 
 
 class NetworkFlow(Base):
+    icon = "fas fa-network-wired"
     source_server = models.ForeignKey(Server, on_delete=models.CASCADE, verbose_name="Source server",
                                       limit_choices_to=Base.LIMIT_STATUS,
                                       default=None, blank=True, null=True, related_name="source_server_env")

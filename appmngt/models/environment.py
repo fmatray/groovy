@@ -11,6 +11,7 @@ from .application import Application
 
 
 class Environment(Base):
+    icon = "fas fa-leaf"
     name = models.CharField("Name", max_length=200, blank=False, unique=False)
 
     application = models.ForeignKey(Application, on_delete=models.CASCADE, verbose_name="Application",

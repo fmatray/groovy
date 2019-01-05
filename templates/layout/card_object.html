@@ -2,8 +2,18 @@
 {% load verbose_names get_attr %}
 
 {% block title%}
-{% include "layout/icon_label.html" with icon=object|object_verbose_name label=object.name|default:"None" %}
+{% if object.get_view_perm in perms %}
+<a href="{{object.get_absolute_url}}" class="text-white"><i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}</a>
+{% else %}
+<i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}
+{% endif %}
 {% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
+<div class="float-right">
+    {% if object.get_update_perm in perms %}
+        <a href="{{object.get_update_url}}" class="text-white-50"><i class="far fa-edit w-1em text-center m-2"></i></a>
+    {% endif %}
+
+</div>
 {% endblock %}
 
 
@@ -11,9 +21,5 @@
 {% if object %}
     {% include "layout/card_header.html" %}
     {% include "layout/card_body.html" %}
-
-    {% if object.get_update_perm in perms or object.get_delete_perm in perms %}
-        {% include "layout/card_footer.html" with view=True delete=False %}
-    {% endif %}
 {% endif %}
 {% endblock %}

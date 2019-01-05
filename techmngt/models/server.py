@@ -3,8 +3,9 @@
 """
 Module Network
 """
-from base.models import Base
 from django.db import models
+
+from base.models import Base
 
 
 class ServerType(Base):
@@ -16,6 +17,7 @@ class ServerType(Base):
 
 
 class Server(Base):
+    icon = "fas fa-server"
     server_type = models.OneToOneField(ServerType, on_delete=models.CASCADE, verbose_name="Server Type",
                                        limit_choices_to=Base.LIMIT_STATUS,
                                        default=None, blank=True, null=True, related_name="server_servertype")

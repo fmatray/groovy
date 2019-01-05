@@ -3,14 +3,15 @@
 """
 Module Application
 """
-from base.models import Base
 from django.db import models
 
+from base.models import Base
 from .partner import Partner
 from .univers import Univers
 
 
 class Application(Base):
+    icon = "fas fa-mobile-alt"
     univers = models.ForeignKey(Univers, on_delete=models.CASCADE, verbose_name="Univers",
                                 limit_choices_to = Base.LIMIT_STATUS,
                                 default=None, blank=True, null=True, related_name="app_univers")

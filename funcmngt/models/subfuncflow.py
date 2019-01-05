@@ -3,15 +3,15 @@
 """
 Module Flow
 """
+from django.db import models
+
 from appmngt.models.application import Application
 from base.models import Base
-from django.db import models
-from model_utils import Choices
-
 from .funcflow import FuncFlow
 
 
 class SubFuncFlow(Base):
+    icon = "fas fa-arrows-alt-h"
     subflow_id = models.CharField("Sub flow ID", max_length=64, unique=True,
                                   default="", null=False, blank=False)
     func_flow = models.ForeignKey(FuncFlow, on_delete=models.CASCADE, verbose_name="Functional Flow",

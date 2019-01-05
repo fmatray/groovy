@@ -2,15 +2,23 @@
 {% load verbose_names %}
 
 {% block title%}
-{% include "layout/icon_label.html" with icon=object|object_verbose_name label=object|object_verbose_name%}
+<i class="{{object.icon}} text-center mr-2"></i>{{object|object_verbose_name|title}}
 {% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
+
+<div class="float-right">
+    {% if object.get_update_perm in perms %}
+        <a href="{{object.get_update_url}}" class="text-white-50"><i class="far fa-edit w-1em text-center m-2"></i></a>
+    {% endif %}
+
+    {% if object.get_delete_perm in perms %}
+        <a href="#" class="text-white-50" data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt w-1em text-center m-2"></i></a>
+    {% endif %}
+</div>
+
 {% endblock %}
 
 {% block content %}
-    {% include "layout/card_header.html" %}
-    {% include "layout/card_body.html" with object=object no_comment=True %}
+{% include "layout/card_header.html" %}
+{% include "layout/card_body.html" with object=object no_comment=True %}
 
-    {% if object.get_update_perm in perms or object.get_delete_perm in perms %}
-        {% include "layout/card_footer.html" with view=False delete=True %}
-    {% endif %}
 {% endblock %}

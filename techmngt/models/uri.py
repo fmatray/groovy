@@ -12,6 +12,7 @@ from .techflow import TechFlow
 #Web Service : Method://domaine/uri
 
 class URIFlow(TechFlow):
+    icon = "fas fa-cloud"
     HTTP_METHOD = Choices('HEAD', 'GET', 'POST','PUT', 'DELETE')
 
     method = models.CharField("method", choices=HTTP_METHOD, max_length=32, default="")

@@ -5,7 +5,7 @@
             {% for item in list_item %}
             <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
             {% empty %}
-            No Release
+            <li class="list-group-item">No {{title}}</li>
             {% endfor %}
 
         </ul>

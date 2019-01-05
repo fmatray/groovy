@@ -4,11 +4,11 @@
     <dl class="row mb-0 pb-0">
         {% for field in object.identification_fields %}
             {% if field == "div" %}
-                <dt class="col-sm-3 my-0">&nbsp;</dt>
-                <dd class="col-sm-9 my-0"></dd>
+                <dt class="col-sm-4 my-0">&nbsp;</dt>
+                <dd class="col-sm-8 my-0"></dd>
             {% else %}
-                <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
-                <dd class="col-sm-9 mb-3">
+                <dt class="col-sm-4 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
+                <dd class="col-sm-8 mb-3">
                     {% with attr=object|get_obj_attr:field perm=attr.get_view_perm %}
                     {% if not perm or perm in perms %}
                         {% if attr == None %}
@@ -31,11 +31,11 @@
         {% endfor %}
         {% for field in object.identification_list_fields %}
             {% if field == "div" %}
-                <dt class="col-sm-3 my-0">&nbsp;</dt>
-                <dd class="col-sm-9 my-0"></dd>
+                <dt class="col-sm-4 my-0">&nbsp;</dt>
+                <dd class="col-sm-8 my-0"></dd>
             {% else %}
-                <dt class="col-sm-3 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
-                <dd class="col-sm-9 mb-3">
+                <dt class="col-sm-4 mb-3">{{object|object_field_verbose_name:field|title}}</dt>
+                <dd class="col-sm-8 mb-3">
                     {% with objs=object|get_obj_attr_list:field %}
                         {% if objs.model.get_view_perm in perms %}
                             {% for obj in objs %}

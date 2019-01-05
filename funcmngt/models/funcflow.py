@@ -10,6 +10,7 @@ from base.models import Base
 
 
 class FuncFlow(Base):
+    icon = "fas fa-stream"
     # Choices
     type_choices = Choices('Asynchronous', 'Synchronous', 'Redirection')
 

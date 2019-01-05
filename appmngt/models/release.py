@@ -12,6 +12,7 @@ from .application import Application
 
 
 class Release(Base):
+    icon = "fas fa-code-branch"
     applications = models.ManyToManyField(Application, verbose_name="Applications", default=None, blank=True,
                                           limit_choices_to=Base.LIMIT_STATUS,
                                           related_name="release_app")

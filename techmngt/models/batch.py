@@ -3,15 +3,16 @@
 """
 Module Batch
 """
-from base.models import Base
 from django.db import models
 from model_utils import Choices
 
+from base.models import Base
 from .asynchronous import AsynchronousFlow
 from .techflow import TechFlow
 
 
 class BatchFlow(TechFlow):
+    icon = "fas fa-sync-alt"
     # Choices
     FREQUENCIES = Choices('On demand', 'On file', 'Daily', 'Weekly', 'Monthly', 'Quaterly', 'Annually')
 

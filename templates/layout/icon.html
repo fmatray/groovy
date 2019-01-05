@@ -1,2 +1,6 @@
 {% load icons %}
-<i class="{{icon|default:label|get_icon}} text-center"></i>
+{% if icon %}
+<i class="{{icon}} text-center"></i>
+{% else%}
+<i class="{{label|get_icon}} text-center"></i>
+{% endif %}

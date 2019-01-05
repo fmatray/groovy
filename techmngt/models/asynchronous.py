@@ -11,10 +11,11 @@ from .protocol import Protocol
 
 
 class AsynchronousFlow(Base):
+    icon = "far fa-file"
     CODEPAGE = Choices('ASCII', 'Binary', 'EBCDIC')
 
     protocol = models.ForeignKey(Protocol, on_delete=models.CASCADE, verbose_name="Protocol",
-                                 limit_choices_to={'status__in':('On going', 'Released'), 'type': 'Asynchronous'},
+                                 limit_choices_to={'status__in': ('On going', 'Released'), 'type': 'Asynchronous'},
                                  blank=False, null=False, related_name="asynchronousflow_protocol")
 
     flow_id = models.CharField("Flow ID", max_length=64, unique=True, default="", null=True, blank=True)
