@@ -1,34 +1,44 @@
 {% extends "base/base.html" %}
 {% load bootstrap4 %}
 {% load containers %}
-
-{% block title %}{% if object %}Edit {{object}}{% else %}Create{% endif %}{% endblock %}
+{% block title %}{% if object %}Edit {{object}}{% else %}Create {{view.model.meta.verbose_name}}{% endif %}{% endblock %}
 
 {% block content %}
+
 <form method="post" action="" class="form">
+    {% csrf_token %}
     <div class="row">
         <div class="col-sm-8 offset-sm-2">
-            {% csrf_token %}
-            {% bootstrap_field form.name size="small" %}
-            {% bootstrap_field form.status size="small" %}
-            {% bootstrap_field form.tags size="small" %}
-            {% bootstrap_field form.description size="small" %}
-            {% bootstrap_field form.documentation size="small" %}
-            {% if form.fields|length > 5 %}
-            <hr>
-            {% endif %}
 
-            {% for field in form %}
-            {% if not field.name|in_list:"name,status,tags,comment,description,documentation" %}
-            {% bootstrap_field field size="small" %}
-            {% endif%}
-            {% endfor %}
+            {% create_list "Identification" "Description" "Object" "Comment" as navs %}
+            {% include "layout/navs_pills.html" with navs=navs %}
 
-            {% if form.fields|length > 5 %}
-            <hr>
-            {% endif %}
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-identification" role="tabpanel"
+                     aria-labelledby="pills-identification-tab">
+                    {% bootstrap_field form.name  %}
+                    {% bootstrap_field form.status  %}
+                    {% bootstrap_field form.tags  %}
+                    {% bootstrap_field form.documentation  %}
 
-            {% bootstrap_field form.comment size="small" %}
+                </div>
+                <div class="tab-pane fade" id="pills-description" role="tabpanel"
+                     aria-labelledby="pills-description-tab">
+                    {% bootstrap_field form.description  %}
+
+                </div>
+                <div class="tab-pane fade" id="pills-object" role="tabpanel" aria-labelledby="pills-object-tab">
+                    {% for field in form %}
+                    {% if not field.name|in_list:"name,status,tags,comment,description,documentation" %}
+                    {% bootstrap_field field  %}
+                    {% endif%}
+                    {% endfor %}
+                </div>
+                <div class="tab-pane fade" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
+                    {% bootstrap_field form.comment %}
+                </div>
+            </div>
+
             {% include "layout/button_submit.html" %}
         </div>
     </div>
