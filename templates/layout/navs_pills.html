@@ -5,7 +5,7 @@
             <li class="nav-item mr-3"></li>
         {% else %}
             <li class="nav-item" data-toggle="tooltip" data-placement="top" title="{{item}}">
-                <a class="nav-link  {% if forloop.first %} active{% endif %} badge-secondary ml-1 mr-1 text-center"
+                <a class="nav-link  {% if forloop.first %} active{% endif %} badge-dark ml-1 mr-1 text-center"
                    id="pills-{{item}}-tab"
                    data-toggle="pill"
                    href="#pills-{{item|slugify}}"

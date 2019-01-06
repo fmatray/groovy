@@ -1,0 +1,10 @@
+<li class="nav-item {% if div %}mr-4{%endif%}" data-toggle="tooltip" data-placement="top" title="{{title|title}}">
+    <a class="nav-link {% if active %} active{% endif %} badge-dark mx-2 text-center"
+       id="pills-{{title}}-tab"
+       data-toggle="pill"
+       href="#pills-{{title|slugify}}"
+       role="tab"
+       aria-controls="pills-{{title|slugify}}"
+       aria-selected="true">{% include "layout/icon.html" %}
+    </a>
+</li>

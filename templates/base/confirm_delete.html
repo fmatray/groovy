@@ -6,6 +6,6 @@
 <form method="post" action="" class="form">
     {% csrf_token %}
     <p>Are you sure you want to delete?</p>
-    {% include "layout/button_submit.html" with class="submit-btn btn-danger btn-sm" label="Delete" %}
+    {% include "layout/button_submit.html" with class="submit-btn btn-danger" label="Delete" %}
 </form>
 {% endblock %}

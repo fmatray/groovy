@@ -1,14 +1,21 @@
 {% extends 'base/detail.html' %}
 {% load containers %}
+{% load icons %}
 
 {% block navigation %}
-{% create_list "Univers" "Partner" "div" "Environments" "Releases" "div" "Requester" "Receiver" as navs %}
-{% include "layout/navs_pills.html" with navs=navs %}
+<ul class="nav nav-pills justify-content-center my-1 py-1" id="pills-tab" role="tablist">
+{% include "layout/navs_pill_icon.html" with title="Univers" icon="Univers"|get_model_icon active=True %}
+{% include "layout/navs_pill_icon.html" with title="Partner" icon="Partner"|get_model_icon %}
+{% include "layout/navs_pill_icon.html" with title="Environments" icon="Environment"|get_model_icon %}
+{% include "layout/navs_pill_icon.html" with title="Releases" icon="Release"|get_model_icon div=True %}
+
+{% include "layout/navs_pill_icon.html" with title="Requester" icon="Requester"|get_icon %}
+{% include "layout/navs_pill_icon.html" with title="Receiver" icon="Receiver"|get_icon %}
+</ul>
 {% endblock %}
 
 
 {% block detail_content %}
-
 <div class="tab-content" id="pills-tabContent">
     {% include "layout/tabs_simple.html" with body=object.univers id="Univers" active=True%}
     {% include "layout/tabs_simple.html" with body=object.partner id="Partner" %}

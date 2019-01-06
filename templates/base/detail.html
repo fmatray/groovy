@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 {% load containers %}
 {% load static %}
+{% load verbose_names %}
 
 {% block title %}
 {{ object.name|title }}
@@ -9,8 +10,32 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-5">
-        {% include "layout/card_identification.html" %}
-        {% block navigation %}{% endblock %}
+
+        <div class="card border-dark mb-3">
+            <div class="card-header bg-dark text-white">
+                <span class="align-middle">
+                <i class="{{object.icon}} text-center mr-2"></i>{{object|object_verbose_name|title}}
+                {% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
+
+                <div class="float-right">
+                    {% if object.get_update_perm in perms %}
+                    <a href="{{object.get_update_url}}" class="text-white-50"><i
+                            class="far fa-edit w-1em text-center m-2"></i></a>
+                    {% endif %}
+
+                    {% if object.get_delete_perm in perms %}
+                    <a href="#" class="text-white-50" data-toggle="modal" data-target="#deleteModal"><i
+                            class="far fa-trash-alt w-1em text-center m-2"></i></a>
+                    {% endif %}
+                </div>
+                </span>
+            </div>
+            {% block navigation %}{% endblock %}
+            {% include "layout/card_header.html" %}
+            {% include "layout/card_body.html" with object=object no_comment=True %}
+
+        </div>
+
         {% include "layout/card_simple.html" with title="Comment" body=object.get_comment_as_markdown|default:'<span class="text-muted">No comment<span>' %}
         {% include "layout/card_history.html" with history=object.history.all %}
     </div>
@@ -39,7 +64,7 @@
 
                 </div>
                 <div class="modal-footer text-right bg-light">
-                    {% include "layout/button_submit.html" with class="submit-btn btn-danger btn-sm" label="Delete" %}
+                    {% include "layout/button_submit.html" with class="submit-btn btn-danger" label="Delete" %}
                 </div>
             </form>
         </div>

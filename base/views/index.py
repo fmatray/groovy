@@ -2,13 +2,14 @@ from datetime import datetime
 from itertools import chain
 from operator import attrgetter
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.base import TemplateView
+
 from appmngt.models.application import Application
 from appmngt.models.environment import Environment
 from appmngt.models.partner import Partner
 from appmngt.models.release import Release
 from appmngt.models.univers import Univers
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.base import TemplateView
 from funcmngt.models.funcflow import FuncFlow
 from funcmngt.models.subfuncflow import SubFuncFlow
 from techmngt.models.asynchronous import AsynchronousFlow
@@ -30,7 +31,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
         # Retreive last changes
         models = [Application, Environment, Partner, Release, Univers,
                   FuncFlow, SubFuncFlow,
-                  AsynchronousFlow, BatchFlow,NetworkFlow, URIFlow, Server]
+                  AsynchronousFlow, BatchFlow, NetworkFlow, URIFlow, Server]
         last_changes = [m.history.all()[:10] for m in models]
         last_changes = sorted(list(chain(*last_changes)), key=attrgetter('history_date'), reverse=True)[:10]
         context['last_changes'] = last_changes

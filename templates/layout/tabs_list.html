@@ -16,19 +16,4 @@
 {% include "layout/no_rights.html" %}
 {% endif %}
 
-{% if create_url and body.model.get_create_perm in perms %}
-
-<a class="btn btn-success btn-sm btn-nav ml-1 mr-1" role="button"
-       href="{% url create_url %}?{{object|object_verbose_name|lower}}={{object.id}}&{{object|object_verbose_name_plural|lower}}={{object.id}}">
-        {% include "layout/icon_label.html" with label="Add"%}
-        {% block spaceless %}
-            {% if id|slice:"-1:" == "s" %}
-                {{ id|slice:"-1" }}
-            {% else %}
-                {{ id }}
-            {% endif %}
-        {% endblock %}
-    </a>
-{% endif %}
-
 {% endblock %}

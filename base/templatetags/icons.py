@@ -1,7 +1,30 @@
 from django import template
 
+from appmngt.models.application import Application
+from appmngt.models.environment import Environment
+from appmngt.models.partner import Partner
+from appmngt.models.release import Release
+from appmngt.models.univers import Univers
+from funcmngt.models.funcflow import FuncFlow
+from funcmngt.models.subfuncflow import SubFuncFlow
+from techmngt.models.asynchronous import AsynchronousFlow
+from techmngt.models.batch import BatchFlow
+from techmngt.models.network import NetworkFlow
+from techmngt.models.server import Server
+from techmngt.models.uri import URIFlow
+
 register = template.Library()
 
+
+@register.filter
+def get_model_icon(label):
+    models = [Application, Environment, Partner, Release, Univers,
+              FuncFlow, SubFuncFlow,
+              AsynchronousFlow, BatchFlow, NetworkFlow, URIFlow, Server]
+    for model in models:
+        if label.lower() == model.__name__.lower():
+            return model.icon
+    return None
 
 @register.filter
 def get_icon(label):
