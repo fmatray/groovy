@@ -19,27 +19,34 @@
 
                 <div class="float-right">
                     {% if object.get_update_perm in perms %}
-                    <a href="{{object.get_update_url}}" class="text-white-50"><i
+                    <a href="{{object.get_update_url}}" class="top-icon"><i
                             class="far fa-edit w-1em text-center m-2"></i></a>
                     {% endif %}
 
                     {% if object.get_delete_perm in perms %}
-                    <a href="#" class="text-white-50" data-toggle="modal" data-target="#deleteModal"><i
+                    <a href="#" class="top-icon" data-toggle="modal" data-target="#deleteModal"><i
                             class="far fa-trash-alt w-1em text-center m-2"></i></a>
                     {% endif %}
                 </div>
                 </span>
             </div>
-            {% block navigation %}{% endblock %}
+
+
+
             {% include "layout/card_header.html" %}
             {% include "layout/card_body.html" with object=object no_comment=True %}
-
+            <div class="card-footer bg-dark p-0">
+                {% block navigation %}{% endblock %}
+            </div>
         </div>
 
         {% include "layout/card_simple.html" with title="Comment" body=object.get_comment_as_markdown|default:'<span class="text-muted">No comment<span>' %}
         {% include "layout/card_history.html" with history=object.history.all %}
     </div>
+
+
     <div class="col-sm-7">
+
         {% block detail_content %}{% endblock %}
     </div>
 </div>
