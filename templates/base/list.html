@@ -27,19 +27,9 @@
     {% if object_list.model.get_create_perm in perms %}
         {% include "layout/button_link.html" with link=object_list.model.get_create_url label="Create" %}
     {% endif %}
-    <div class="btn-group" role="group">
-        <button class="btn btn-secondary btn-nav dropdown-toggle" type="button" id="dropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-            {% include "layout/icon_label.html" with label="Export"%}
-        </button>
-
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href='{% export_url "csv" %}'>{% include "layout/icon_label.html" with label="CSV"%}</a>
-            <a class="dropdown-item" href='{% export_url "xls" %}'>{% include "layout/icon_label.html" with label="XLS"%}</a>
-            <a class="dropdown-item" href='{% export_url "xlsx" %}'>{% include "layout/icon_label.html" with label="XLSX"%}</a>
-        </div>
-    </div>
+    <a class="btn btn-outline-success btn-nav ml-1 mr-1" href="{% export_url 'xls' %}" role="button">
+        {% include "layout/icon_label.html" with icon="far fa-file-excel" label="Export"%}
+    </a>
 </div>
 
 

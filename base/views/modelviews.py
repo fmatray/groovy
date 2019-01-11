@@ -11,7 +11,6 @@ from django_filters.filters import CharFilter, ChoiceFilter
 from django_filters.views import FilterView
 from django_tables2 import SingleTableView
 from django_tables2.export.views import ExportMixin
-from django_tables2.utils import A, call_with_appropriate
 
 
 class BaseMixin(LoginRequiredMixin, PermissionRequiredMixin, AccessMixin):
@@ -27,7 +26,7 @@ class SingleBadgeColumn(tables.Column):
         if not value:
             return "—"
 
-        content = "<span class='badge badge-pill badge-primary'>{}</span>".format(value)
+        content = "<span class='badge badge-primary'>{}</span>".format(value)
         if hasattr(value, "get_absolute_url"):
             link = value.get_absolute_url()
         else:
@@ -42,7 +41,7 @@ class SingleBadgeColumn(tables.Column):
 
 class StatusColumn(tables.Column):
     def render(self, value):
-        return "<span class='badge badge-pill {}'>{}</span>".format(get_status_color(value), value)
+        return "<span class='badge {}'>{}</span>".format(get_status_color(value), value)
 
     def value(self, **kwargs):
         return kwargs['value']

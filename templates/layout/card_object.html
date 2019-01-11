@@ -3,23 +3,27 @@
 
 {% block title%}
 {% if object.get_view_perm in perms %}
-<a href="{{object.get_absolute_url}}" class="text-white"><i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}</a>
+<a href="{{object.get_absolute_url}}" class="text-white">
+    <i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}
+</a>
 {% else %}
 <i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}
 {% endif %}
-{% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
-<div class="float-right">
-    {% if object.get_update_perm in perms %}
-        <a href="{{object.get_update_url}}" class="top-icon"><i class="far fa-edit w-1em text-center m-2"></i></a>
-    {% endif %}
 
+{% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
+
+{% if object.get_update_perm in perms %}
+<div class="float-right">
+    <a href="{{object.get_update_url}}" class="top-icon"><i class="far fa-edit w-1em text-center mx-2"></i></a>
 </div>
+{% endif %}
+
 {% endblock %}
 
 
 {% block content %}
 {% if object %}
-    {% include "layout/card_header.html" %}
-    {% include "layout/card_body.html" %}
+{% include "layout/card_header.html" %}
+{% include "layout/card_body.html" %}
 {% endif %}
 {% endblock %}

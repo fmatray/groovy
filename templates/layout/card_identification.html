@@ -7,11 +7,11 @@
 
 <div class="float-right">
     {% if object.get_update_perm in perms %}
-        <a href="{{object.get_update_url}}" class="text-white-50"><i class="far fa-edit w-1em text-center m-2"></i></a>
+        <a href="{{object.get_update_url}}" class="text-white-50"><i class="far fa-edit w-1em text-center mx-2"></i></a>
     {% endif %}
 
     {% if object.get_delete_perm in perms %}
-        <a href="#" class="text-white-50" data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt w-1em text-center m-2"></i></a>
+        <a href="#" class="text-white-50" data-toggle="modal" data-target="#deleteModal"><i class="far fa-trash-alt w-1em text-center mx-2"></i></a>
     {% endif %}
 </div>
 

@@ -40,7 +40,6 @@ def get_icon(label):
         "comment": "far fa-comment",
         "contact": "far fa-address-book",
         "create": "far fa-edit",
-        "csv": "fas fa-file-csv",
         "delete": "far fa-trash-alt",
         "disconnect": "fas fa-stop",
         "edit": "far fa-edit",
@@ -67,7 +66,6 @@ def get_icon(label):
         "univers": "fas fa-globe",
         "uri": "fas fa-cloud",
         "view": "far fa-eye",
-        "xls": "fas fa-file-excel",
     }
 
     label = label.lower()

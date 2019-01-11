@@ -1,1 +1,6 @@
-<a href="{{object.get_absolute_url}}" ><span class="badge badge-pill {{class|default:'badge-primary'}}" data-toggle="tooltip" title="{{object.get_description_as_markdown|striptags}}">{{object|title}}</span></a>
+<span class="my-auto"><a href="{{object.get_absolute_url}}">
+    <span class="badge {{class|default:'badge-primary'}}"
+          {% with tolltip=get_description_as_markdown %}
+          {% if tolltip%}data-toggle="tooltip" title="{{tolltip|striptags}}"{% endif %}
+          {% endwith %}
+    >{{object|title}}</span></a></span>

@@ -11,31 +11,29 @@
 <div class="row">
     <div class="col-sm-5">
 
-        <div class="card border-dark mb-3">
-            <div class="card-header bg-dark text-white">
-                <span class="align-middle">
+        <div class="card border-primary mb-3">
+            <div class="card-header bg-primary text-white">
                 <i class="{{object.icon}} text-center mr-2"></i>{{object|object_verbose_name|title}}
                 {% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
 
                 <div class="float-right">
                     {% if object.get_update_perm in perms %}
                     <a href="{{object.get_update_url}}" class="top-icon"><i
-                            class="far fa-edit w-1em text-center m-2"></i></a>
+                            class="far fa-edit w-1em text-center mx-2"></i></a>
                     {% endif %}
 
                     {% if object.get_delete_perm in perms %}
                     <a href="#" class="top-icon" data-toggle="modal" data-target="#deleteModal"><i
-                            class="far fa-trash-alt w-1em text-center m-2"></i></a>
+                            class="far fa-trash-alt w-1em text-center mx-2"></i></a>
                     {% endif %}
                 </div>
-                </span>
             </div>
 
 
 
             {% include "layout/card_header.html" %}
             {% include "layout/card_body.html" with object=object no_comment=True %}
-            <div class="card-footer bg-dark p-0">
+            <div class="card-footer bg-primary p-0">
                 {% block navigation %}{% endblock %}
             </div>
         </div>
@@ -54,10 +52,10 @@
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered border-dark" role="document">
+    <div class="modal-dialog modal-dialog-centered border-primary" role="document">
         <div class="modal-content">
             <form method="post" action="{{object.get_delete_url}}" class="form">
-                <div class="modal-header bg-dark text-white">
+                <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="deleteModalLabel">Delete {{object}}</h5>
 
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
@@ -71,7 +69,7 @@
 
                 </div>
                 <div class="modal-footer text-right bg-light">
-                    {% include "layout/button_submit.html" with class="submit-btn btn-danger" label="Delete" %}
+                    {% include "layout/button_submit.html" with class="submit-btn btn-outline-danger" label="Delete" %}
                 </div>
             </form>
         </div>

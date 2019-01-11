@@ -3,7 +3,6 @@
 """
 Module Base
 """
-from base.helpers import get_status_color
 from django.db import models
 from django.urls import reverse, NoReverseMatch
 from django.utils.html import mark_safe
@@ -12,6 +11,8 @@ from markdownx.models import MarkdownxField
 from model_utils import Choices
 from simple_history.models import HistoricalRecords
 from taggit.managers import TaggableManager
+
+from base.helpers import get_status_color
 
 
 class Base(models.Model):
@@ -32,7 +33,7 @@ class Base(models.Model):
     identification_list_fields = []
 
     def get_status_badge(self):
-        return "<span class='badge badge-pill {}'>{}</span>".format(get_status_color(self.status), self.status)
+        return "<span class='badge {}'>{}</span>".format(get_status_color(self.status), self.status)
 
     def get_description_as_markdown(self):
         return mark_safe(markdown(self.description, safe_mode='escape'))

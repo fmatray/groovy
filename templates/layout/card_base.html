@@ -1,8 +1,6 @@
-<div class="card border-dark mb-3">
-    <div class="card-header bg-dark text-white">
-        <span class="align-middle">
+<div class="card border-primary mb-3">
+    <div class="card-header bg-primary text-white">
             {% block title%}{% include "layout/icon_label.html" with label=title|default:"None" %}{% endblock %}
-        </span>
     </div>
     {% block content %}{% endblock %}
 </div>
