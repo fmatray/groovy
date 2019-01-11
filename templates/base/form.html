@@ -9,7 +9,7 @@
     {% csrf_token %}
     <div class="row">
         <div class="col-sm-4 offset-sm-4">
-            <div class="card bg-primary p-0 w-75 mx-auto">
+            <div class="card bg-primary w-75 mx-auto">
                 <ul class="nav nav-pills justify-content-center " id="pills-tab" role="tablist">
                     {% include "layout/navs_pill_icon.html" with title="Identification" icon="fas fa-passport" div=True active=True %}
                     {% include "layout/navs_pill_icon.html" with title="Description" icon="fas fa-pen" div=True %}
@@ -69,13 +69,28 @@
 <script>
 $(document).ready(function(){
 
-$('#id_submit').click(function () {
-   $(':required:invalid', '#id_form').each(function () {
-      var id = $('.tab-pane').find(':required:invalid').closest('.tab-pane').attr('id');
-      $('.nav a[href="#' + id + '"]').tab('show');
+    $('#id_submit').click(
+        function ()
+        {
+            $('.nav-danger').each(
+                function () {
+                    $(this).removeClass('nav-danger');
+                });
+            $('.is-invalid').each(
+                function () {
+                    $(this).removeClass('is-invalid');
+                });
 
-   });
-});
+            $(':required:invalid', '#id_form').each(
+                function ()
+                {
+                    $(this).addClass('is-invalid');
+                    var id = $('.tab-pane').find('#'+$(this).attr('id')).closest('.tab-pane').attr('id');
+                    $('.nav a[href="#' + id + '"]').addClass('nav-danger');
+                });
+            var id = $('.tab-pane').find(':required:invalid').closest('.tab-pane').attr('id');
+            $('.nav a[href="#' + id + '"]').tab('show');
+        });
 
 });
 </script>
