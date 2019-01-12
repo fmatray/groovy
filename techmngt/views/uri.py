@@ -4,11 +4,11 @@ URIFlow views
 """
 
 import django_tables2 as tables
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
-    BadgesColumn, SingleBadgeColumn
 from django.urls import reverse_lazy
-from django_filters.filters import ModelChoiceFilter
-from django_tables2.utils import A
+
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
+    SingleBadgeColumn
+from techmngt.forms.uri import URIFlowForm
 from techmngt.models.uri import URIFlow
 
 
@@ -45,12 +45,15 @@ class URIFlowDetailView(BaseDetailView):
 class URIFlowCreateView(BaseCreateView):
     model = URIFlow
     success_message = 'Success: URIFlow was created.'
-
+    form_class = URIFlowForm
+    template_name = "techmngt/uriflow_form.html"
 
 # Update
 class URIFlowUpdateView(BaseUpdateView):
     model = URIFlow
     success_message = 'Success: URIFlow was updated.'
+    form_class = URIFlowForm
+    template_name = "techmngt/uriflow_form.html"
 
 
 # Delete

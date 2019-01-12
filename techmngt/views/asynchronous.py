@@ -3,12 +3,11 @@
 AsynchronousFlow views
 """
 
-import django_tables2 as tables
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
-    BadgesColumn, SingleBadgeColumn
 from django.urls import reverse_lazy
-from django_filters.filters import ModelChoiceFilter
-from django_tables2.utils import A
+
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
+    SingleBadgeColumn
+from techmngt.forms.asynchronous import AsynchronousFlowForm
 from techmngt.models.asynchronous import AsynchronousFlow
 
 
@@ -41,13 +40,15 @@ class AsynchronousFlowDetailView(BaseDetailView):
 class AsynchronousFlowCreateView(BaseCreateView):
     model = AsynchronousFlow
     success_message = 'Success: AsynchronousFlow was created.'
-
+    form_class = AsynchronousFlowForm
+    template_name = "techmngt/asynchronousflow_form.html"
 
 # Update
 class AsynchronousFlowUpdateView(BaseUpdateView):
     model = AsynchronousFlow
     success_message = 'Success: AsynchronousFlow was updated.'
-
+    form_class = AsynchronousFlowForm
+    template_name = "techmngt/asynchronousflow_form.html"
 
 # Delete
 class AsynchronousFlowDeleteView(BaseDeleteView):

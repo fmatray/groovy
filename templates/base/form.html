@@ -4,22 +4,23 @@
 {% block title %}{% if object %}Edit {{object}}{% else %}Create {{view.model.meta.verbose_name}}{% endif %}{% endblock %}
 
 {% block content %}
-
-<form method="post" action="" class="form" id="id_form">
+<form method="post" action="" class="form" id="id_form" novalidate>
     {% csrf_token %}
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-sm-4 offset-sm-4">
             <div class="card bg-primary w-75 mx-auto">
                 <ul class="nav nav-pills justify-content-center " id="pills-tab" role="tablist">
                     {% include "layout/navs_pill_icon.html" with title="Identification" icon="fas fa-passport" div=True active=True %}
                     {% include "layout/navs_pill_icon.html" with title="Description" icon="fas fa-pen" div=True %}
+                    {% if form.fields|length > 6 %}
                     {% include "layout/navs_pill_icon.html" with title=view.model.meta.verbose_name icon=view.model.icon div=True %}
+                    {% endif %}
                     {% include "layout/navs_pill_icon.html" with title="Comment" icon="far fa-comment" %}
                 </ul>
             </div>
         </div>
     </div>
-    <div class="row" style="height:27em;">
+    <div class="row" style="height:20em;">
         <div class="col-sm-8 offset-sm-2 ">
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-identification" role="tabpanel"
@@ -37,13 +38,17 @@
                     {% bootstrap_field form.description  %}
 
                 </div>
-                <div class="tab-pane fade" id="pills-{{view.model.meta.verbose_name|slugify}}" role="tabpanel" aria-labelledby="pills-{{view.model.meta.verbose_name|slugify}}-tab">
-                    {% for field in form %}
-                    {% if not field.name|in_list:"name,status,tags,comment,description,documentation" %}
-                    {% bootstrap_field field  %}
-                    {% endif%}
-                    {% endfor %}
-                </div>
+                {% block form_object %}
+                {% if form.fields|length > 6 %}
+                    <div class="tab-pane fade" id="pills-{{view.model.meta.verbose_name|slugify}}" role="tabpanel" aria-labelledby="pills-{{view.model.meta.verbose_name|slugify}}-tab">
+                        {% for field in form %}
+                        {% if not field.name|in_list:"name,status,tags,comment,description,documentation" %}
+                            {% bootstrap_field field %}
+                        {% endif%}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% endblock %}
                 <div class="tab-pane fade" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
                     {% bootstrap_field form.comment %}
                 </div>
@@ -66,32 +71,22 @@
 {%endblock%}
 
 {% block bootstrap4_extra_script %}
+
 <script>
 $(document).ready(function(){
+    $.fn.select2.defaults.set("theme", "bootstrap4" );
 
-    $('#id_submit').click(
+    $('.is-invalid', '#id_form').each(
         function ()
         {
-            $('.nav-danger').each(
-                function () {
-                    $(this).removeClass('nav-danger');
-                });
-            $('.is-invalid').each(
-                function () {
-                    $(this).removeClass('is-invalid');
-                });
-
-            $(':required:invalid', '#id_form').each(
-                function ()
-                {
-                    $(this).addClass('is-invalid');
-                    var id = $('.tab-pane').find('#'+$(this).attr('id')).closest('.tab-pane').attr('id');
-                    $('.nav a[href="#' + id + '"]').addClass('nav-danger');
-                });
-            var id = $('.tab-pane').find(':required:invalid').closest('.tab-pane').attr('id');
-            $('.nav a[href="#' + id + '"]').tab('show');
+            var id = $('.tab-pane').find('#'+$(this).attr('id')).closest('.tab-pane').attr('id');
+            $('.nav a[href="#' + id + '"]').addClass('nav-danger');
         });
+    var id = $('.tab-pane').find(':required:invalid').closest('.tab-pane').attr('id');
+    $('.nav a[href="#' + id + '"]').tab('show');
 
 });
+
 </script>
+{{ form.media.js }}
 {% endblock %}

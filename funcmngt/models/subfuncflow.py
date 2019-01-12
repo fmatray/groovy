@@ -14,10 +14,10 @@ class SubFuncFlow(Base):
     icon = "fas fa-arrows-alt-h"
     subflow_id = models.CharField("Sub flow ID", max_length=64, unique=True,
                                   default="", null=False, blank=False)
+    vital = models.BooleanField("Vital", default=False)
     func_flow = models.ForeignKey(FuncFlow, on_delete=models.CASCADE, verbose_name="Functional Flow",
                                   limit_choices_to=Base.LIMIT_STATUS,
                                   default=None, blank=True, null=True, related_name="subfuncflow_flow")
-    vital = models.BooleanField("Vital", default=False)
 
     requester = models.ForeignKey(Application, on_delete=models.CASCADE, verbose_name="Requester",
                                   limit_choices_to=Base.LIMIT_STATUS,

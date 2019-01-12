@@ -2,16 +2,16 @@
 {% load containers %}
 
 {% block navigation %}
-{% create_list "Source server" "Destination server" as navs %}
-{% include "layout/navs_pills.html" with navs=navs %}
+{% include "layout/navs_pill_icon.html" with title="Source server" icon="fas fa-sign-out-alt" active=True %}
+{% include "layout/navs_pill_icon.html" with title="Destination server" icon="fas fa-sign-in-alt" %}
 {% endblock %}
 
 
 {% block detail_content %}
 
 <div class="tab-content" id="pills-tabContent">
-    {% include "layout/tabs_simple.html" with body=object.source_server id="Source server" inline_template="techmngt/server_inline.html" active=True %}
-    {% include "layout/tabs_simple.html" with body=object.destination_server id="Destination server" inline_template="techmngt/server_inline.html" %}
+    {% include "layout/tabs_simple.html" with body=object.source_server id="Source server" active=True %}
+    {% include "layout/tabs_simple.html" with body=object.destination_server id="Destination server" %}
 </div>
 
 

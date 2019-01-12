@@ -1,0 +1,21 @@
+{% extends "base/form.html" %}
+{% load bootstrap4 %}
+
+{% block form_object %}
+<div class="tab-pane fade" id="pills-{{view.model.meta.verbose_name|slugify}}" role="tabpanel"
+     aria-labelledby="pills-{{view.model.meta.verbose_name|slugify}}-tab">
+
+    <div class="row">
+        <div class="col">{% bootstrap_field form.subflow_id %}</div>
+        <div class="col">{% bootstrap_field form.func_flow %}</div>
+    </div>
+
+    {% bootstrap_field form.vital %}
+
+    <div class="row">
+        <div class="col">{% bootstrap_field form.requester %}</div>
+        <div class="col">{% bootstrap_field form.receiver %}</div>
+    </div>
+
+</div>
+{% endblock %}

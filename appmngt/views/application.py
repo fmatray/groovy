@@ -3,14 +3,14 @@
 Application views
 """
 
-import django_tables2 as tables
 from django.urls import reverse_lazy
 from django_filters.filters import ModelChoiceFilter
-from django_tables2.utils import A
 
+from appmngt.forms.application import ApplicationForm
 from appmngt.models.application import Application
 from appmngt.models.environment import Environment
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn, SingleBadgeColumn
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
+    BadgesColumn, SingleBadgeColumn
 
 
 # Application
@@ -54,12 +54,17 @@ class ApplicationDetailView(BaseDetailView):
 # Create
 class ApplicationCreateView(BaseCreateView):
     model = Application
+    fields = None
+    form_class = ApplicationForm
     success_message = 'Success: Application was created.'
+
 
 
 # Update
 class ApplicationUpdateView(BaseUpdateView):
     model = Application
+    fields = None
+    form_class = ApplicationForm
     success_message = 'Success: Application was updated.'
 
 

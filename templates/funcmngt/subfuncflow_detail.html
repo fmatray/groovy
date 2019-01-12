@@ -1,22 +1,20 @@
 {% extends 'base/detail.html' %}
 {% load containers %}
+{% load containers %}
+{% load icons %}
 
 {% block navigation %}
-{% create_list "Functional Flow" "div" "Requester" "Receiver" "div" "Techincal Flow" as navs %}
-{% include "layout/navs_pills.html" with navs=navs %}
+{% include "layout/navs_pill_icon.html" with title="Functional Flow" icon="FuncFlow"|get_model_icon active=True %}
+{% include "layout/navs_pill_icon.html" with title="Requester" icon="fas fa-sign-out-alt" %}
+{% include "layout/navs_pill_icon.html" with title="Receiver" icon="fas fa-sign-in-alt" %}
+{% include "layout/navs_pill_icon.html" with title="Techincal Flow" icon="fas fa-wrench" %}
 {% endblock %}
 
 
 {% block detail_content %}
-
-<div class="tab-content" id="pills-tabContent">
     {% include "layout/tabs_simple.html" with body=object.func_flow id="Functional Flow" active=True %}
     {% include "layout/tabs_simple.html" with body=object.requester id="Requester"  %}
     {% include "layout/tabs_simple.html" with body=object.receiver id="Receiver" %}
     {% include "layout/tabs_simple.html" with body=object.techflow id="Techincal Flow" %}
-
-
-</div>
-
 
 {% endblock %}

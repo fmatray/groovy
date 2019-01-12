@@ -3,12 +3,11 @@
 SubFuncFlow views
 """
 
-import django_tables2 as tables
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
-    BadgesColumn, SingleBadgeColumn
 from django.urls import reverse_lazy
-from django_filters.filters import ModelChoiceFilter
-from django_tables2.utils import A
+
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
+    SingleBadgeColumn
+from funcmngt.forms.subfuncflow import SubFuncFlowForm
 from funcmngt.models.subfuncflow import SubFuncFlow
 
 
@@ -22,7 +21,7 @@ class SubFuncFlowList(BaseList):
 
     class SubFuncFlowTable(BaseList.BaseTable):
         func_flow = SingleBadgeColumn()
-        techflow = SingleBadgeColumn(verbose_name="Technical flow", order_by=('techflow_subflow', ))
+        techflow = SingleBadgeColumn(verbose_name="Technical flow", order_by=('techflow_subflow',))
         requester = SingleBadgeColumn()
         receiver = SingleBadgeColumn()
         view_perms = {
@@ -48,16 +47,19 @@ class SubFuncFlowDetailView(BaseDetailView):
 class SubFuncFlowCreateView(BaseCreateView):
     model = SubFuncFlow
     success_message = 'Success: Sub Functional Flow was created.'
-
+    form_class = SubFuncFlowForm
+    template_name = "funcmngt/subfuncflow_form.html"
 
 # Update
 class SubFuncFlowUpdateView(BaseUpdateView):
     model = SubFuncFlow
     success_message = 'Success: Sub Functional Flow was updated.'
-
+    form_class = SubFuncFlowForm
+    template_name = "funcmngt/subfuncflow_form.html"
 
 # Delete
 class SubFuncFlowDeleteView(BaseDeleteView):
     model = SubFuncFlow
     success_message = 'Success: Sub Functional Flow was deleted.'
     success_url = reverse_lazy('subfuncflow_list')
+

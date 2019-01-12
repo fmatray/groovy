@@ -1,7 +1,5 @@
 import django_filters
 import django_tables2 as tables
-from base.helpers import get_status_color
-from base.models import Base
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, AccessMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.html import conditional_escape
@@ -11,6 +9,9 @@ from django_filters.filters import CharFilter, ChoiceFilter
 from django_filters.views import FilterView
 from django_tables2 import SingleTableView
 from django_tables2.export.views import ExportMixin
+
+from base.helpers import get_status_color
+from base.models import Base
 
 
 class BaseMixin(LoginRequiredMixin, PermissionRequiredMixin, AccessMixin):
@@ -107,7 +108,7 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
 
         class Meta:
             template_name = "layout/table.html"
-            exclude = ['id', 'description', 'comment']
+            exclude = ['id', 'description', 'documentation', 'comment']
 
     template_name = "base/list.html"
     filterset_class = BaseFilter
@@ -118,7 +119,6 @@ class BaseDetailView(BaseMixin, DetailView):
 
 
 class BaseCreateUpdateMixin(BaseMixin):
-    fields = '__all__'
 
     def get_initial(self):
         if self.request.GET:

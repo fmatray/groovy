@@ -1,24 +1,18 @@
 {% extends 'base/detail.html' %}
 {% load containers %}
+{% load icons %}
 
 {% block navigation %}
-{% if object.batch_input_flow or object.batch_output_flow%}
-{% create_list "Batch" as navs %}
-{% include "layout/navs_pills.html" with navs=navs %}
-{% endif %}
+{% include "layout/navs_pill_icon.html" with title="Batch" icon="BatchFlow"|get_model_icon active=True %}
 {% endblock %}
 
 
 {% block detail_content %}
-
-<div class="tab-content" id="pills-tabContent">
     {% if object.batch_input_flow %}
-        {% include "layout/tabs_simple.html" with body=object.batch_input_flow id="Batch" inline_template="techmngt/batchflow_inline.html" active=True%}
+        {% include "layout/tabs_simple.html" with body=object.batch_input_flow id="Batch" active=True %}
     {% elif object.batch_output_flow %}
-        {% include "layout/tabs_simple.html" with body=object.batch_output_flow id="Batch" inline_template="techmngt/batchflow_inline.html" active=True%}
+        {% include "layout/tabs_simple.html" with body=object.batch_output_flow id="Batch" %}
     {% else %}
+        {% include "layout/card_simple.html" %}
     {% endif %}
-</div>
-
-
 {% endblock %}

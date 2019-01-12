@@ -3,13 +3,11 @@
 FuncFlow views
 """
 
-import django_tables2 as tables
 from django.urls import reverse_lazy
-from django_filters.filters import ModelChoiceFilter
-from django_tables2.utils import A
 
-from funcmngt.models.funcflow import FuncFlow
 from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, BadgesColumn
+from funcmngt.forms.funcflow import FuncFlowForm
+from funcmngt.models.funcflow import FuncFlow
 
 
 # FuncFlow
@@ -43,13 +41,13 @@ class FuncFlowDetailView(BaseDetailView):
 class FuncFlowCreateView(BaseCreateView):
     model = FuncFlow
     success_message = 'Success: Functional Flow was created.'
-
+    form_class = FuncFlowForm
 
 # Update
 class FuncFlowUpdateView(BaseUpdateView):
     model = FuncFlow
     success_message = 'Success: Functional Flow was updated.'
-
+    form_class = FuncFlowForm
 
 # Delete
 class FuncFlowDeleteView(BaseDeleteView):

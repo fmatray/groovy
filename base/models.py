@@ -22,7 +22,7 @@ class Base(models.Model):
     name = models.CharField("Name", max_length=200, blank=False, unique=True)
     status = models.CharField(choices=STATUS, default=STATUS.Draft, max_length=20)
     tags = TaggableManager(blank=True)
-    description = MarkdownxField("Description", null=True, blank=False,
+    description = MarkdownxField("Description", null=True, blank=True,
                                  help_text="<a href='https://en.wikipedia.org/wiki/Markdown'>You can use Markdown</a>")
     documentation = models.URLField("Documentation", null=True, blank=True)
     comment = MarkdownxField("Comment", blank=True,

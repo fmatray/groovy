@@ -1,0 +1,18 @@
+{% extends "base/form.html" %}
+{% load bootstrap4 %}
+
+{% block form_object %}
+<div class="tab-pane fade" id="pills-{{view.model.meta.verbose_name|slugify}}" role="tabpanel"
+     aria-labelledby="pills-{{view.model.meta.verbose_name|slugify}}-tab">
+    <div class="row">
+        <div class="col">{% bootstrap_field form.source_server %}</div>
+        <div class="col">{% bootstrap_field form.source_nat_ip %}</div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">{% bootstrap_field form.destination_nat_ip %}</div>
+        <div class="col">{% bootstrap_field form.destination_server %}</div>
+    </div>
+</div>
+{% endblock %}

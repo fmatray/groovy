@@ -1,16 +1,11 @@
 {% extends 'base/detail.html' %}
 {% load containers %}
+{% load icons %}
 
 {% block navigation %}
-{% create_list "Applications" as navs %}
-{% include "layout/navs_pills.html" with navs=navs %}
+{% include "layout/navs_pill_icon.html" with title="Applications" icon="Application"|get_model_icon active=True %}
 {% endblock %}
 
 {% block detail_content %}
-
-<div class="tab-content" id="pills-tabContent">
     {% include "layout/tabs_list.html" with body=object.app_univers.all id="Applications" active=True %}
-</div>
-
-
 {% endblock %}

@@ -4,11 +4,11 @@ BatchFlow views
 """
 
 import django_tables2 as tables
-from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
-    BadgesColumn, SingleBadgeColumn
 from django.urls import reverse_lazy
-from django_filters.filters import ModelChoiceFilter
-from django_tables2.utils import A
+
+from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
+    SingleBadgeColumn
+from techmngt.forms.batch import BatchFlowForm
 from techmngt.models.batch import BatchFlow
 
 
@@ -50,13 +50,15 @@ class BatchFlowDetailView(BaseDetailView):
 class BatchFlowCreateView(BaseCreateView):
     model = BatchFlow
     success_message = 'Success: BatchFlow was created.'
-
+    form_class = BatchFlowForm
+    template_name = "techmngt/batchflow_form.html"
 
 # Update
 class BatchFlowUpdateView(BaseUpdateView):
     model = BatchFlow
     success_message = 'Success: BatchFlow was updated.'
-
+    form_class = BatchFlowForm
+    template_name = "techmngt/batchflow_form.html"
 
 # Delete
 class BatchFlowDeleteView(BaseDeleteView):

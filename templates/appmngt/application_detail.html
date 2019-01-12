@@ -3,7 +3,6 @@
 {% load icons %}
 
 {% block navigation %}
-<ul class="nav  nav-pills justify-content-center" id="pills-tab" role="tablist">
 {% include "layout/navs_pill_icon.html" with title="Univers" icon="Univers"|get_model_icon active=True %}
 {% include "layout/navs_pill_icon.html" with title="Partner" icon="Partner"|get_model_icon %}
 {% include "layout/navs_pill_icon.html" with title="Environments" icon="Environment"|get_model_icon %}
@@ -11,21 +10,16 @@
 
 {% include "layout/navs_pill_icon.html" with title="Requester" icon="Requester"|get_icon %}
 {% include "layout/navs_pill_icon.html" with title="Receiver" icon="Receiver"|get_icon %}
-</ul>
 {% endblock %}
 
 
 {% block detail_content %}
-<div class="tab-content pl-0 ml-0" id="pills-tabContent">
-    {% include "layout/tabs_simple.html" with body=object.univers id="Univers" active=True%}
-    {% include "layout/tabs_simple.html" with body=object.partner id="Partner" %}
-    {% include "layout/tabs_list.html" with body=object.env_app.all id="Environments" create_url="environment_create" %}
-    {% include "layout/tabs_list.html" with body=object.release_app.all id="Releases" create_url="release_create" %}
+{% include "layout/tabs_simple.html" with body=object.univers id="Univers" active=True%}
+{% include "layout/tabs_simple.html" with body=object.partner id="Partner" %}
+{% include "layout/tabs_list.html" with body=object.env_app.all id="Environments" create_url="environment_create" %}
+{% include "layout/tabs_list.html" with body=object.release_app.all id="Releases" create_url="release_create" %}
 
-    {% include "layout/tabs_list.html" with body=object.subfuncflow_req_app.all id="Requester" %}
-    {% include "layout/tabs_list.html" with body=object.subfuncflow_rec_app.all id="Receiver" %}
-
-</div>
-
+{% include "layout/tabs_list.html" with body=object.subfuncflow_req_app.all id="Requester" %}
+{% include "layout/tabs_list.html" with body=object.subfuncflow_rec_app.all id="Receiver" %}
 
 {% endblock %}

@@ -24,6 +24,7 @@ urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path(r'markdownx/', include('markdownx.urls')),
+    path(r'select2/', include('django_select2.urls')),
 
     path('', include('base.urls')),
     path('appmngt/', include('appmngt.urls')),

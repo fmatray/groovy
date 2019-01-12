@@ -34,7 +34,9 @@
             {% include "layout/card_header.html" %}
             {% include "layout/card_body.html" with object=object no_comment=True %}
             <div class="card-footer bg-primary p-0">
-                {% block navigation %}{% endblock %}
+                <ul class="nav  nav-pills justify-content-center" id="pills-tab" role="tablist">
+                    {% block navigation %}{% endblock %}
+                </ul>
             </div>
         </div>
 
@@ -44,8 +46,9 @@
 
 
     <div class="col-sm-7">
-
-        {% block detail_content %}{% endblock %}
+        <div class="tab-content" id="pills-tabContent">
+            {% block detail_content %}{% endblock %}
+        </div>
     </div>
 </div>
 

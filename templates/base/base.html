@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<!-- SELECT2 -->
+{{ form.media.css }}
+<link rel="stylesheet" href="{% static 'css/select2-bootstrap4.css' %}"/>
 <script src="{% static 'js/base.js' %}"></script>
 <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
 {% endblock %}
@@ -16,10 +19,7 @@
 {% include "layout/about.html" %}
 
 <div class="container-fluid fill mb-5">
-    <div class="my-3 pl-3 py-1 bg-success text-white">
-        <h1>{% block title %}(no title){% endblock %}</h1>
-    </div>
-
+    <h1 class="my-3 pl-3 py-1 bg-secondary text-white">{% block title %}(no title){% endblock %}</h1>
     {% block extra_messages %}{% endblock %}
     {% bootstrap_messages %}
     {% block content %}(no content){% endblock %}
