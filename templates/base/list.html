@@ -14,8 +14,11 @@
 {% if filter %}
 <div class="d-flex justify-content-center mb-3">
     <form class="form form-inline" action="" method="get">
+        {% bootstrap_field filter.form.name layout="inline" form_group_class="form-group mx-1" %}
         {% for field in filter.form %}
-            {% bootstrap_field field layout="inline" addon_before=field.label form_group_class="form-group mx-1" %}
+            {% if field.name != "name" %}
+                {% bootstrap_field field layout="inline" addon_before=field.label form_group_class="form-group mx-1" %}
+            {% endif %}
         {% endfor %}
         {% include "layout/button_submit.html" with label="Filter"%}
     </form>
@@ -26,7 +29,7 @@
 {% render_table table %}
 
 
-<div class="dropdown">
+<div class="float-right">
     {% if object_list.model.get_create_perm in perms %}
         {% include "layout/button_link.html" with link=object_list.model.get_create_url label="Create" %}
     {% endif %}

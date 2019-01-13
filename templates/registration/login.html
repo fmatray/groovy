@@ -21,10 +21,9 @@
                     <div class="card-body">
                         {% csrf_token %}
                         {% bootstrap_form form %}
-                        </button>
+                    <div class="float-right my-3">
+                        {% include "layout/button_submit.html" with class="submit-btn btn-outline-success" label="Let me in!" %}
                     </div>
-                    <div class="card-footer bg-light text-right">
-                        {% include "layout/button_submit.html" with class="submit-btn btn-success" label="Let me in!" %}
                     </div>
                 </form>
 

@@ -29,7 +29,7 @@ class URIFlowList(BaseList):
 
         class Meta(BaseList.BaseTable.Meta):
             model = URIFlow
-            exclude = ['id', 'tags', 'description', 'comment', 'polymorphic_ctype', 'techflow_ptr']
+            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'polymorphic_ctype', 'techflow_ptr']
 
     table_class = URIFlowTable
     model = URIFlow

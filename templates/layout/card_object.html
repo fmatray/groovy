@@ -3,9 +3,11 @@
 
 {% block title%}
 {% if object.get_view_perm in perms %}
+{% spaceless %}
 <a href="{{object.get_absolute_url}}" class="text-white">
     <i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}
 </a>
+{% endspaceless %}
 {% else %}
 <i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}
 {% endif %}
@@ -14,7 +16,18 @@
 
 {% if object.get_update_perm in perms %}
 <div class="float-right">
+    {% spaceless %}
+    <span data-toggle="tooltip" data-placement="top" title="Toggle view">
+    <a class="top-icon collapsed" data-toggle="collapse" href="#{{object.name|slugify}}" aria-expanded="false"
+       aria-controls="{{object.name|slugify}}">
+        <span class="if-collapsed"><i class="fas fa-plus"></i></span>
+        <span class="if-not-collapsed"><i class="fas fa-minus"></i></span>
+    </a>
+    </span>
+    {% endspaceless %}
+    <span data-toggle="tooltip" data-placement="top" title="Edit">
     <a href="{{object.get_update_url}}" class="top-icon"><i class="far fa-edit w-1em text-center mx-2"></i></a>
+    </span>
 </div>
 {% endif %}
 
@@ -24,6 +37,8 @@
 {% block content %}
 {% if object %}
 {% include "layout/card_header.html" %}
-{% include "layout/card_body.html" %}
+<div class="collapse" id="{{object.name|slugify}}">
+    {% include "layout/card_body.html" %}
+</div>
 {% endif %}
 {% endblock %}

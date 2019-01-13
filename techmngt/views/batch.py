@@ -17,8 +17,8 @@ class BatchFlowList(BaseList):
     class BatchFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = BatchFlow
-            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'hours', 'batch_name', 'ord_name', 'script_name',
-                       'subfunc_flow', 'input_flow', 'input_flow', 'polymorphic_ctype']
+            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'hours', 'batch_name', 'ord_name',
+                       'script_name', 'subfunc_flow', 'input_flow', 'input_flow', 'polymorphic_ctype']
 
     class BatchFlowTable(BaseList.BaseTable):
         get_vital = tables.BooleanColumn(verbose_name="Vital", order_by=('subfunc_flow__vital', ))
@@ -34,7 +34,7 @@ class BatchFlowList(BaseList):
 
         class Meta(BaseList.BaseTable.Meta):
             model = BatchFlow
-            exclude = ['id', 'tags', 'description', 'comment', 'polymorphic_ctype', 'techflow_ptr']
+            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'polymorphic_ctype', 'techflow_ptr']
 
     table_class = BatchFlowTable
     model = BatchFlow

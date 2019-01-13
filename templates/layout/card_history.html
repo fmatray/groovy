@@ -4,10 +4,18 @@
 {% block title%}
     {% include "layout/icon_label.html" with label="History" %}
 
-    {% if history|length > 5%}
-        <a class="badge badge-success ml-3 " data-toggle="collapse" href="#collapseHistory" aria-expanded="false" aria-controls="collapseHistory">
-            Full history
+    {% if history|length > 5 %}
+    {% spaceless %}
+    <div class="float-right">
+        <span data-toggle="tooltip" data-placement="top" title="Toggle view">
+        <a class="top-icon collapsed" data-toggle="collapse" href="#collapseHistory" aria-expanded="false"
+           aria-controls="collapseHistory">
+            <span class="if-collapsed"><i class="fas fa-plus"></i></span>
+            <span class="if-not-collapsed"><i class="fas fa-minus"></i></span>
         </a>
+        </span>
+    </div>
+    {% endspaceless %}
     {% endif%}
 {% endblock %}
 
@@ -25,7 +33,7 @@
             <li class="list-group-item">None</li>
         {% endfor %}
     </ul>
-    {% if history|length > 5%}
+    {% if history|length > 5 %}
         <ul class="list-group list-group-flush collapse" id="collapseHistory">
         {% for item in history|slice:"5:" %}
             <li class="list-group-item">

@@ -45,6 +45,12 @@ vertical-align: 0.25em;
     color: #fff;
 }
 
+[data-toggle="collapse"].collapsed .if-not-collapsed {
+  display: none;
+}
+[data-toggle="collapse"]:not(.collapsed) .if-collapsed {
+  display: none;
+}
 
 .nav-pills .nav-link.nav-danger {
   color: rgba(255,159,180,.5);
