@@ -5,7 +5,10 @@
 {% load verbose_names %}
 {% load debug %}
 
-{% block title %}{{table|get_table_verbose_name_plural|title}}{% endblock %}
+{% block title %}
+<li class="breadcrumb-item active"><a href="{% url 'index' %}">Welcome</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{table|get_table_verbose_name_plural|title}}</li>
+{% endblock %}
 
 {% block content %}
 {% if filter %}

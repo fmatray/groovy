@@ -4,7 +4,9 @@
 {% load verbose_names %}
 
 {% block title %}
-{{ object.name|title }}
+<li class="breadcrumb-item active"><a href="{% url 'index' %}">Welcome</a></li>
+<li class="breadcrumb-item"><a href="{{object.get_list_url}}">{{object|object_verbose_name_plural}}</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{object.name|title}}</li>
 {% endblock %}
 
 {% block content %}
@@ -28,7 +30,6 @@
                     {% endif %}
                 </div>
             </div>
-
 
 
             {% include "layout/card_header.html" %}

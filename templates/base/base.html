@@ -19,7 +19,13 @@
 {% include "layout/about.html" %}
 
 <div class="container-fluid fill mb-5">
-    <h1 class="my-3 pl-3 py-1 bg-secondary text-white">{% block title %}(no title){% endblock %}</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb  bg-secondary text-white  my-3">
+            {% block title %}
+            {% endblock %}
+        </ol>
+    </nav>
+
     {% block extra_messages %}{% endblock %}
     {% bootstrap_messages %}
     {% block content %}(no content){% endblock %}

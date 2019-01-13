@@ -1,7 +1,13 @@
 {% extends "base/base.html" %}
 {% load bootstrap4 %}
 {% load containers %}
-{% block title %}{% if object %}Edit {{object}}{% else %}Create {{view.model.meta.verbose_name}}{% endif %}{% endblock %}
+{% load verbose_names %}
+
+{% block title %}
+<li class="breadcrumb-item active"><a href="{% url 'index' %}">Welcome</a></li>
+<li class="breadcrumb-item"><a href="{{view.model.get_list_url}}">{{view.model.meta.verbose_name_plural}}</a></li>
+<li class="breadcrumb-item active" aria-current="page">{% if object %}Edit {{object}}{% else %}Create {{view.model.meta.verbose_name}}{% endif %}</li>
+{% endblock %}
 
 {% block content %}
 <form method="post" action="" class="form" id="id_form" novalidate>

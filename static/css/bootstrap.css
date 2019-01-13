@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -3092,14 +3091,14 @@ input[type="button"].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef; }
+  background-color: #6610f2; }
 
 .breadcrumb-item + .breadcrumb-item {
   padding-left: 0.5rem; }
   .breadcrumb-item + .breadcrumb-item::before {
     display: inline-block;
     padding-right: 0.5rem;
-    color: #868e96;
+    color: #212529;
     content: "/"; }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
@@ -3109,7 +3108,7 @@ input[type="button"].btn-block {
   text-decoration: none; }
 
 .breadcrumb-item.active {
-  color: #868e96; }
+  color: #fff; }
 
 .pagination {
   display: flex;
@@ -6105,10 +6104,3 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
-
-body {
-  -webkit-font-smoothing: antialiased; }
-
-.progress .progress-bar {
-  font-size: 8px;
-  line-height: 8px; }
