@@ -6,7 +6,10 @@
 {% block title %}
 <li class="breadcrumb-item active"><a href="{% url 'index' %}">Welcome</a></li>
 <li class="breadcrumb-item"><a href="{{view.model.get_list_url}}">{{view.model.meta.verbose_name_plural}}</a></li>
-<li class="breadcrumb-item active" aria-current="page">{% if object %}Edit {{object}}{% else %}Create {{view.model.meta.verbose_name}}{% endif %}</li>
+{% if object %}
+<li class="breadcrumb-item"><a href="{{object.get_absolute_url}}">{{object.name}}</a></li>
+{% endif %}
+<li class="breadcrumb-item active" aria-current="page">{% if object %}Update{% else %}Create{% endif %}</li>
 {% endblock %}
 
 {% block content %}

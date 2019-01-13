@@ -24,9 +24,10 @@ class IndexView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['next_releases'] = Release.objects.filter(release_date__gte=datetime.now()).all()
-        context['univers'] = Univers.objects.all()
-        context['partners'] = Partner.objects.all()
+        context['next_releases'] = Release.objects.filter(release_date__gte=datetime.now(),
+                                                          status__in=('On going', 'Released')).all()
+        context['univers'] = Univers.objects.filter(status__in=('On going', 'Released')).all()
+        context['partners'] = Partner.objects.filter(status__in=('On going', 'Released')).all()
 
         # Retreive last changes
         models = [Application, Environment, Partner, Release, Univers,
