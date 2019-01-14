@@ -18,9 +18,9 @@ class ServerType(Base):
 
 class Server(Base):
     icon = "fas fa-server"
-    server_type = models.OneToOneField(ServerType, on_delete=models.CASCADE, verbose_name="Server Type",
+    server_type = models.OneToOneField(ServerType, on_delete=models.PROTECT, verbose_name="Server Type",
                                        limit_choices_to=Base.LIMIT_STATUS,
-                                       default=None, blank=True, null=True, related_name="server_servertype")
+                                       default=None, blank=False, null=False, related_name="server_servertype")
     dns = models.CharField("DNS", max_length=512, blank=True)
     ip = models.CharField("IP", max_length=64, blank=True)
 

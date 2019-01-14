@@ -12,7 +12,7 @@ from funcmngt.models.subfuncflow import SubFuncFlow
 
 class TechFlow(Base, PolymorphicModel):
     icon = "fas fa-wrench"
-    subfunc_flow = models.OneToOneField(SubFuncFlow, on_delete=models.CASCADE, verbose_name="Functional Sub Flow",
+    subfunc_flow = models.OneToOneField(SubFuncFlow, on_delete=models.PROTECT, verbose_name="Sub Functional Flow",
                                         limit_choices_to=Base.LIMIT_STATUS,
                                         default=None, blank=False, null=False, related_name="techflow_subflow")
 

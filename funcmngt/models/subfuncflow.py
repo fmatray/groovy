@@ -15,16 +15,16 @@ class SubFuncFlow(Base):
     subflow_id = models.CharField("Sub flow ID", max_length=64, unique=True,
                                   default="", null=False, blank=False)
     vital = models.BooleanField("Vital", default=False)
-    func_flow = models.ForeignKey(FuncFlow, on_delete=models.CASCADE, verbose_name="Functional Flow",
+    func_flow = models.ForeignKey(FuncFlow, on_delete=models.PROTECT, verbose_name="Functional Flow",
                                   limit_choices_to=Base.LIMIT_STATUS,
-                                  default=None, blank=True, null=True, related_name="subfuncflow_flow")
+                                  default=None, blank=False, null=False, related_name="subfuncflow_flow")
 
-    requester = models.ForeignKey(Application, on_delete=models.CASCADE, verbose_name="Requester",
+    requester = models.ForeignKey(Application, on_delete=models.PROTECT, verbose_name="Requester",
                                   limit_choices_to=Base.LIMIT_STATUS,
-                                  default=None, blank=True, null=True, related_name="subfuncflow_req_app")
-    receiver = models.ForeignKey(Application, on_delete=models.CASCADE, verbose_name="Receiver",
+                                  default=None, blank=False, null=False, related_name="subfuncflow_req_app")
+    receiver = models.ForeignKey(Application, on_delete=models.PROTECT, verbose_name="Receiver",
                                  limit_choices_to=Base.LIMIT_STATUS,
-                                 default=None, blank=True, null=True, related_name="subfuncflow_rec_app")
+                                 default=None, blank=False, null=False, related_name="subfuncflow_rec_app")
 
     identification_fields = ['func_flow', 'subflow_id', 'vital', 'div', 'requester_partner', 'receiver_partner']
     identification_list_fields = []

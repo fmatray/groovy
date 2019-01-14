@@ -11,12 +11,12 @@ from .server import Server
 
 class NetworkFlow(Base):
     icon = "fas fa-network-wired"
-    source_server = models.ForeignKey(Server, on_delete=models.CASCADE, verbose_name="Source server",
+    source_server = models.ForeignKey(Server, on_delete=models.PROTECT, verbose_name="Source server",
                                       limit_choices_to=Base.LIMIT_STATUS,
-                                      default=None, blank=True, null=True, related_name="source_server_env")
-    destination_server = models.ForeignKey(Server, on_delete=models.CASCADE, verbose_name="Destination server",
+                                      default=None, blank=False, null=False, related_name="source_server_env")
+    destination_server = models.ForeignKey(Server, on_delete=models.PROTECT, verbose_name="Destination server",
                                            limit_choices_to=Base.LIMIT_STATUS,
-                                           default=None, blank=True, null=True, related_name="destination_server_env")
+                                           default=None, blank=False, null=False, related_name="destination_server_env")
 
     source_nat_ip = models.CharField("Source NAT IP", max_length=64, blank=True)
 
