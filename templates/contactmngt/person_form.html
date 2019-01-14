@@ -1,0 +1,9 @@
+{% extends "contactmngt/form.html" %}
+{% load bootstrap4 %}
+
+{% block form_content %}
+{% bootstrap_field form.first_name  %}
+{% bootstrap_field form.last_name  %}
+{% bootstrap_field form.title  %}
+{% bootstrap_field form.team  %}
+{% endblock %}

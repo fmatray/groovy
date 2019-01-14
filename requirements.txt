@@ -17,3 +17,4 @@ django-markdownx
 django-phonenumber-field
 phonenumbers
 django_select2
+django-cryptography

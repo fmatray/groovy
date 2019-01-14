@@ -1,6 +1,8 @@
 {% extends "layout/tabs_base.html" %}
 {% block content %}
-    {% if body %}
+    {% if template %}
+        {% include template with object=body %}
+    {% elif body %}
         {% include "layout/card_object.html" with object=body %}
     {% else %}
         {% include "layout/card_simple.html" with object=body %}

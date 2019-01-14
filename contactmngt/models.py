@@ -1,8 +1,8 @@
 from appmngt.models.partner import Partner
 from base.models import Base
 from django.db import models
-
 from django.urls import reverse, NoReverseMatch
+from django_cryptography.fields import encrypt
 from phonenumber_field.modelfields import PhoneNumberField
 from simple_history.models import HistoricalRecords
 
@@ -10,18 +10,18 @@ from simple_history.models import HistoricalRecords
 class Contact(models.Model):
     """Contact model."""
 
-    phone_number = PhoneNumberField('Phone number', blank=True)
-    email_address = models.EmailField('email address', blank=True)
+    phone_number = encrypt(PhoneNumberField('Phone number', blank=True))
+    email_address = encrypt(models.EmailField('email address', blank=True))
 
-    web_site = models.URLField('Web site', blank=True)
+    web_site = encrypt(models.URLField('Web site', blank=True))
 
-    street = models.TextField('street', blank=True)
-    city = models.CharField('city', max_length=200, blank=True)
-    province = models.CharField('province', max_length=200, blank=True)
-    postal_code = models.CharField('postal code', max_length=10, blank=True)
-    country = models.CharField('country', max_length=100, blank=True)
+    street = encrypt(models.TextField('street', blank=True))
+    city = encrypt(models.CharField('city', max_length=200, blank=True))
+    province = encrypt(models.CharField('province', max_length=200, blank=True))
+    postal_code = encrypt(models.CharField('postal code', max_length=10, blank=True))
+    country = encrypt(models.CharField('country', max_length=100, blank=True))
 
-    about = models.TextField('about', blank=True)
+    about = encrypt(models.TextField('about', blank=True))
     history = HistoricalRecords(inherit=True)
 
     # URLS
@@ -87,8 +87,9 @@ class Contact(models.Model):
 
 
 class Team(Contact):
-    name = models.CharField('Name', max_length=100)
-    departement = models.CharField('Department', max_length=100)
+    icon = "fas fa-users"
+    name = encrypt(models.CharField('Name', max_length=100))
+    departement = encrypt(models.CharField('Department', max_length=100))
     partner = models.ForeignKey(Partner, on_delete=models.PROTECT, verbose_name="Partner",
                                 limit_choices_to=Base.LIMIT_STATUS,
                                 default=None, blank=False, null=False, related_name="team_partner")
@@ -102,14 +103,19 @@ class Team(Contact):
         unique_together = ('name', 'departement', 'partner')
 
 class Person(Contact):
-    first_name = models.CharField('first name', max_length=100)
-    last_name = models.CharField('last name', max_length=200)
-    title = models.CharField('title', max_length=200, blank=True)
+    icon = "fas fa-user"
+    first_name = encrypt(models.CharField('first name', max_length=100))
+    last_name = encrypt(models.CharField('last name', max_length=200))
+    title = encrypt(models.CharField('title', max_length=200, blank=True))
     team = models.ForeignKey(Team, on_delete=models.PROTECT, verbose_name="Team",
                              default=None, blank=False, null=False, related_name="person_team")
 
+    def name(self):
+        return self.__str__()
+
     def __str__(self):
         return "{} {}".format(self.first_name, self.last_name)
+
     class Meta:
         verbose_name = "Person"
         verbose_name_plural = "Persons"

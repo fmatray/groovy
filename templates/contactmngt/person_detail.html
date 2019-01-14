@@ -1,0 +1,10 @@
+{% extends "contactmngt/contact_detail.html" %}
+{% load icons %}
+
+{% block navigation %}
+{% include "layout/navs_pill_icon.html" with title="Team" icon="Team"|get_model_icon %}
+{% endblock %}
+
+{% block detail_content %}
+{% include "layout/tabs_simple.html" with body=object.team id="Team" template="layout/card_contact.html" active=True%}
+{% endblock %}

@@ -12,7 +12,7 @@ from techmngt.models.batch import BatchFlow
 from techmngt.models.network import NetworkFlow
 from techmngt.models.server import Server
 from techmngt.models.uri import URIFlow
-
+from contactmngt.models import Team, Person
 register = template.Library()
 
 
@@ -20,7 +20,8 @@ register = template.Library()
 def get_model_icon(label):
     models = [Application, Environment, Partner, Release, Univers,
               FuncFlow, SubFuncFlow,
-              AsynchronousFlow, BatchFlow, NetworkFlow, URIFlow, Server]
+              AsynchronousFlow, BatchFlow, NetworkFlow, URIFlow, Server,
+              Team, Person]
     for model in models:
         if label.lower() == model.__name__.lower():
             return model.icon
@@ -66,6 +67,8 @@ def get_icon(label):
         "univers": "fas fa-globe",
         "uri": "fas fa-cloud",
         "view": "far fa-eye",
+        "team": "fas fa-users",
+        "person": "fas fa-user"
     }
 
     label = label.lower()

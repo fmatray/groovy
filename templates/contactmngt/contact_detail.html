@@ -43,8 +43,6 @@
                 </ul>
             </div>
         </div>
-
-        {% include "layout/card_simple.html" with title="About" body=object.about|default:'<span class="text-muted">No comment<span>' %}
         {% include "layout/card_history.html" with history=object.history.all %}
     </div>
 

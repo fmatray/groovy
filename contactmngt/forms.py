@@ -1,4 +1,4 @@
-from contactmngt.models import Team
+from contactmngt.models import Team, Person
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -19,6 +19,14 @@ class TeamForm(forms.ModelForm):
 
     class Meta:
         model = Team
+        fields = '__all__'
+        widgets = {
+            'street': forms.Textarea(attrs={'cols': '40', 'rows': '3'})
+        }
+
+class PersonForm(forms.ModelForm):
+    class Meta:
+        model = Person
         fields = '__all__'
         widgets = {
             'street': forms.Textarea(attrs={'cols': '40', 'rows': '3'})

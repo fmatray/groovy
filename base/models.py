@@ -13,20 +13,20 @@ from simple_history.models import HistoricalRecords
 from taggit.managers import TaggableManager
 
 from base.helpers import get_status_color
-
+from django_cryptography.fields import encrypt
 
 class Base(models.Model):
     STATUS = Choices('Draft', 'On going', 'Released', 'Retired', 'Abort')
     LIMIT_STATUS = {'status__in': ('On going', 'Released')}
 
-    name = models.CharField("Name", max_length=200, blank=False, unique=True)
+    name = encrypt(models.CharField("Name", max_length=200, blank=False, unique=True))
     status = models.CharField(choices=STATUS, default=STATUS.Draft, max_length=20)
     tags = TaggableManager(blank=True)
-    description = MarkdownxField("Description", null=True, blank=False,
-                                 help_text="<a href='https://en.wikipedia.org/wiki/Markdown'>You can use Markdown</a>")
-    documentation = models.URLField("Documentation", null=True, blank=True)
-    comment = MarkdownxField("Comment", blank=True,
-                             help_text="<a href='https://en.wikipedia.org/wiki/Markdown'>You can use Markdown</a>")
+    description = encrypt(MarkdownxField("Description", null=True, blank=False,
+                                 help_text="<a href='https://en.wikipedia.org/wiki/Markdown'>You can use Markdown</a>"))
+    documentation = encrypt(models.URLField("Documentation", null=True, blank=True))
+    comment = encrypt(MarkdownxField("Comment", blank=True,
+                             help_text="<a href='https://en.wikipedia.org/wiki/Markdown'>You can use Markdown</a>"))
 
     history = HistoricalRecords(inherit=True)
     identification_fields = []
