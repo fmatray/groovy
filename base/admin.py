@@ -13,11 +13,13 @@ from simple_history.admin import SimpleHistoryAdmin
 from taggit.models import Tag
 from markdownx.widgets import AdminMarkdownxWidget
 from django.db import models
+from .models import QuickLink
 # Register your models here.
 
 
 admin.site.unregister(User)
 admin.site.unregister(Tag)
+admin.site.register(QuickLink)
 
 @admin.register(User)
 class UserAdmin(UserAdmin):

@@ -80,12 +80,22 @@ class CustomIndexDashboard(Dashboard):
                     models=('contactmngt.models.*',),
                 )
         )
+        # append a group for "Quick links"
+        self.children.append(
+                modules.AppList('',
+                    column=2,
+                    collapsible=False,
+                    models=('base.models.QuickLink',),
+                )
+        )
         # append a group for "Administration"
         self.children.append(
                 modules.AppList('',
                     column=2,
                     collapsible=False,
-                    models=('django.contrib.*',),
+                    models=(
+
+                        'django.contrib.*',),
                 )
         )
         # append a recent actions module

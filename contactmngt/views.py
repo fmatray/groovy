@@ -12,6 +12,7 @@ from django_tables2 import SingleTableView
 from django_tables2.export.views import ExportMixin
 from contactmngt.forms import TeamForm, PersonForm
 
+#TODO : PERMS
 class TeamMixin(LoginRequiredMixin):
     perm = ''
 

@@ -1,7 +1,11 @@
 import django_filters
 import django_tables2 as tables
+from base.helpers import get_status_color
+from base.models import Base
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, AccessMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models.deletion import ProtectedError
+from django.http import HttpResponseRedirect
 from django.utils.html import conditional_escape
 from django.views import generic
 from django.views.generic.detail import DetailView
@@ -9,10 +13,7 @@ from django_filters.filters import CharFilter, ChoiceFilter
 from django_filters.views import FilterView
 from django_tables2 import SingleTableView
 from django_tables2.export.views import ExportMixin
-
-from base.helpers import get_status_color
-from base.models import Base
-
+from django.contrib import messages
 
 class BaseMixin(LoginRequiredMixin, PermissionRequiredMixin, AccessMixin):
     perm = ''
@@ -99,7 +100,6 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
         export_formats = ['csv', 'xls', 'json']
         view_perms = {}
 
-
         def before_render(self, request):
             """implement permissions"""
             for col, perm in self.view_perms.items():
@@ -136,6 +136,15 @@ class BaseUpdateView(BaseCreateUpdateMixin, SuccessMessageMixin, generic.UpdateV
     template_name = 'base/form.html'
 
 
-class BaseDeleteView(BaseMixin, generic.DeleteView):
+class BaseDeleteView(BaseMixin, SuccessMessageMixin, generic.DeleteView):
     perm = 'delete'
     template_name = "base/confirm_delete.html"
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return self.delete(request, *args, **kwargs)
+        except ProtectedError:
+            obj = self.get_object()
+            error_url = obj.get_absolute_url()
+            messages.error(self.request, 'Object cannot be delete as it is related to another one.')
+            return HttpResponseRedirect(error_url)

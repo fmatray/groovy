@@ -17,7 +17,7 @@ from techmngt.models.batch import BatchFlow
 from techmngt.models.network import NetworkFlow
 from techmngt.models.server import Server
 from techmngt.models.uri import URIFlow
-
+from base.models import QuickLink
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "base/index.html"
@@ -28,6 +28,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
                                                           status__in=('On going', 'Released')).all()
         context['univers'] = Univers.objects.filter(status__in=('On going', 'Released')).all()
         context['partners'] = Partner.objects.filter(status__in=('On going', 'Released')).all()
+        context['quicklinks'] = QuickLink.objects.all()
 
         # Retreive last changes
         models = [Application, Environment, Partner, Release, Univers,

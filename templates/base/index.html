@@ -54,9 +54,11 @@
                 </span>
             </div>
             <ul class="list-group list-group-flush ">
+                {% for item in quicklinks %}
                 <li class="list-group-item">
-                    <a href="#">link 1</a>
+                    <a href="{{ item.url }}">{{item.name|title}}</a>
                 </li>
+                {% endfor %}
             </ul>
         </div>
     </div>

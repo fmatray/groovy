@@ -107,3 +107,14 @@ class Base(models.Model):
     class Meta:
         abstract = True
         ordering = ["name"]
+
+
+class QuickLink(models.Model):
+    name = models.CharField("Name", max_length=200, blank=False, unique=True)
+    url = encrypt(models.URLField("URL", null=False, blank=False))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["name"]
