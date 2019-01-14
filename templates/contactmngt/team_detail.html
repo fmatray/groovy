@@ -1,0 +1,13 @@
+{% extends "contactmngt/contact_detail.html" %}
+{% load icons %}
+
+{% block navigation %}
+{% include "layout/navs_pill_icon.html" with title="Partner" icon="Partner"|get_model_icon %}
+{% include "layout/navs_pill_icon.html" with title="Persons" icon="far fa-address-book" %}
+{% endblock %}
+
+{% block detail_content %}
+{% include "layout/tabs_simple.html" with body=object.partner id="Partner" active=True %}
+{% include "layout/tabs_list.html" with body=object.person_team.all id="Persons"  %}
+
+{% endblock %}

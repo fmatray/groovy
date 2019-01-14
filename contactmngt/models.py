@@ -80,7 +80,8 @@ class Contact(models.Model):
     @classmethod
     def get_delete_perm(cls):
         return cls.get_perm('delete')
-
+    def meta(self):
+        return self._meta
     class Meta:
         abstract = True
 
@@ -88,20 +89,27 @@ class Contact(models.Model):
 class Team(Contact):
     name = models.CharField('Name', max_length=100)
     departement = models.CharField('Department', max_length=100)
-    partner = models.ForeignKey(Partner, on_delete=models.CASCADE, verbose_name="Partner",
+    partner = models.ForeignKey(Partner, on_delete=models.PROTECT, verbose_name="Partner",
                                 limit_choices_to=Base.LIMIT_STATUS,
-                                default=None, blank=True, null=True, related_name="team_partner")
+                                default=None, blank=False, null=False, related_name="team_partner")
 
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Team"
+        verbose_name_plural = "Teams"
+        unique_together = ('name', 'departement', 'partner')
 
 class Person(Contact):
     first_name = models.CharField('first name', max_length=100)
     last_name = models.CharField('last name', max_length=200)
     title = models.CharField('title', max_length=200, blank=True)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE, verbose_name="Team",
+    team = models.ForeignKey(Team, on_delete=models.PROTECT, verbose_name="Team",
                              default=None, blank=False, null=False, related_name="person_team")
 
     def __str__(self):
         return "{} {}".format(self.first_name, self.last_name)
+    class Meta:
+        verbose_name = "Person"
+        verbose_name_plural = "Persons"
