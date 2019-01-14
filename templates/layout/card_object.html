@@ -1,18 +1,18 @@
 {% extends "layout/card_base.html" %}
 {% load verbose_names get_attr %}
+{% load icons %}
 
 {% block title%}
 {% if object.get_view_perm in perms %}
 {% spaceless %}
 <a href="{{object.get_absolute_url}}" class="text-white">
-<i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}</a>
+<i class="{{object.icon}} text-center mr-2"></i>{{object.name|default:"None"|title}}</a>
 {% endspaceless %}
 {% else %}
-<i class="{{object.icon}} text-center mr-2"></i>{{object|default:"None"|title}}
+<i class="{{object.icon}} text-center mr-2"></i>{{object.name|default:"None"|title}}
 {% endif %}
 
-{% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
-
+{% include "layout/badge.html" with object=object.status class=object|get_object_status_color|add:" ml-3"%}
 {% if object.get_update_perm in perms %}
 <div class="float-right">
     {% spaceless %}

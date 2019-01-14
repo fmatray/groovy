@@ -8,6 +8,5 @@
 
 {% block detail_content %}
 {% include "layout/tabs_simple.html" with body=object.partner id="Partner" active=True %}
-{% include "layout/tabs_list.html" with body=object.person_team.all id="Persons"  %}
-
+{% include "layout/tabs_list.html" with body=object.person_team.all template="layout/card_contact.html" id="Persons"  %}
 {% endblock %}

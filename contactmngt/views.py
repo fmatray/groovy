@@ -22,10 +22,9 @@ class TeamList(TeamMixin, FilterView, ExportMixin, SingleTableView):
     strict = False
 
     class TeamFilter(django_filters.FilterSet):
-        name = CharFilter(lookup_expr='contains')
         class Meta:
             model = Team
-            fields = ['name', 'partner']
+            fields = ['partner']
 
     class TeamTable(tables.Table):
         name = tables.LinkColumn()

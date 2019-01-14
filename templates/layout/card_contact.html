@@ -2,19 +2,18 @@
 {% load verbose_names get_attr %}
 
 {% block title%}
-{% with team=object %}
 {% spaceless %}
-<a href="{{team.get_absolute_url}}" class="text-white">
-<i class="{{team.icon}} text-center mr-2"></i>{{team.name|title}} ({{team.departement}})</a>
+<a href="{{object.get_absolute_url}}" class="text-white">
+<i class="{{object.icon}} text-center mr-2"></i>{{object.name|title}} {% if object.departement%}({{object.departement}}){% endif %}</a>
 {% endspaceless %}
 
 {% if object.get_update_perm in perms %}
 <div class="float-right">
-    {% if team.person_team.all %}
+    {% if object.person_team.all %}
     {% spaceless %}
     <span data-toggle="tooltip" data-placement="bottom" title="Toggle view">
-    <a class="top-icon collapsed" data-toggle="collapse" href="#{{team.name|slugify}}" aria-expanded="false"
-       aria-controls="{{team.name|slugify}}">
+    <a class="top-icon collapsed" data-toggle="collapse" href="#{{object.name|slugify}}" aria-expanded="false"
+       aria-controls="{{object.name|slugify}}">
         <span class="if-collapsed"><i class="fas fa-plus"></i></span>
         <span class="if-not-collapsed"><i class="fas fa-minus"></i></span>
     </a>
@@ -22,26 +21,21 @@
     {% endspaceless %}
     {% endif %}
     <span data-toggle="tooltip" data-placement="bottom" title="Edit">
-    <a href="{{team.get_update_url}}" class="top-icon"><i class="far fa-edit w-1em text-center mx-2"></i></a>
+    <a href="{{object.get_update_url}}" class="top-icon"><i class="far fa-edit w-1em text-center mx-2"></i></a>
     </span>
 </div>
 {% endif %}
 
-
-
-
-{% endwith %}
 {% endblock %}
 
 
 {% block content %}
-{% with team=object %}
 <div class="card-body">
-    {% include "layout/contact.html" with object=team %}
+    {% include "layout/contact.html"  %}
 </div>
 
-<div class="collapse" id="{{team.name|slugify}}">
-{% for person in team.person_team.all %}
+<div class="collapse" id="{{object.name|slugify}}">
+{% for person in object.person_team.all %}
 <div class="card-body border-top">
     <div class="mb-3">
         <i class="fas fa-user w-1em text-center mr-2"></i><strong>{{person}}</strong> {% if person.title%}({{person.title}}){% endif %}
@@ -51,6 +45,5 @@
 {% endfor %}
 </div>
 
-{% endwith %}
 {% endblock %}
 

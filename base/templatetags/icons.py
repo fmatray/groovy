@@ -13,6 +13,8 @@ from techmngt.models.network import NetworkFlow
 from techmngt.models.server import Server
 from techmngt.models.uri import URIFlow
 from contactmngt.models import Team, Person
+from base.helpers import get_status_color
+
 register = template.Library()
 
 
@@ -79,3 +81,7 @@ def get_icon(label):
     if label[:-2] in icons:
         return icons[label[:-2]]
     return None
+
+@register.filter
+def get_object_status_color(object):
+    return get_status_color(object.status)

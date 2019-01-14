@@ -5,23 +5,24 @@ from django.urls import reverse, NoReverseMatch
 from django_cryptography.fields import encrypt
 from phonenumber_field.modelfields import PhoneNumberField
 from simple_history.models import HistoricalRecords
-
+from markdownx.models import MarkdownxField
 
 class Contact(models.Model):
     """Contact model."""
 
     phone_number = encrypt(PhoneNumberField('Phone number', blank=True))
-    email_address = encrypt(models.EmailField('email address', blank=True))
+    email_address = encrypt(models.EmailField('Email address', blank=True))
 
     web_site = encrypt(models.URLField('Web site', blank=True))
 
-    street = encrypt(models.TextField('street', blank=True))
-    city = encrypt(models.CharField('city', max_length=200, blank=True))
-    province = encrypt(models.CharField('province', max_length=200, blank=True))
-    postal_code = encrypt(models.CharField('postal code', max_length=10, blank=True))
-    country = encrypt(models.CharField('country', max_length=100, blank=True))
+    street = encrypt(models.TextField('Street', blank=True))
+    city = encrypt(models.CharField('City', max_length=200, blank=True))
+    province = encrypt(models.CharField('Province', max_length=200, blank=True))
+    postal_code = encrypt(models.CharField('Postal code', max_length=10, blank=True))
+    country = encrypt(models.CharField('Country', max_length=100, blank=True))
 
-    about = encrypt(models.TextField('about', blank=True))
+    about = encrypt(MarkdownxField('About', blank=True,
+                                   help_text="<a href='https://en.wikipedia.org/wiki/Markdown'>You can use Markdown</a>"))
     history = HistoricalRecords(inherit=True)
 
     # URLS
@@ -100,13 +101,12 @@ class Team(Contact):
     class Meta:
         verbose_name = "Team"
         verbose_name_plural = "Teams"
-        unique_together = ('name', 'departement', 'partner')
 
 class Person(Contact):
     icon = "fas fa-user"
-    first_name = encrypt(models.CharField('first name', max_length=100))
-    last_name = encrypt(models.CharField('last name', max_length=200))
-    title = encrypt(models.CharField('title', max_length=200, blank=True))
+    first_name = encrypt(models.CharField('First name', max_length=100))
+    last_name = encrypt(models.CharField('Last name', max_length=200))
+    title = encrypt(models.CharField('Title', max_length=200, blank=True))
     team = models.ForeignKey(Team, on_delete=models.PROTECT, verbose_name="Team",
                              default=None, blank=False, null=False, related_name="person_team")
 

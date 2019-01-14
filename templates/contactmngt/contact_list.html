@@ -6,7 +6,7 @@
 
 {% block title %}
 <li class="breadcrumb-item active"><a href="{% url 'index' %}">Welcome</a></li>
-<li class="breadcrumb-item active" aria-current="page">Teams</li>
+<li class="breadcrumb-item active" aria-current="page">{{table|get_table_verbose_name_plural|title}}</li>
 {% endblock %}
 
 {% block content %}
@@ -14,12 +14,9 @@
 <div class="d-flex justify-content-center mb-3">
     <form class="form form-inline" action="" method="get">
         {% if filter.form.name %}
-        {% bootstrap_field filter.form.name layout="inline" form_group_class="form-group mx-1" %}
         {% endif %}
         {% for field in filter.form %}
-            {% if field.name != "name" %}
-                {% bootstrap_field field layout="inline" addon_before=field.label form_group_class="form-group mx-1" %}
-            {% endif %}
+            {% bootstrap_field field layout="inline" addon_before=field.label form_group_class="form-group mx-1" %}
         {% endfor %}
         {% include "layout/button_submit.html" with label="Filter"%}
     </form>

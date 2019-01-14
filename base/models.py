@@ -19,7 +19,7 @@ class Base(models.Model):
     STATUS = Choices('Draft', 'On going', 'Released', 'Retired', 'Abort')
     LIMIT_STATUS = {'status__in': ('On going', 'Released')}
 
-    name = encrypt(models.CharField("Name", max_length=200, blank=False, unique=True))
+    name = models.CharField("Name", max_length=200, blank=False, unique=True)
     status = models.CharField(choices=STATUS, default=STATUS.Draft, max_length=20)
     tags = TaggableManager(blank=True)
     description = encrypt(MarkdownxField("Description", null=True, blank=False,

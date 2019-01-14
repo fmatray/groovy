@@ -2,6 +2,7 @@
 {% load containers %}
 {% load static %}
 {% load verbose_names %}
+{% load icons %}
 
 {% block title %}
 <li class="breadcrumb-item active"><a href="{% url 'index' %}">Welcome</a></li>
@@ -16,7 +17,7 @@
         <div class="card border-primary mb-3">
             <div class="card-header bg-primary text-white">
                 <i class="{{object.icon}} text-center mr-2"></i>{{object|object_verbose_name|title}}
-                {% include "layout/badge.html" with object=object.status class="badge-success ml-3"%}
+                {% include "layout/badge.html" with object=object.status class=object|get_object_status_color|add:" ml-3"%}
 
                 <div class="float-right">
                     {% if object.get_update_perm in perms %}

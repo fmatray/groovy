@@ -11,12 +11,15 @@ class EnvironmentForm(BaseForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        name = cleaned_data['name'].lower()
-        app = cleaned_data['application']
         try:
+            name = cleaned_data['name'].lower()
+            app = cleaned_data['application']
+
             env = Environment.objects.get(name__iexact=name, application=app)
             if self.instance != env:
                 self.add_error('name', 'Name and application must be unique together')
+        except KeyError:
+            pass
         except ObjectDoesNotExist:
             pass
         return cleaned_data
