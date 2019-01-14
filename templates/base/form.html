@@ -21,7 +21,7 @@
                 <ul class="nav nav-pills justify-content-center " id="pills-tab" role="tablist">
                     {% include "layout/navs_pill_icon.html" with title="Identification" icon="fas fa-passport" div=True active=True %}
                     {% include "layout/navs_pill_icon.html" with title="Description" icon="fas fa-pen" div=True %}
-                    {% if form.fields|length > 6 %}
+                    {% if form.fields|length > 7 %}
                     {% include "layout/navs_pill_icon.html" with title=view.model.meta.verbose_name icon=view.model.icon div=True %}
                     {% endif %}
                     {% include "layout/navs_pill_icon.html" with title="Comment" icon="far fa-comment" %}
@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="row" style="height:20em;">
+    <div class="row" style="height:25em;">
         <div class="col-sm-8 offset-sm-2 ">
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-identification" role="tabpanel"
@@ -39,6 +39,7 @@
                         <div class="col">{% bootstrap_field form.tags  %}</div>
                         <div class="col">{% bootstrap_field form.status  %}</div>
                     </div>
+                    {% bootstrap_field form.chg_reason  %}
                     {% bootstrap_field form.documentation  %}
 
                 </div>
@@ -48,10 +49,10 @@
 
                 </div>
                 {% block form_object %}
-                {% if form.fields|length > 6 %}
+                {% if form.fields|length > 7 %}
                     <div class="tab-pane fade" id="pills-{{view.model.meta.verbose_name|slugify}}" role="tabpanel" aria-labelledby="pills-{{view.model.meta.verbose_name|slugify}}-tab">
                         {% for field in form %}
-                        {% if not field.name|in_list:"name,status,tags,comment,description,documentation" %}
+                        {% if not field.name|in_list:"name,status,tags,comment,description,documentation,chg_reason" %}
                             {% bootstrap_field field %}
                         {% endif%}
                         {% endfor %}
