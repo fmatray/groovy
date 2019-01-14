@@ -20,14 +20,14 @@
 
                 <div class="float-right">
                     {% if object.get_update_perm in perms %}
-                    <span data-toggle="tooltip" data-placement="top" title="Edit">
+                    <span data-toggle="tooltip" data-placement="bottom" title="Edit">
                     <a href="{{object.get_update_url}}" class="top-icon"><i
                             class="far fa-edit w-1em text-center mx-2"></i></a>
                     </span>
                     {% endif %}
 
                     {% if object.get_delete_perm in perms %}
-                    <span data-toggle="tooltip" data-placement="top" title="Delete">
+                    <span data-toggle="tooltip" data-placement="bottom" title="Delete">
                     <a href="#" class="top-icon" data-toggle="modal" data-target="#deleteModal"><i
                             class="far fa-trash-alt w-1em text-center mx-2"></i></a>
                     </span>
