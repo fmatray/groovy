@@ -11,6 +11,7 @@ from base.admin import BaseAdmin
 from techmngt.models.batch import BatchFlow
 from techmngt.models.techflow import TechFlow
 from techmngt.models.uri import URIFlow
+from techmngt.models.synchronous import SynchronousFlow
 
 
 class IsVital(admin.SimpleListFilter):
@@ -38,7 +39,7 @@ class TechFlowAdmin(BaseAdmin, PolymorphicParentModelAdmin):
     Admin TechFlow
     """
     base_model = TechFlow
-    child_models = (BatchFlow, URIFlow)
+    child_models = (BatchFlow, URIFlow, SynchronousFlow)
     fieldsets = [('Functionnal flow', {'fields': ('subfunc_flow',)}),
                  ]
     list_display = ['subfunc_flow', 'get_verbose_name', 'get_vital']

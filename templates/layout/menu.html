@@ -42,7 +42,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% include "layout/menu_dropdown_item.html" with link="asynchronousflow_list" label="Async. flows"%}
                     {% include "layout/menu_dropdown_item.html" with link="batchflow_list" label="Batches"%}
+                    <div class="dropdown-divider"></div>
                     {% include "layout/menu_dropdown_item.html" with link="uriflow_list" label="URI"%}
+                    {% include "layout/menu_dropdown_item.html" with link="synchronousflow_list" label="Sync. flows"%}
                     <div class="dropdown-divider"></div>
                     {% include "layout/menu_dropdown_item.html" with link="networkflow_list" label="Network"%}
                     {% include "layout/menu_dropdown_item.html" with link="server_list" label="Servers"%}</div>

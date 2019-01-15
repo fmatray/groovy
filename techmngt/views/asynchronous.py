@@ -21,7 +21,7 @@ class AsynchronousFlowList(BaseList):
     class AsynchronousFlowTable(BaseList.BaseTable):
         batch = SingleBadgeColumn()
         view_perms = {
-            'badge':'techmngt.view_batchflow'
+            'batch':'techmngt.view_batchflow'
         }
         class Meta(BaseList.BaseTable.Meta):
             model = AsynchronousFlow

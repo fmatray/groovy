@@ -11,6 +11,7 @@ from .protocol import ProtocolAdmin
 from .server import ServerAdmin, ServerTypeAdmin
 from .techflow import TechFlowAdmin
 from .uri import URIFlowAdmin
+from .synchronous import SynchronousFlowAdmin
 
 __all__ = [AsynchronousFlowAdmin, BatchFlowAdmin, NetworkFlowAdmin, ProtocolAdmin,
-           ServerAdmin, ServerTypeAdmin, TechFlowAdmin, URIFlowAdmin]
+           ServerAdmin, ServerTypeAdmin, TechFlowAdmin, URIFlowAdmin, SynchronousFlowAdmin]

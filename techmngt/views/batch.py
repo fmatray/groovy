@@ -34,7 +34,7 @@ class BatchFlowList(BaseList):
 
         class Meta(BaseList.BaseTable.Meta):
             model = BatchFlow
-            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'polymorphic_ctype', 'techflow_ptr']
+            exclude = ['id', 'description', 'documentation', 'comment', 'polymorphic_ctype', 'techflow_ptr']
 
     table_class = BatchFlowTable
     model = BatchFlow

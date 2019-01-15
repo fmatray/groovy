@@ -13,11 +13,15 @@ from django_tables2.export.views import ExportMixin
 from contactmngt.forms import TeamForm, PersonForm
 
 #TODO : PERMS
-class TeamMixin(LoginRequiredMixin):
+class ContactMixin(LoginRequiredMixin, PermissionRequiredMixin, AccessMixin):
     perm = ''
 
+    def get_permission_required(self):
+        app, mdl = self.model._meta.label_lower.split('.')
+        return ("{}.{}_{}".format(app, self.perm, mdl),)
 
-class TeamList(TeamMixin, FilterView, ExportMixin, SingleTableView):
+
+class TeamList(ContactMixin, FilterView, ExportMixin, SingleTableView):
     perm = 'view'
     # all data if no filter
     strict = False
@@ -44,13 +48,13 @@ class TeamList(TeamMixin, FilterView, ExportMixin, SingleTableView):
     model = Team
 
 
-class TeamDetailView(TeamMixin, DetailView):
+class TeamDetailView(ContactMixin, DetailView):
     perm = 'view'
     model = Team
 
 
 
-class TeamCreateUpdateMixin(TeamMixin):
+class TeamCreateUpdateMixin(ContactMixin):
     model = Team
     template_name = 'contactmngt/team_form.html'
     form_class = TeamForm
@@ -69,7 +73,7 @@ class TeamUpdateView(TeamCreateUpdateMixin, SuccessMessageMixin, generic.UpdateV
     perm = 'change'
 
 
-class TeamDeleteView(TeamMixin, generic.DeleteView):
+class TeamDeleteView(ContactMixin, generic.DeleteView):
     perm = 'delete'
     model = Team
     template_name = "base/confirm_delete.html"
@@ -77,11 +81,7 @@ class TeamDeleteView(TeamMixin, generic.DeleteView):
 
 """--------------- PERSONS ---------------"""
 
-class PersonMixin(LoginRequiredMixin):
-    perm = ''
-
-
-class PersonList(PersonMixin, FilterView, ExportMixin, SingleTableView):
+class PersonList(ContactMixin, FilterView, ExportMixin, SingleTableView):
     perm = 'view'
     # all data if no filter
     strict = False
@@ -110,13 +110,13 @@ class PersonList(PersonMixin, FilterView, ExportMixin, SingleTableView):
     model = Person
 
 
-class PersonDetailView(PersonMixin, DetailView):
+class PersonDetailView(ContactMixin, DetailView):
     perm = 'view'
     model = Person
 
 
 
-class PersonCreateUpdateMixin(PersonMixin):
+class PersonCreateUpdateMixin(ContactMixin):
     model = Person
     template_name = 'contactmngt/person_form.html'
     form_class = PersonForm
@@ -135,7 +135,7 @@ class PersonUpdateView(PersonCreateUpdateMixin, SuccessMessageMixin, generic.Upd
     perm = 'change'
 
 
-class PersonDeleteView(PersonMixin, generic.DeleteView):
+class PersonDeleteView(ContactMixin, generic.DeleteView):
     perm = 'delete'
     model = Person
     template_name = "base/confirm_delete.html"

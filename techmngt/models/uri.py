@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-Module Network
+Module URI
 """
 from django.db import models
 from model_utils import Choices

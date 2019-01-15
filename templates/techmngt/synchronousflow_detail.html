@@ -1,0 +1,12 @@
+{% extends 'base/detail.html' %}
+{% load containers %}
+{% load icons %}
+
+{% block navigation %}
+{% include "layout/navs_pill_icon.html" with title="Sub functional flow" icon="SubFuncFlow"|get_model_icon active=True %}
+{% endblock %}
+
+
+{% block detail_content %}
+{% include "layout/tabs_simple.html" with body=object.subfunc_flow id="Sub functional flow" active=True%}
+{% endblock %}

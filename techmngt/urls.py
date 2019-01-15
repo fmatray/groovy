@@ -10,6 +10,8 @@ from .views.batch import BatchFlowList, BatchFlowDetailView, \
     BatchFlowCreateView, BatchFlowUpdateView, BatchFlowDeleteView
 from .views.uri import URIFlowList, URIFlowDetailView, \
     URIFlowCreateView, URIFlowUpdateView, URIFlowDeleteView
+from .views.synchronous import SynchronousFlowList, SynchronousFlowDetailView, \
+    SynchronousFlowCreateView, SynchronousFlowUpdateView, SynchronousFlowDeleteView
 
 from .views.network import NetworkFlowList, NetworkFlowDetailView, \
     NetworkFlowCreateView, NetworkFlowUpdateView, NetworkFlowDeleteView
@@ -35,6 +37,12 @@ urlpatterns = [
     path('uri_create/', URIFlowCreateView.as_view(), name='uriflow_create'),
     path('uri_update/<int:pk>', URIFlowUpdateView.as_view(), name='uriflow_update'),
     path('uri_delete/<int:pk>', URIFlowDeleteView.as_view(), name='uriflow_delete'),
+    
+    path('synchronous_list', SynchronousFlowList.as_view(), name='synchronousflow_list'),
+    path('synchronous_detail/<int:pk>', SynchronousFlowDetailView.as_view(), name='synchronousflow_detail'),
+    path('synchronous_create/', SynchronousFlowCreateView.as_view(), name='synchronousflow_create'),
+    path('synchronous_update/<int:pk>', SynchronousFlowUpdateView.as_view(), name='synchronousflow_update'),
+    path('synchronous_delete/<int:pk>', SynchronousFlowDeleteView.as_view(), name='synchronousflow_delete'),
     
     path('network_list', NetworkFlowList.as_view(), name='networkflow_list'),
     path('network_detail/<int:pk>', NetworkFlowDetailView.as_view(), name='networkflow_detail'),
