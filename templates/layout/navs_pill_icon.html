@@ -1,6 +1,6 @@
-<li class="nav-item {% if div %}mx-3{%endif%}" data-toggle="tooltip" data-placement="top" title="{{title|title}}">
+<li class="nav-item {% if div %}mx-3{%endif%} {{attrs}}" data-toggle="tooltip" data-placement="top" title="{{title|title}}">
     <a class="nav-link {% if active %} active{% endif %}  text-center"
-       id="pills-{{title}}-tab"
+       id="pills-{{title|slugify}}-tab"
        data-toggle="pill"
        href="#pills-{{title|slugify}}"
        role="tab"

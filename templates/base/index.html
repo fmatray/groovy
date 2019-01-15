@@ -7,48 +7,70 @@
 {% endblock %}
 
 {% block content %}
-
-
 <div class="row">
-    <div class="col-sm-4">
-        <div class="card border-primary mb-3">
-            <div class="card-header bg-primary text-white">
-                <span class="align-middle">
-                    {% include "layout/icon_label.html" with icon="fas fa-history" label="Last Changes" %}
-                </span>
-            </div>
-            <ul class="list-group list-group-flush ">
-                {% for item in last_changes %}
-                <li class="list-group-item">
-                    <a href="{{item.instance.get_absolute_url}}">
-                        {{ item.history_date|naturaltime}} : {{item.history_user}}
-                        {{item.get_history_type_display|lower}}
-                        {{item.name}}
-                        {% if item.history_change_reason %}
-                        ({{item.history_change_reason}})
-                        {% endif %}
-                    </a>
-                </li>
-                {% empty %}
-                <li class="list-group-item">No changes</li>
-                {% endfor %}
+    <div class="col-sm-1">
+        <div class="card bg-primary mx-auto">
+            <ul class="nav nav-pills justify-content-center flex-column" id="pills-tab" role="tablist">
+                {% include "layout/navs_pill_icon.html" with title="Partners" icon="fas fa-hands-helping fa-lg" attrs="m-3" active=True %}
+                {% include "layout/navs_pill_icon.html" with title="Univers" icon="fas fa-globe fa-lg" attrs="m-3" %}
+                {% include "layout/navs_pill_icon.html" with title="Next Releases" icon="fas fa-code-branch fa-lg" attrs="m-3" %}
+                {% include "layout/navs_pill_icon.html" with title="Last changes" icon="fas fa-history fa-lg" attrs="m-3"  %}
+
             </ul>
         </div>
     </div>
+    <div class="col-sm-8">
+        <div class="tab-content" id="pills-tabContent">
+            <!-- Partners -->
+            <div class="tab-pane fade show active" id="pills-partners" role="tabpanel" aria-labelledby="pills-partners">
+            {% if perms.appmngt.view_partner %}
+                {% include "layout/card_index.html" with title="Partners" list_item=partners %}
+            {% endif %}
+            </div>
 
-    {% if perms.appmngt.view_univers %}
-        {% include "layout/card_index.html" with title="Univers" list_item=univers %}
-    {% endif %}
+            <!-- Univers -->
+            <div class="tab-pane fade" id="pills-univers" role="tabpanel" aria-labelledby="pills-univers">
+            {% if perms.appmngt.view_univers %}
+                {% include "layout/card_index.html" with title="Univers" list_item=univers %}
+            {% endif %}
+            </div>
 
-    {% if perms.appmngt.view_partner %}
-        {% include "layout/card_index.html" with title="Partners" list_item=partners %}
-    {% endif %}
-
-    {% if perms.appmngt.view_release %}
-        {% include "layout/card_index.html" with icon="fas fa-code-branch" title="Next Releases" list_item=next_releases %}
-    {% endif %}
-
-    <div class="col-sm-2">
+            <!-- Releases  -->
+            <div class="tab-pane fade" id="pills-next-releases" role="tabpanel" aria-labelledby="pills-next-releases">
+            {% if perms.appmngt.view_release %}
+                {% include "layout/card_index.html" with icon="fas fa-code-branch" title="Next Releases" list_item=next_releases %}
+            {% endif %}
+            </div>
+                        <!-- Last Changes -->
+            <div class="tab-pane fade" id="pills-last-changes" role="tabpanel"
+                 aria-labelledby="pills-last-changes-tab">
+                <div class="card border-primary mb-3">
+                    <div class="card-header bg-primary text-white">
+                <span class="align-middle">
+                    {% include "layout/icon_label.html" with icon="fas fa-history" label="Last Changes" %}
+                </span>
+                    </div>
+                    <ul class="list-group list-group-flush ">
+                        {% for item in last_changes %}
+                        <li class="list-group-item">
+                            <a href="{{item.instance.get_absolute_url}}">
+                                {{ item.history_date|naturaltime}} : {{item.history_user}}
+                                {{item.get_history_type_display|lower}}
+                                {{item.name}}
+                                {% if item.history_change_reason %}
+                                ({{item.history_change_reason}})
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% empty %}
+                        <li class="list-group-item">No changes</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
         <div class="card border-primary mb-3">
             <div class="card-header bg-primary text-white">
                 <span class="align-middle">
@@ -64,6 +86,8 @@
             </ul>
         </div>
     </div>
-
 </div>
+
 {% endblock %}
+
+
