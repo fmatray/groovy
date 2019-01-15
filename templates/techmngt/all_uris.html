@@ -1,0 +1,19 @@
+{% extends "layout/card_base.html" %}
+{% load verbose_names get_attr %}
+{% load icons %}
+
+{% block title%}
+<i class="fas fa-cloud text-center mr-2"></i>All URIs
+{% endblock %}
+
+{% block content %}
+<ul class="list-group list-group-flush ">
+    {% for item in body %}
+    <li class="list-group-item">
+        <a href="{{item}}">
+            {{item}}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

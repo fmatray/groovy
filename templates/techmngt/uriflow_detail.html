@@ -5,10 +5,12 @@
 {% block navigation %}
 {% include "layout/navs_pill_icon.html" with title="Sub functional flow" icon="SubFuncFlow"|get_model_icon active=True %}
 {% include "layout/navs_pill_icon.html" with title="Servers" icon="Server"|get_model_icon %}
+{% include "layout/navs_pill_icon.html" with title="URIs" icon="URIflow"|get_model_icon %}
 {% endblock %}
 
 
 {% block detail_content %}
 {% include "layout/tabs_simple.html" with body=object.subfunc_flow id="Sub functional flow" active=True%}
 {% include "layout/tabs_list.html" with body=object.servers.all id="Servers" %}
+{% include "layout/tabs_simple.html" with body=object.get_all_uris id="URIs" template="techmngt/all_uris.html" %}
 {% endblock %}

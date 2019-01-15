@@ -27,6 +27,10 @@ class URIFlow(TechFlow, ServerLinkMixin):
     identification_fields = ['method', 'uri']
     identification_list_fields = ['servers']
 
+    def get_all_uris(self):
+        return ["{}{}".format(server.dns, self.uri) for server in self.servers.all() ]
+    get_all_uris.verbose_name = "All URIs"
+
     class Meta(object):
         """
         meta informations
