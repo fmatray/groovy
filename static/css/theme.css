@@ -81,7 +81,10 @@ vertical-align: 0.25em;
   background-color: transparent;
   }
 
+.form-control {
+  border-left: 2px solid #3FB618 ;
+}
 
-select {
-      width: 200px;
-    }
+:required, .select2-selection {
+  border-left: 2px solid #ff9fb4 ;
+}
