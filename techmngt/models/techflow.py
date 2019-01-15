@@ -29,3 +29,6 @@ class TechFlow(Base, PolymorphicModel):
 
     class Meta(Base.Meta):
         verbose_name = 'Technical flow'
+
+class ServerLinkMixin():
+    pass

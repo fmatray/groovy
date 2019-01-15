@@ -9,5 +9,8 @@
         <div class="col">{% bootstrap_field form.method %}</div>
         <div class="col">{% bootstrap_field form.uri %}</div>
     </div>
+    {% if object %}
+        {% bootstrap_field form.servers %}
+    {% endif %}
 </div>
 {% endblock %}

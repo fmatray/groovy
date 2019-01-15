@@ -6,5 +6,8 @@
      aria-labelledby="pills-{{view.model.meta.verbose_name|slugify}}-tab">
     {% bootstrap_field form.subfunc_flow %}
     {% bootstrap_field form.protocol %}
+    {% if object %}
+        {% bootstrap_field form.servers %}
+    {% endif %}
 </div>
 {% endblock %}

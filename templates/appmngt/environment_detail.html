@@ -9,5 +9,5 @@
 
 {% block detail_content %}
 {% include "layout/tabs_simple.html" with body=object.application id="Application" active=True %}
-{% include "layout/tabs_list.html" with body=object.servers.all id="Servers" create_url="server_create" %}
+{% include "layout/tabs_list.html" with body=object.servers.all id="Servers" %}
 {% endblock %}

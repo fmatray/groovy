@@ -3,23 +3,30 @@
 """
 Module URI
 """
+from base.models import Base
 from django.db import models
 from model_utils import Choices
 
-from .techflow import TechFlow
+from .server import Server
+from .techflow import TechFlow, ServerLinkMixin
 
 
-#Web Service : Method://domaine/uri
+# Web Service : Method://domaine/uri
 
-class URIFlow(TechFlow):
+class URIFlow(TechFlow, ServerLinkMixin):
     icon = "fas fa-cloud"
-    HTTP_METHOD = Choices('HEAD', 'GET', 'POST','PUT', 'DELETE')
+    HTTP_METHOD = Choices('HEAD', 'GET', 'POST', 'PUT', 'DELETE')
 
     method = models.CharField("method", choices=HTTP_METHOD, max_length=32, default="")
     uri = models.CharField("URI", max_length=512, blank=False, null=False)
 
+    servers = models.ManyToManyField(Server, verbose_name="Servers",
+                                     limit_choices_to=Base.LIMIT_STATUS,
+                                     default=None, blank=True, related_name="uri_servers")
+
     identification_fields = ['method', 'uri']
-    identification_list_fields = []
+    identification_list_fields = ['servers']
+
     class Meta(object):
         """
         meta informations
