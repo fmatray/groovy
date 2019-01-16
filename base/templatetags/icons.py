@@ -50,7 +50,7 @@ def get_icon(label):
         "export": "fas fa-file-export",
         "filter": "fas fa-filter",
         "functional flow": "fas fa-stream",
-        "history": "fas fa-history",
+        "history": "far fa-clock",
         "output flow": "fas fa-sign-out-alt",
         "input flow": "fas fa-sign-in-alt",
         "let me in": "fas fa-play",

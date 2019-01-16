@@ -20,7 +20,7 @@
                 {% if perms.appmngt.view_release %}
                     {% include "layout/navs_pill_icon.html" with title="Next Releases" icon="fas fa-code-branch fa-lg" attrs="m-3" %}
                 {% endif %}
-                {% include "layout/navs_pill_icon.html" with title="Last changes" icon="fas fa-history fa-lg" attrs="m-3"  %}
+                {% include "layout/navs_pill_icon.html" with title="Last changes" icon="far fa-clock fa-lg" attrs="m-3"  %}
 
             </ul>
         </div>
@@ -53,7 +53,7 @@
                 <div class="card border-primary mb-3">
                     <div class="card-header bg-primary text-white">
                 <span class="align-middle">
-                    {% include "layout/icon_label.html" with icon="fas fa-history" label="Last Changes" %}
+                    {% include "layout/icon_label.html" with icon="far fa-clock" label="Last Changes" %}
                 </span>
                     </div>
                     <ul class="list-group list-group-flush ">
