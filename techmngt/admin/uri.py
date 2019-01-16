@@ -16,6 +16,7 @@ class URIFlowAdmin(TechFlowChildAdmin):
     Admin URI
     """
     fieldsets = [('Functionnal flow', {'fields': ('subfunc_flow',)}),
-                 ('Technical informations', {'fields': ('method', 'uri')}),
+                 ('Technical informations', {'fields': (('method', 'uri'), 'servers')}),
                  ]
     list_display = ['subfunc_flow', 'method', 'uri']
+    filter_horizontal = ['servers']

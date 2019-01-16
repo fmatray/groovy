@@ -4,9 +4,10 @@
 Tech Admin
 """
 
-from django.contrib import admin
-
 from base.admin import BaseAdmin
+from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
+from simple_history.admin import SimpleHistoryAdmin
 from techmngt.models.server import Server, ServerType
 
 
@@ -22,8 +23,8 @@ class ServerAdmin(BaseAdmin):
 
 
 @admin.register(ServerType)
-class ServerTypeAdmin(BaseAdmin):
+class ServerTypeAdmin(SimpleHistoryAdmin, ImportExportModelAdmin):
     """
-    Admin Server Type
+    Admin ServerType
     """
     pass

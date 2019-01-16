@@ -118,3 +118,19 @@ class QuickLink(models.Model):
 
     class Meta:
         ordering = ["name"]
+
+class BaseConfig(models.Model):
+    name = models.CharField("Name", max_length=200, blank=False, unique=True)
+    description = encrypt(MarkdownxField("Description", null=True, blank=False,
+                                 help_text="<a href='https://en.wikipedia.org/wiki/Markdown'>You can use Markdown</a>"))
+    history = HistoricalRecords(inherit=True)
+
+    def __str__(self):
+        return self.name
+
+    def meta(self):
+        return self._meta
+
+    class Meta:
+        abstract = True
+        ordering = ["name"]

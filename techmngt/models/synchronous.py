@@ -16,7 +16,7 @@ class SynchronousFlow(TechFlow, ServerLinkMixin):
     icon = "fas fa-exchange-alt"
 
     protocol = models.ForeignKey(Protocol, on_delete=models.PROTECT, verbose_name="Protocol",
-                                 limit_choices_to={'status__in': ('On going', 'Released'), 'type': 'Synchronous'},
+                                 limit_choices_to={'type': 'Synchronous'},
                                  blank=False, null=False, related_name="synchronousflow_protocol")
     servers = models.ManyToManyField(Server, verbose_name="Servers",
                                      limit_choices_to=Base.LIMIT_STATUS,

@@ -16,8 +16,6 @@ from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, Base
 # Application
 class ApplicationList(BaseList):
     class ApplicationFilter(BaseList.BaseFilter):
-        env_app = ModelChoiceFilter(label="Environment", queryset=Environment.objects.all())
-
         class Meta(BaseList.BaseFilter.Meta):
             model = Application
 

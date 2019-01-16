@@ -16,6 +16,7 @@ class SynchronousFlowAdmin(TechFlowChildAdmin):
     Admin URI
     """
     fieldsets = [('Functionnal flow', {'fields': ('subfunc_flow',)}),
-                 ('Technical informations', {'fields': ('protocol', )}),
+                 ('Technical informations', {'fields': ('protocol', 'servers')}),
                  ]
     list_display = ['subfunc_flow']
+    filter_horizontal = ['servers']

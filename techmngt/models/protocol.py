@@ -6,10 +6,10 @@ Module Protocol
 from django.db import models
 from model_utils import Choices
 
-from base.models import Base
+from base.models import Base, BaseConfig
 
 
-class Protocol(Base):
+class Protocol(BaseConfig):
     TYPE = Choices('Asynchronous', 'Synchronous')
     type = models.CharField(choices=TYPE, default=TYPE.Synchronous, max_length=20)
 

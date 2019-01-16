@@ -16,7 +16,7 @@ class AsynchronousFlow(Base):
 
     flow_id = models.CharField("Flow ID", max_length=64, unique=True, default="", null=True, blank=True)
     protocol = models.ForeignKey(Protocol, on_delete=models.PROTECT, verbose_name="Protocol",
-                                 limit_choices_to={'status__in': ('On going', 'Released'), 'type': 'Asynchronous'},
+                                 limit_choices_to={'type': 'Asynchronous'},
                                  blank=False, null=False, related_name="asynchronousflow_protocol")
     filename = models.CharField("File name", max_length=256, blank=True, null=True)
     codepage = models.CharField("Code page", max_length=64, choices=CODEPAGE, null=True, blank=True)
