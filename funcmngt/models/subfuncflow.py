@@ -26,7 +26,7 @@ class SubFuncFlow(Base):
                                  limit_choices_to=Base.LIMIT_STATUS,
                                  default=None, blank=False, null=False, related_name="subfuncflow_rec_app")
 
-    identification_fields = ['func_flow', 'subflow_id', 'vital', 'div', 'requester_partner', 'receiver_partner']
+    identification_fields = ['func_flow', 'subflow_id', 'vital', 'requester_partner', 'receiver_partner']
     identification_list_fields = []
 
     def requester_partner(self):

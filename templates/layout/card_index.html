@@ -1,3 +1,4 @@
+{% load icons %}
 <div class="card border-primary mb-3">
     <div class="card-header bg-primary text-white">
             <span class="align-middle">
@@ -6,7 +7,16 @@
     </div>
     <ul class="list-group list-group-flush ">
         {% for item in list_item %}
-        <li class="list-group-item"><a href="{{item.get_absolute_url}}">{{item}}</a></li>
+        <li class="list-group-item">
+            <div class="row mb-0 pb-0">
+                 <div class="col-sm-4">
+                    <a href="{{item.get_absolute_url}}">{{item}}</a>{% include "layout/badge.html" with object=item.status class=item|get_object_status_color|add:" ml-3"%}
+                 </div>
+                <div class="col-sm-8">
+                    <span class="text-muted">{{item.description}}</span>
+                </div>
+            </div>
+        </li>
         {% empty %}
         <li class="list-group-item">No {{title}}</li>
         {% endfor %}

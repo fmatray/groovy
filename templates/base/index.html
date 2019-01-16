@@ -11,9 +11,15 @@
     <div class="col-sm-1">
         <div class="card bg-primary mx-auto">
             <ul class="nav nav-pills justify-content-center flex-column" id="pills-tab" role="tablist">
-                {% include "layout/navs_pill_icon.html" with title="Partners" icon="fas fa-hands-helping fa-lg" attrs="m-3" active=True %}
-                {% include "layout/navs_pill_icon.html" with title="Univers" icon="fas fa-globe fa-lg" attrs="m-3" %}
-                {% include "layout/navs_pill_icon.html" with title="Next Releases" icon="fas fa-code-branch fa-lg" attrs="m-3" %}
+                {% if perms.appmngt.view_partner %}
+                    {% include "layout/navs_pill_icon.html" with title="Partners" icon="fas fa-hands-helping fa-lg" attrs="m-3" active=True %}
+                {% endif %}
+                {% if perms.appmngt.view_univers %}
+                    {% include "layout/navs_pill_icon.html" with title="Univers" icon="fas fa-globe fa-lg" attrs="m-3" %}
+                {% endif %}
+                {% if perms.appmngt.view_release %}
+                    {% include "layout/navs_pill_icon.html" with title="Next Releases" icon="fas fa-code-branch fa-lg" attrs="m-3" %}
+                {% endif %}
                 {% include "layout/navs_pill_icon.html" with title="Last changes" icon="fas fa-history fa-lg" attrs="m-3"  %}
 
             </ul>

@@ -24,6 +24,13 @@
     </a>
     </span>
     {% endspaceless %}
+    {% if object.documentation %}
+    <span data-toggle="tooltip" data-placement="bottom" title="Documentation">
+    <a href="{{object.documentation}}" class="top-icon" target="_blank"><i
+            class="fas fa-book w-1em text-center mx-2"></i></a>
+    </span>
+    {% endif %}
+
     <span data-toggle="tooltip" data-placement="bottom" title="Edit">
     <a href="{{object.get_update_url}}" class="top-icon"><i class="far fa-edit w-1em text-center mx-2"></i></a>
     </span>

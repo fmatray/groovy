@@ -19,8 +19,8 @@ class Application(Base):
                                 limit_choices_to=Base.LIMIT_STATUS,
                                 default=None, blank=False, null=False, related_name="app_partner")
 
-    identification_fields = ['univers', 'partner', 'div']
-    identification_list_fields = ["env_app", "release_app", "div", "subfuncflow_req_app", "subfuncflow_rec_app"]
+    identification_fields = ['univers', 'partner']
+    identification_list_fields = ["env_app", "release_app", "subfuncflow_req_app", "subfuncflow_rec_app"]
 
     class Meta(object):
         """

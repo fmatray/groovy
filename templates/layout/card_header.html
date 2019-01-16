@@ -1,5 +1,5 @@
 {% load verbose_names %}
-<div class="card-body">
+<div class="card-body py-0 pt-3">
     {% if object.tags.all %}
     <div>
         {% for tag in object.tags.all %}
@@ -7,10 +7,7 @@
         {% endfor %}
     </div>
     {% endif %}
-    <div class="mb-0 pb-0 text-justify">
+    <div class="m-0 p-0 text-justify">
         {{object.get_description_as_markdown|default:'<span class="text-muted">No description</span>'}}
     </div>
-    {% if object.documentation %}
-        <a href="{{object.documentation}}" class="badge badge-pill badge-info">Documentation</a>
-    {% endif %}
 </div>
