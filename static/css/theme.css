@@ -49,6 +49,10 @@ vertical-align: 0.25em;
     color:gold!important;
 }
 
+.breadcrumb-item a {
+    color: #adb5bd;
+}
+
 [data-toggle="collapse"].collapsed .if-not-collapsed {
   display: none;
 }
