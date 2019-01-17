@@ -1,0 +1,5 @@
+{% load humanize %}
+<strong>{{item.history_date|naturaltime}}</strong> : {{item.history_user}} {{item.get_history_type_display|lower}} {{item.name}}
+{% if item.history_change_reason %}
+({{item.history_change_reason}})
+{% endif %}

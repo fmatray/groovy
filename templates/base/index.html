@@ -12,15 +12,15 @@
         <div class="card bg-primary mx-auto mb-3">
             <ul class="nav nav-pills justify-content-center flex-column" id="pills-tab" role="tablist">
                 {% if perms.appmngt.view_partner %}
-                    {% include "layout/navs_pill_icon.html" with title="Partners" icon="fas fa-hands-helping fa-lg" attrs="m-3" active=True %}
+                    {% include "layout/navs_pill_icon.html" with title="Partners" icon="fas fa-hands-helping fa-lg" attrs="my-3 mx-auto" active=True %}
                 {% endif %}
                 {% if perms.appmngt.view_univers %}
-                    {% include "layout/navs_pill_icon.html" with title="Univers" icon="fas fa-globe fa-lg" attrs="m-3" %}
+                    {% include "layout/navs_pill_icon.html" with title="Univers" icon="fas fa-globe fa-lg" attrs="my-3 mx-auto" %}
                 {% endif %}
                 {% if perms.appmngt.view_release %}
-                    {% include "layout/navs_pill_icon.html" with title="Next Releases" icon="fas fa-code-branch fa-lg" attrs="m-3" %}
+                    {% include "layout/navs_pill_icon.html" with title="Next Releases" icon="fas fa-code-branch fa-lg" attrs="my-3 mx-auto" %}
                 {% endif %}
-                {% include "layout/navs_pill_icon.html" with title="Last changes" icon="far fa-clock fa-lg" attrs="m-3"  %}
+                {% include "layout/navs_pill_icon.html" with title="Last changes" icon="far fa-clock fa-lg" attrs="my-3 mx-auto" %}
 
             </ul>
         </div>
@@ -61,12 +61,7 @@
                         {% for item in last_changes %}
                         <li class="list-group-item">
                             <a href="{{item.instance.get_absolute_url}}">
-                                {{ item.history_date|naturaltime}} : {{item.history_user}}
-                                {{item.get_history_type_display|lower}}
-                                {{item.name}}
-                                {% if item.history_change_reason %}
-                                ({{item.history_change_reason}})
-                                {% endif %}
+                                {% include "layout/history_line.html" %}
                             </a>
                         </li>
                         {% empty %}
@@ -78,7 +73,7 @@
         </div>
     </div>
     <div class="col-sm-3">
-        <div class="card border-primary mb-3">
+        <div class="card border-primary mb-3 sticky">
             <div class="card-header bg-primary text-white">
                 <span class="align-middle">
                     {% include "layout/icon_label.html" with icon="fas fa-link" label="Quick links" %}

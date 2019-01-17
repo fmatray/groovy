@@ -97,7 +97,6 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
         status = StatusColumn()
         tags = BadgesColumn()
         fields = ['name', 'status', 'tags']
-        export_formats = ['csv', 'xls', 'json']
         view_perms = {}
 
         def before_render(self, request):

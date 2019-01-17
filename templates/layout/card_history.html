@@ -24,10 +24,7 @@
     <ul class="list-group list-group-flush">
         {% for item in history|slice:"5" %}
             <li class="list-group-item">
-            {{ item.history_date|naturaltime}} : {{item.history_user}} {{item.get_history_type_display|lower}} {{item.name}}
-                {% if item.history_change_reason %}
-                    ({{item.history_change_reason}})
-                {% endif %}
+                {% include "layout/history_line.html" %}
             </li>
         {% empty %}
             <li class="list-group-item">None</li>
@@ -37,10 +34,7 @@
         <ul class="list-group list-group-flush collapse" id="collapseHistory">
         {% for item in history|slice:"5:" %}
             <li class="list-group-item">
-            {{ item.history_date|naturaltime}} : {{item.history_user}} {{item.get_history_type_display|lower}} {{item.name}}
-                {% if item.history_change_reason %}
-                    ({{item.history_change_reason}})
-                {% endif %}
+                {% include "layout/history_line.html" %}
             </li>
         {% endfor %}
         </ul>

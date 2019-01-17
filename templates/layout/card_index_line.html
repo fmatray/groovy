@@ -5,7 +5,7 @@
             {%if item.pin%}<i class="fas fa-thumbtack gold-icon w-1em"></i>{%endif%}
             <a href="{{item.get_absolute_url}}">{{item}}</a>
         </div>
-        <div class="col-sm-1 mx-auto">
+        <div class="col-sm-1 px-auto">
             {% include "layout/badge.html" with object=item.status class=item|get_object_status_color %}
         </div>
         <div class="col-sm-8">

@@ -7,6 +7,9 @@ body,html {
     height: 100%;
 }
 
+body {
+  overflow-y: scroll;
+}
 
 .login-title {
     font-family: "Rave";
@@ -95,4 +98,9 @@ vertical-align: 0.25em;
 
 :required, .select2-selection {
   border-left: 2px solid #ff9fb4 ;
+}
+.sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 1rem;
 }
