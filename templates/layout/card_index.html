@@ -2,7 +2,7 @@
 <div class="card border-primary mb-3">
     <div class="card-header bg-primary text-white">
             <span class="align-middle">
-                {% include "layout/icon_label.html" with label=title %}
+                <a href="{{list_item.model.get_list_url}}" class="text-white">{% include "layout/icon_label.html" with label=title %}</a>
             </span>
         {% if pin %}
             <div class="float-right">

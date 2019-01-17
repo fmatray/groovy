@@ -43,9 +43,10 @@ class Base(models.Model):
         return mark_safe(markdown(self.comment, safe_mode='escape'))
 
     # URLS
-    def get_list_url(self):
+    @classmethod
+    def get_list_url(cls):
         try:
-            return reverse('{}_list'.format(self._meta.model_name))
+            return reverse('{}_list'.format(cls._meta.model_name))
         except NoReverseMatch:
             return None
 
