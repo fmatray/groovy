@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21fc664e-4e87-461d-a04e-daf7e1ba71ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/appmngt/models/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/appmngt/models/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appmngt/models/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/appmngt/models/environment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout/card_object.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/card_object.html" afterDir="false" />
-    </list>
+    <list default="true" id="21fc664e-4e87-461d-a04e-daf7e1ba71ff" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +119,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -213,12 +208,29 @@
               <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
               <item name="groovy" type="462c0819:PsiDirectoryNode" />
               <item name="appmngt" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="appmngt" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
               <item name="groovy" type="462c0819:PsiDirectoryNode" />
               <item name="contactmngt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="funcmngt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="funcmngt" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
@@ -247,6 +259,12 @@
               <item name="groovy" type="462c0819:PsiDirectoryNode" />
               <item name="techmngt" type="462c0819:PsiDirectoryNode" />
               <item name="forms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="groovy" type="462c0819:PsiDirectoryNode" />
+              <item name="techmngt" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="groovy" type="b2602c69:ProjectViewProjectNode" />
@@ -569,7 +587,21 @@
       <option name="project" value="LOCAL" />
       <updated>1547346132495</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="improvements in details :&#10;- add collapsable card for objects&#10;- tiny improvements">
+      <created>1547461094472</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1547461094472</updated>
+    </task>
+    <task id="LOCAL-00031" summary="add migration files">
+      <created>1547461158258</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1547461158258</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -583,7 +615,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24609666" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -640,7 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="finish application CRUD" />
     <MESSAGE value="remove crispy forms&#10;update list&#10;add perms and login required" />
     <MESSAGE value="integrate modal forms&#10;integrate generic links&#10;created Univers" />
     <MESSAGE value="Full integration of appmngt" />
@@ -665,7 +695,8 @@
     <MESSAGE value="changed title" />
     <MESSAGE value="improvements in index" />
     <MESSAGE value="improvements in details :&#10;- add collapsable card for objects&#10;- tiny improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="improvements in details :&#10;- add collapsable card for objects&#10;- tiny improvements" />
+    <MESSAGE value="add migration files" />
+    <option name="LAST_COMMIT_MESSAGE" value="add migration files" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
