@@ -8,24 +8,24 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-sm-1">
+    <div class="col-sm-2 col-md-1">
         <div class="card bg-primary mx-auto mb-3">
-            <ul class="nav nav-pills justify-content-center flex-column" id="pills-tab" role="tablist">
+            <ul class="nav nav-pills justify-content-center flex-sm-column" id="pills-tab" role="tablist">
                 {% if perms.appmngt.view_partner %}
-                    {% include "layout/navs_pill_icon.html" with title="Partners" icon="fas fa-hands-helping fa-lg" attrs="my-3 mx-auto" active=True %}
+                    {% include "layout/navs_pill_icon.html" with title="Partners" icon="fas fa-hands-helping index-icon" attrs="my-3 mx-auto" active=True %}
                 {% endif %}
                 {% if perms.appmngt.view_univers %}
-                    {% include "layout/navs_pill_icon.html" with title="Univers" icon="fas fa-globe fa-lg" attrs="my-3 mx-auto" %}
+                    {% include "layout/navs_pill_icon.html" with title="Univers" icon="fas fa-globe index-icon" attrs="my-3 mx-auto" %}
                 {% endif %}
                 {% if perms.appmngt.view_release %}
-                    {% include "layout/navs_pill_icon.html" with title="Next Releases" icon="fas fa-code-branch fa-lg" attrs="my-3 mx-auto" %}
+                    {% include "layout/navs_pill_icon.html" with title="Next Releases" icon="fas fa-code-branch index-icon" attrs="my-3 mx-auto" %}
                 {% endif %}
-                {% include "layout/navs_pill_icon.html" with title="Last changes" icon="far fa-clock fa-lg" attrs="my-3 mx-auto" %}
+                {% include "layout/navs_pill_icon.html" with title="Last changes" icon="far fa-clock index-icon" attrs="my-3 mx-auto" %}
 
             </ul>
         </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-10 col-md-8">
         <div class="tab-content" id="pills-tabContent">
             <!-- Partners -->
             <div class="tab-pane fade show active" id="pills-partners" role="tabpanel" aria-labelledby="pills-partners">
@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-md-3 d-none d-md-block">
         <div class="card border-primary mb-3 sticky">
             <div class="card-header bg-primary text-white">
                 <span class="align-middle">

@@ -22,12 +22,12 @@ class Application(Base):
     identification_list_fields = ["get_envs", "get_releases", "get_subfuncflow_req_app", "get_subfuncflow_rec_app"]
 
     def get_envs(self):
-        return self.env_app.order_by('type')
+        return self.env_app.order_by('-type')
     get_envs.verbose_name = "Environments"
 
 
     def get_releases(self):
-        return self.release_app
+        return self.release_app.order_by("-release_date")
     get_releases.verbose_name = "Releases"
 
     def get_subfuncflow_req_app(self):

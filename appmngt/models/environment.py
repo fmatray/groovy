@@ -12,11 +12,11 @@ from model_utils import Choices
 
 class Environment(Base):
     icon = "fas fa-leaf"
-    TYPE = Choices('Dev', 'Integration', 'Test', 'Pre-production', 'Production')
+    TYPE = Choices((0, 'Dev'), (1, 'Integration'), (2, 'Test'), (3, 'Pre-production'), (4, 'Production'))
 
     name = models.CharField("Name", max_length=200, blank=False, unique=False)
 
-    type = models.CharField(choices=TYPE, blank=False, null=False, max_length=20)
+    type = models.IntegerField(choices=TYPE, default=0)
 
     application = models.ForeignKey(Application, on_delete=models.PROTECT, verbose_name="Application",
                                     limit_choices_to=Base.LIMIT_STATUS,

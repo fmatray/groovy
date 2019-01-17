@@ -5,7 +5,7 @@
 {% load icons %}
 
 {% block title %}
-<li class="breadcrumb-item active"><a href="{% url 'index' %}">Welcome</a></li>
+<li class="breadcrumb-item d-none d-sm-block"><a href="{% url 'index' %}">Welcome</a></li>
 <li class="breadcrumb-item"><a href="{{object.get_list_url}}">{{object|object_verbose_name_plural}}</a></li>
 <li class="breadcrumb-item active" aria-current="page">{{object.name|title}}</li>
 {% endblock %}
@@ -53,7 +53,9 @@
         </div>
 
         {% include "layout/card_simple.html" with title="Comment" body=object.get_comment_as_markdown|default:'<span class="text-muted">No comment<span>' %}
-        {% include "layout/card_history.html" with history=object.history.all %}
+        <div class=" d-none d-sm-block">
+            {% include "layout/card_history.html" with history=object.history.all %}
+        </div>
     </div>
 
 

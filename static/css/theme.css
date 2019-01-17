@@ -41,6 +41,10 @@ vertical-align: 0.25em;
   border-color: #212529;
   }
 
+
+.index-icon {
+  font-size: 120%;
+}
 .top-icon {
   color: rgba(255,255,255,.5);
   }

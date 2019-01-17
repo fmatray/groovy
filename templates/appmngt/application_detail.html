@@ -16,7 +16,7 @@
 {% block detail_content %}
 {% include "layout/tabs_simple.html" with body=object.univers id="Univers" active=True%}
 {% include "layout/tabs_simple.html" with body=object.partner id="Partner" %}
-{% include "layout/tabs_list.html" with body=object.env_app.all id="Environments" create_url="environment_create" %}
+{% include "layout/tabs_list.html" with body=object.get_envs id="Environments" create_url="environment_create" %}
 {% include "layout/tabs_list.html" with body=object.release_app.all id="Releases" create_url="release_create" %}
 
 {% include "layout/tabs_list.html" with body=object.subfuncflow_req_app.all id="Requester" %}
