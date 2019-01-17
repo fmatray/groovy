@@ -1,9 +1,12 @@
 {% load icons %}
 <li class="list-group-item" >
     <div class="row mb-0 pb-0">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             {%if item.pin%}<i class="fas fa-thumbtack gold-icon w-1em"></i>{%endif%}
-            <a href="{{item.get_absolute_url}}">{{item}}</a>{% include "layout/badge.html" with object=item.status class=item|get_object_status_color|add:" ml-3"%}
+            <a href="{{item.get_absolute_url}}">{{item}}</a>
+        </div>
+        <div class="col-sm-1 mx-auto">
+            {% include "layout/badge.html" with object=item.status class=item|get_object_status_color %}
         </div>
         <div class="col-sm-8">
             <span class="text-muted">{{item.get_description_as_markdown|striptags|truncatewords:"10"}}</span>
