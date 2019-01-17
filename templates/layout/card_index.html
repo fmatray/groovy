@@ -4,35 +4,44 @@
             <span class="align-middle">
                 {% include "layout/icon_label.html" with label=title %}
             </span>
-        <div class="float-right">
-            {% spaceless %}
-            <span data-toggle="tooltip" data-placement="bottom" title="Toggle view">
-            <a class="top-icon collapsed" data-toggle="collapse" href="#{{title|slugify}}" aria-expanded="false"
-               aria-controls="{{title|slugify}}">
-                <span class="if-collapsed"><i class="fas fa-plus"></i></span>
-                <span class="if-not-collapsed"><i class="fas fa-minus"></i></span>
-            </a>
-            </span>
-            {% endspaceless %}
-
-        </div>
+        {% if pin %}
+            <div class="float-right">
+                {% spaceless %}
+                <span data-toggle="tooltip" data-placement="bottom" title="Toggle view">
+                <a class="top-icon collapsed" data-toggle="collapse" href="#{{title|slugify}}" aria-expanded="false"
+                   aria-controls="{{title|slugify}}">
+                    <span class="if-collapsed"><i class="fas fa-plus"></i></span>
+                    <span class="if-not-collapsed"><i class="fas fa-minus"></i></span>
+                </a>
+                </span>
+                {% endspaceless %}
+            </div>
+        {% endif%}
     </div>
 
         {% if list_item %}
-            <ul class="list-group list-group-flush">
-                {% for item in list_item %}
-                    {% if item.pin %}
+            {% if pin %}
+                <ul class="list-group list-group-flush">
+                    {% for item in list_item %}
+                        {% if item.pin %}
+                            {% include "layout/card_index_line.html" %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="list-group list-group-flush collapse" id="{{title|slugify}}">
+                    {% for item in list_item %}
+                        {% if not item.pin %}
+                            {% include "layout/card_index_line.html" %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% else %}
+                    <ul class="list-group list-group-flush">
+                    {% for item in list_item %}
                         {% include "layout/card_index_line.html" %}
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul class="list-group list-group-flush collapse" id="{{title|slugify}}">
-                {% for item in list_item %}
-                    {% if not item.pin %}
-                        {% include "layout/card_index_line.html" %}
-                    {% endif %}
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         {% else %}
             <li class="list-group-item">No {{title}}</li>
         {% endif %}

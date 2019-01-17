@@ -30,21 +30,21 @@
             <!-- Partners -->
             <div class="tab-pane fade show active" id="pills-partners" role="tabpanel" aria-labelledby="pills-partners">
             {% if perms.appmngt.view_partner %}
-                {% include "layout/card_index.html" with title="Partners" list_item=partners %}
+                {% include "layout/card_index.html" with title="Partners" list_item=partners pin=True %}
             {% endif %}
             </div>
 
             <!-- Univers -->
             <div class="tab-pane fade" id="pills-univers" role="tabpanel" aria-labelledby="pills-univers">
             {% if perms.appmngt.view_univers %}
-                {% include "layout/card_index.html" with title="Univers" list_item=univers %}
+                {% include "layout/card_index.html" with title="Univers" list_item=univers pin=True %}
             {% endif %}
             </div>
 
             <!-- Releases  -->
             <div class="tab-pane fade" id="pills-next-releases" role="tabpanel" aria-labelledby="pills-next-releases">
             {% if perms.appmngt.view_release %}
-                {% include "layout/card_index.html" with icon="fas fa-code-branch" title="Next Releases" list_item=next_releases %}
+                {% include "layout/card_index.html" with icon="fas fa-code-branch" title="Next Releases" list_item=next_releases pin=False %}
             {% endif %}
             </div>
 
