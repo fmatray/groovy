@@ -23,7 +23,11 @@ class SynchronousFlow(TechFlow, ServerLinkMixin):
                                      default=None, blank=True, related_name="sync_servers")
 
     identification_fields = []
-    identification_list_fields = ['servers']
+    identification_list_fields = ['get_servers']
+
+    def get_servers(self):
+        return self.servers
+    get_servers.verbose_name = "Servers"
 
     class Meta(Base.Meta):
         """

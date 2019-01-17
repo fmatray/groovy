@@ -9,7 +9,6 @@ from base.models import Base
 from .partner import Partner
 from .univers import Univers
 
-
 class Application(Base):
     icon = "fas fa-mobile-alt"
     univers = models.ForeignKey(Univers, on_delete=models.PROTECT, verbose_name="Univers",
@@ -20,7 +19,24 @@ class Application(Base):
                                 default=None, blank=False, null=False, related_name="app_partner")
 
     identification_fields = ['univers', 'partner']
-    identification_list_fields = ["env_app", "release_app", "subfuncflow_req_app", "subfuncflow_rec_app"]
+    identification_list_fields = ["get_envs", "get_releases", "get_subfuncflow_req_app", "get_subfuncflow_rec_app"]
+
+    def get_envs(self):
+        return self.env_app.order_by('type')
+    get_envs.verbose_name = "Environments"
+
+
+    def get_releases(self):
+        return self.release_app
+    get_releases.verbose_name = "Releases"
+
+    def get_subfuncflow_req_app(self):
+        return self.subfuncflow_req_app
+    get_subfuncflow_req_app.verbose_name="Sub Functional Flows as requester"
+
+    def get_subfuncflow_rec_app(self):
+        return self.subfuncflow_rec_app
+    get_subfuncflow_rec_app.verbose_name="Sub Functional Flows as receiver"
 
     class Meta(Base.Meta):
         """

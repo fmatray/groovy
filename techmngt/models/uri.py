@@ -25,11 +25,15 @@ class URIFlow(TechFlow, ServerLinkMixin):
                                      default=None, blank=True, related_name="uri_servers")
 
     identification_fields = ['method', 'uri']
-    identification_list_fields = ['servers']
+    identification_list_fields = ['get_servers']
 
     def get_all_uris(self):
         return ["{}{}".format(server.dns, self.uri) for server in self.servers.all() ]
     get_all_uris.verbose_name = "All URIs"
+
+    def get_servers(self):
+        return self.servers
+    get_servers.verbose_name = "Servers"
 
     class Meta(Base.Meta):
         """

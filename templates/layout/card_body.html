@@ -28,7 +28,7 @@
             <dd class="col-sm-8 mb-3">
                 {% with objs=object|get_obj_attr_list:field %}
                     {% if objs.model.get_view_perm in perms %}
-                        {% for obj in objs %}
+                        {% for obj in objs.all %}
                             {% if obj.get_view_perm in perms %}
                                 {% include "layout/badge.html" with object=obj %}
                             {% endif %}

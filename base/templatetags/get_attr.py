@@ -15,7 +15,11 @@ def get_obj_attr(obj, attr):
 
 @register.filter
 def get_obj_attr_list(obj, attr):
+    attr = getattr(obj, attr)
     try:
-        return getattr(obj, attr).all()
+        if callable(attr):
+            return attr
+        else:
+            return attr.all()
     except AttributeError:
         return None
