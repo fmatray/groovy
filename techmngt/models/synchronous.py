@@ -25,7 +25,7 @@ class SynchronousFlow(TechFlow, ServerLinkMixin):
     identification_fields = []
     identification_list_fields = ['servers']
 
-    class Meta(object):
+    class Meta(Base.Meta):
         """
         meta informations
         """

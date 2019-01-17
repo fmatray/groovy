@@ -16,7 +16,7 @@
 
         <div class="card border-primary mb-3">
             <div class="card-header bg-primary text-white">
-                <i class="{{object.icon}} text-center mr-2"></i>{{object|object_verbose_name|title}}
+                <i class="{{object.icon}} {%if object.pin%}gold-icon{%endif%} text-center mr-2"></i>{{object|object_verbose_name|title}}
                 {% include "layout/badge.html" with object=object.status class=object|get_object_status_color|add:" ml-3"%}
 
                 <div class="float-right">

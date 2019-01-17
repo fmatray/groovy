@@ -16,7 +16,7 @@ class Protocol(BaseConfig):
     secure = models.BooleanField("Secure", default=False)
     standard = models.BooleanField("Standard", default=False)
 
-    class Meta(object):
+    class Meta:
         """
         meta informations
         """

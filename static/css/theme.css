@@ -45,6 +45,10 @@ vertical-align: 0.25em;
     color: #fff;
 }
 
+.gold-icon {
+    color:gold!important;
+}
+
 [data-toggle="collapse"].collapsed .if-not-collapsed {
   display: none;
 }

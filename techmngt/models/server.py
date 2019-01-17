@@ -25,7 +25,7 @@ class Server(Base):
     identification_fields = ['server_type', 'dns', 'ip']
     identification_list_fields = []
 
-    class Meta(object):
+    class Meta(Base.Meta):
         """
         meta informations
         """

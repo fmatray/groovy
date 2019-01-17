@@ -44,5 +44,5 @@ class SubFuncFlow(Base):
             return self.techflow_subflow.get_real_instance()
         return None
 
-    class Meta:
+    class Meta(Base.Meta):
         verbose_name = 'Sub functional flow'

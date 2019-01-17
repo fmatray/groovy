@@ -29,10 +29,9 @@ class Environment(Base):
         return self.application.partner
     get_partner.verbose_name = "Partner"
 
-    class Meta(object):
+    class Meta(Base.Meta):
         """
         meta informations
         """
         verbose_name_plural = "Environments"
-
         unique_together = ('name', 'application')

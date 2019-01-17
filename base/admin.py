@@ -42,7 +42,7 @@ class UserAdmin(UserAdmin):
         return False
 
 class BaseAdminMixin():
-    FIELDSET_HEADER = [('Identification', {'fields': (('name', 'status'), 'tags', 'description')})]
+    FIELDSET_HEADER = [('Identification', {'fields': (('name', 'status'), ('tags', 'pin'), 'description')})]
     FIELDSET_FOOTER = [('Comment', {'fields': ('comment', )})]
 
     LIST_DISPLAY = ['name', 'status', 'tag_list']
@@ -99,5 +99,3 @@ class BaseGenericStackedInline(BaseAdminMixin, GenericStackedInline):
 
 class BaseGenericTabularInline(BaseAdminMixin, GenericTabularInline):
     pass
-#grp-object-tools
-#grp-add-link grp-state-focus

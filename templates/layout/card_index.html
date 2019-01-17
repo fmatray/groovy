@@ -4,22 +4,37 @@
             <span class="align-middle">
                 {% include "layout/icon_label.html" with label=title %}
             </span>
-    </div>
-    <ul class="list-group list-group-flush ">
-        {% for item in list_item %}
-        <li class="list-group-item">
-            <div class="row mb-0 pb-0">
-                 <div class="col-sm-4">
-                    <a href="{{item.get_absolute_url}}">{{item}}</a>{% include "layout/badge.html" with object=item.status class=item|get_object_status_color|add:" ml-3"%}
-                 </div>
-                <div class="col-sm-8">
-                    <span class="text-muted">{{item.description}}</span>
-                </div>
-            </div>
-        </li>
-        {% empty %}
-        <li class="list-group-item">No {{title}}</li>
-        {% endfor %}
+        <div class="float-right">
+            {% spaceless %}
+            <span data-toggle="tooltip" data-placement="bottom" title="Toggle view">
+            <a class="top-icon collapsed" data-toggle="collapse" href="#{{title|slugify}}" aria-expanded="false"
+               aria-controls="{{title|slugify}}">
+                <span class="if-collapsed"><i class="fas fa-plus"></i></span>
+                <span class="if-not-collapsed"><i class="fas fa-minus"></i></span>
+            </a>
+            </span>
+            {% endspaceless %}
 
-    </ul>
+        </div>
+    </div>
+
+        {% if list_item %}
+            <ul class="list-group list-group-flush">
+                {% for item in list_item %}
+                    {% if item.pin %}
+                        {% include "layout/card_index_line.html" %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul class="list-group list-group-flush collapse" id="{{title|slugify}}">
+                {% for item in list_item %}
+                    {% if not item.pin %}
+                        {% include "layout/card_index_line.html" %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <li class="list-group-item">No {{title}}</li>
+        {% endif %}
+
 </div>

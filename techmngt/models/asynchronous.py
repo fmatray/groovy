@@ -32,7 +32,7 @@ class AsynchronousFlow(Base):
             return self.batch_output_flow
         return None
 
-    class Meta(object):
+    class Meta(Base.Meta):
         """
         meta informations
         """

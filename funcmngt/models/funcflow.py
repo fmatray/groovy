@@ -23,5 +23,5 @@ class FuncFlow(Base):
     identification_fields = ['flow_id', 'type']
     identification_list_fields = ['subfuncflow_flow']
 
-    class Meta:
+    class Meta(Base.Meta):
         verbose_name = 'Functional flow'

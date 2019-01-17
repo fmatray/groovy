@@ -16,7 +16,7 @@ class AsynchronousFlowList(BaseList):
     class AsynchronousFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = AsynchronousFlow
-            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'flow_id', 'filename']
+            exclude = ['id', 'tags','pin', 'description', 'documentation', 'comment', 'flow_id', 'filename']
 
     class AsynchronousFlowTable(BaseList.BaseTable):
         batch = SingleBadgeColumn()

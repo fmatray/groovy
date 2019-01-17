@@ -22,7 +22,7 @@ class Release(Base):
     identification_fields = ['release_date']
     identification_list_fields = ['applications']
 
-    class Meta(object):
+    class Meta(Base.Meta):
         """
         meta informations
         """

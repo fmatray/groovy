@@ -22,6 +22,7 @@ class Base(models.Model):
     name = models.CharField("Name", max_length=200, blank=False, unique=True)
     status = models.CharField(choices=STATUS, default=STATUS.Draft, max_length=20)
     tags = TaggableManager(blank=True)
+    pin = models.BooleanField("Pin", default=False, help_text="Keep on top")
     description = encrypt(MarkdownxField("Description", null=True, blank=False,
                                  help_text="<a href='https://en.wikipedia.org/wiki/Markdown'>You can use Markdown</a>"))
     documentation = encrypt(models.URLField("Documentation", null=True, blank=True))
@@ -106,7 +107,7 @@ class Base(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ["name"]
+        ordering = ["-pin", "name"]
 
 
 class QuickLink(models.Model):

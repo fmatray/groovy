@@ -22,7 +22,7 @@ class Application(Base):
     identification_fields = ['univers', 'partner']
     identification_list_fields = ["env_app", "release_app", "subfuncflow_req_app", "subfuncflow_rec_app"]
 
-    class Meta(object):
+    class Meta(Base.Meta):
         """
         meta informations
         """

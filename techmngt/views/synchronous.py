@@ -17,7 +17,7 @@ class SynchronousFlowList(BaseList):
     class SynchronousFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = SynchronousFlow
-            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'subfunc_flow',  'polymorphic_ctype', 'servers']
+            exclude = ['id', 'tags', 'description','pin', 'documentation', 'comment', 'subfunc_flow',  'polymorphic_ctype', 'servers']
 
     class SynchronousFlowTable(BaseList.BaseTable):
         get_vital = tables.BooleanColumn(verbose_name="Vital", order_by=('subfunc_flow__vital',))
@@ -29,7 +29,7 @@ class SynchronousFlowList(BaseList):
 
         class Meta(BaseList.BaseTable.Meta):
             model = SynchronousFlow
-            exclude = ['id', 'description', 'documentation', 'comment', 'polymorphic_ctype', 'techflow_ptr', 'servers']
+            exclude = ['id', 'description','pin', 'documentation', 'comment', 'polymorphic_ctype', 'techflow_ptr', 'servers']
 
     table_class = SynchronousFlowTable
     model = SynchronousFlow

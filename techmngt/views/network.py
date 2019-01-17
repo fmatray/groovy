@@ -16,7 +16,7 @@ class NetworkFlowList(BaseList):
     class NetworkFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = NetworkFlow
-            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'servers', 'source_nat_ip',
+            exclude = ['id', 'tags', 'description','pin', 'documentation', 'comment', 'servers', 'source_nat_ip',
                        'destination_nat_ip']
 
     class NetworkFlowTable(BaseList.BaseTable):

@@ -11,7 +11,7 @@ class Partner(Base):
     identification_fields = []
     identification_list_fields = ["app_partner"]
 
-    class Meta(object):
+    class Meta(Base.Meta):
         """
         meta informations
         """

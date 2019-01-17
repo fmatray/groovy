@@ -17,12 +17,12 @@
     {% csrf_token %}
     <div class="row mb-3">
         <div class="col-sm-4 offset-sm-4">
-            <div class="card bg-primary w-75 mx-auto">
+            <div class="card bg-primary w-50 mx-auto">
                 <ul class="nav nav-pills justify-content-center " id="pills-tab" role="tablist">
                     {% include "layout/navs_pill_icon.html" with title="Identification" icon="fas fa-passport" active=True %}
                     {% include "layout/navs_pill_icon.html" with title="Description" icon="fas fa-pen" %}
-                    {% if form.fields|length > 7 %}
-                    {% include "layout/navs_pill_icon.html" with title=view.model.meta.verbose_name icon=view.model.icon div=True %}
+                    {% if form.fields|length > 8 %}
+                    {% include "layout/navs_pill_icon.html" with title=view.model.meta.verbose_name icon=view.model.icon  %}
                     {% endif %}
                     {% include "layout/navs_pill_icon.html" with title="Comment" icon="far fa-comment" %}
                 </ul>
@@ -34,7 +34,12 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-identification" role="tabpanel"
                      aria-labelledby="pills-identification-tab">
-                    {% bootstrap_field form.name  %}
+                    <div class="row">
+                        <div class="col-10">{% bootstrap_field form.name  %}</div>
+                        <div class="col-2 my-auto py-auto">
+                            {% bootstrap_field form.pin form_group_class="form-group mb-0 mt-2" %}
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col">{% bootstrap_field form.tags  %}</div>
                         <div class="col">{% bootstrap_field form.status  %}</div>
@@ -49,10 +54,10 @@
 
                 </div>
                 {% block form_object %}
-                {% if form.fields|length > 7 %}
+                {% if form.fields|length > 8 %}
                     <div class="tab-pane fade" id="pills-{{view.model.meta.verbose_name|slugify}}" role="tabpanel" aria-labelledby="pills-{{view.model.meta.verbose_name|slugify}}-tab">
                         {% for field in form %}
-                        {% if not field.name|in_list:"name,status,tags,comment,description,documentation,chg_reason" %}
+                        {% if not field.name|in_list:"name,pin,status,tags,comment,description,documentation,chg_reason" %}
                             {% bootstrap_field field %}
                         {% endif%}
                         {% endfor %}

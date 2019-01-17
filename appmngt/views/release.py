@@ -16,7 +16,7 @@ class ReleaseList(BaseList):
     class ReleaseFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = Release
-            exclude = ['id', 'tags', 'description', 'comment', 'documentation', 'applications', 'release_date']
+            exclude = ['id', 'tags','pin', 'description', 'comment', 'documentation', 'applications', 'release_date']
 
     class ReleaseTable(BaseList.BaseTable):
         release_date = tables.DateColumn(format="D d/m/Y")

@@ -4,10 +4,9 @@ URIFlow views
 """
 
 import django_tables2 as tables
-from django.urls import reverse_lazy
-
 from base.views.modelviews import BaseList, BaseDetailView, BaseCreateView, BaseUpdateView, BaseDeleteView, \
     SingleBadgeColumn
+from django.urls import reverse_lazy
 from techmngt.forms.uri import URIFlowForm
 from techmngt.models.uri import URIFlow
 
@@ -17,7 +16,8 @@ class URIFlowList(BaseList):
     class URIFlowFilter(BaseList.BaseFilter):
         class Meta(BaseList.BaseFilter.Meta):
             model = URIFlow
-            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'servers', 'subfunc_flow',  'polymorphic_ctype', 'uri']
+            exclude = ['id', 'tags', 'description', 'pin', 'documentation', 'comment', 'servers', 'subfunc_flow',
+                       'polymorphic_ctype', 'uri']
 
     class URIFlowTable(BaseList.BaseTable):
         get_vital = tables.BooleanColumn(verbose_name="Vital", order_by=('subfunc_flow__vital',))
@@ -29,7 +29,8 @@ class URIFlowList(BaseList):
 
         class Meta(BaseList.BaseTable.Meta):
             model = URIFlow
-            exclude = ['id', 'tags', 'description', 'documentation', 'comment', 'polymorphic_ctype', 'techflow_ptr', 'servers',]
+            exclude = ['id', 'tags', 'description', 'pin', 'documentation', 'comment', 'polymorphic_ctype',
+                       'techflow_ptr', 'servers', ]
 
     table_class = URIFlowTable
     model = URIFlow
@@ -47,6 +48,7 @@ class URIFlowCreateView(BaseCreateView):
     success_message = 'Success: URIFlow was created.'
     form_class = URIFlowForm
     template_name = "techmngt/uriflow_form.html"
+
 
 # Update
 class URIFlowUpdateView(BaseUpdateView):

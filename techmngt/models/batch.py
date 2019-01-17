@@ -33,6 +33,6 @@ class BatchFlow(TechFlow):
     identification_fields = ['frequency', 'hours', 'batch_name', 'ord_name', 'script_name', 'input_flow', 'output_flow']
     identification_list_fields = []
 
-    class Meta:
+    class Meta(Base.Meta):
         verbose_name = "Batch"
         verbose_name_plural = "Batches"

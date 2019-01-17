@@ -90,7 +90,7 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
         status = ChoiceFilter(choices=Base.STATUS)
 
         class Meta:
-            exclude = ['id', 'tags', 'description', 'documentation', 'comment']
+            exclude = ['id', 'tags', 'description', 'pin', 'documentation', 'comment']
 
     class BaseTable(tables.Table):
         name = tables.LinkColumn()
@@ -108,7 +108,7 @@ class BaseList(BaseMixin, FilterView, ExportMixin, SingleTableView):
 
         class Meta:
             template_name = "layout/table.html"
-            exclude = ['id', 'description', 'documentation', 'comment']
+            exclude = ['id', 'description', 'pin', 'documentation', 'comment']
 
     template_name = "base/list.html"
     filterset_class = BaseFilter
