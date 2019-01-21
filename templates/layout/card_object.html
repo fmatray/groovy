@@ -6,7 +6,7 @@
 {% if object.get_view_perm in perms %}
 {% spaceless %}
 <a href="{{object.get_absolute_url}}" class="text-white">
-<i class="{{object.icon}}  {%if object.pin%}gold-icon{%endif%} text-center mr-2"></i>{{object.name|default:"None"|title}}</a>
+<i class="{{object.icon}} {%if object.pin%}gold-icon{%endif%} text-center mr-2"></i>{{object.name|default:"None"|title}}</a>
 {% endspaceless %}
 {% else %}
 <i class="{{object.icon}}  {%if object.pin%}gold-icon{%endif%} text-center mr-2"></i>{{object.name|default:"None"|title}}

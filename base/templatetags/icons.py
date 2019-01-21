@@ -7,6 +7,7 @@ from appmngt.models.release import Release
 from appmngt.models.univers import Univers
 from funcmngt.models.funcflow import FuncFlow
 from funcmngt.models.subfuncflow import SubFuncFlow
+
 from techmngt.models.asynchronous import AsynchronousFlow
 from techmngt.models.batch import BatchFlow
 from techmngt.models.network import NetworkFlow

@@ -79,9 +79,14 @@
                     <div class="dropdown-divider"></div>
 
                     <a class="dropdown-item" data-toggle="modal" data-target="#aboutModal" href="#">{% include "layout/icon_label.html" with label="About"%}</a>
-
                 </div>
             </li>
         </ul>
+        <!-- Recherche  -->
+        <form class="form-inline" action="{% url 'haystack_search' %}" method="get">
+            <input class="form-control mr-sm-1" name="q" type="search" size="9" placeholder="Search" aria-label="Search">
+            <button class="btn  btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+
     </div>
 </nav>

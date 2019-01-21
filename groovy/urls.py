@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'markdownx/', include('markdownx.urls')),
     path(r'select2/', include('django_select2.urls')),
+    path(r'search/', include('haystack.urls')),
 
     path('', include('base.urls')),
     path('contactmngt/', include('contactmngt.urls')),
@@ -36,5 +37,5 @@ urlpatterns = [
 if settings.DEBUG:
     import debug_toolbar
 
-    urlpatterns += [path(r"^__debug__/", include(debug_toolbar.urls))]
+    urlpatterns += [path(r"__debug__/", include(debug_toolbar.urls))]
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

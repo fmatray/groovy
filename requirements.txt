@@ -18,3 +18,4 @@ django-phonenumber-field
 phonenumbers
 django_select2
 django-cryptography
+django-haystack
