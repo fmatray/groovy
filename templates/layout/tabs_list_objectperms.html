@@ -1,0 +1,17 @@
+{% extends "layout/tabs_base.html" %}
+{% load verbose_names %}
+
+{% block content %}
+    {% for item in body %}
+        {% if item.get_view_perm in perms %}
+            {% if template %}
+                {% include template with object=item %}
+            {% else %}
+                {% include "layout/card_object.html" with object=item %}
+            {% endif %}
+        {% endif %}
+    {% empty %}
+        {% include "layout/card_simple.html"%}
+    {% endfor %}
+
+{% endblock %}

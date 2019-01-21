@@ -13,7 +13,6 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-5">
-
         <div class="card border-primary mb-3">
             <div class="card-header bg-primary text-white">
                 <i class="{{object.icon}} {%if object.pin%}gold-icon{%endif%} text-center mr-2"></i>{{object|object_verbose_name|title}}
@@ -48,6 +47,7 @@
             <div class="card-footer bg-primary p-0">
                 <ul class="nav  nav-pills justify-content-center" id="pills-tab" role="tablist">
                     {% block navigation %}{% endblock %}
+                    {% include "layout/navs_pill_icon.html" with title="Same tags" icon="fas fa-tags" %}
                 </ul>
             </div>
         </div>
@@ -62,6 +62,7 @@
     <div class="col-sm-7">
         <div class="tab-content sticky" id="pills-tabContent">
             {% block detail_content %}{% endblock %}
+            {% include "layout/tabs_list_objectperms.html" with body=object.tags.similar_objects id="same-tags" %}
         </div>
     </div>
 </div>

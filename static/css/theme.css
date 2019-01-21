@@ -96,13 +96,14 @@ vertical-align: 0.25em;
   background-color: transparent;
   }
 
-.form-control {
+#id_form .form-control {
   border-left: 2px solid #3FB618 ;
 }
 
 :required, .select2-selection {
   border-left: 2px solid #ff9fb4 ;
 }
+
 .sticky {
   position: -webkit-sticky; /* Safari */
   position: sticky;

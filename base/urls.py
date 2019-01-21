@@ -6,9 +6,11 @@ from django.urls import path
 from django.contrib.auth import views
 from .views.index import IndexView
 from .views.password import PasswordChangeView
+from .views.tags import TagView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
+    path('tag/<slug:slug>', TagView.as_view(), name='tag'),
 
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
