@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+{% load verbose_names %}
+{% load django_tables2 %}
+{% load bootstrap4 %}
+
+{% block title%}
+<li class="breadcrumb-item d-none d-sm-block"><a href="{% url 'index' %}">Welcome</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{table|get_table_verbose_name_plural|title}}</li>
+{% endblock %}
+
+{% block content %}
+{% if filter %}
+<div class="d-flex justify-content-center mb-3">
+    <form class="form form-inline" action="" method="get">
+        {% bootstrap_field filter.form.name layout="inline" form_group_class="form-group mx-1" %}
+        {% include "layout/button_submit.html" with label="Filter"%}
+    </form>
+</div>
+{% endif %}
+    <div class="row">
+        <div class="col-12">
+            {% render_table table %}
+        </div>
+    </div>
+{% endblock %}

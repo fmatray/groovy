@@ -4,7 +4,7 @@
 
 {% block title%}
 <li class="breadcrumb-item d-none d-sm-block"><a href="{% url 'index' %}">Welcome</a></li>
-<li class="breadcrumb-item">{{object|object_verbose_name_plural}}</li>
+<li class="breadcrumb-item"><a href="{% url 'tag_list' %}">{{object|object_verbose_name_plural}}</a></li>
 <li class="breadcrumb-item active" aria-current="page">{{object.name|title}}</li>
 {% endblock %}
 

@@ -49,6 +49,7 @@ class StatusColumn(tables.Column):
         return kwargs['value']
 
 
+
 class BadgesColumn(tables.ManyToManyColumn):
     def render(self, value):
         # if value is None or not value.exists():

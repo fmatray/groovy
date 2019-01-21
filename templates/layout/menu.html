@@ -1,6 +1,6 @@
 <!-- Menu du haut -->
 <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-primary  ">
-    <a class="navbar-brand" href="/">Groovy</a>
+    <a class="navbar-brand" href="/"><i class="fas fa-compact-disc text-center mr-2 w-1em"></i>Groovy</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -59,8 +59,10 @@
                     {% include "layout/menu_dropdown_item.html" with link="team_list" label="Teams"%}
                     {% include "layout/menu_dropdown_item.html" with link="person_list" label="Persons"%}
             </li>
-
-
+            <!-- Tags -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'tag_list' %}">Tags</a>
+            </li>
             <!-- Profile -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profilenavbarDropdown" role="button" data-toggle="dropdown"

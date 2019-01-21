@@ -20,7 +20,6 @@ class EnvironmentList(BaseList):
     class EnvironmentTable(BaseList.BaseTable):
         application = SingleBadgeColumn()
         servers = BadgesColumn(linkify_item=True)
-
         view_perms = {
             'application': 'appmngt.view_application',
             'servers': 'techmngt.view_server',

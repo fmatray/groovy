@@ -3,20 +3,34 @@
 """
 Module Environment
 """
-from django.db import models
-
 from base.models import Base
-from techmngt.models.server import Server
-from .application import Application
+from django.db import models
 from model_utils import Choices
+from techmngt.models.server import Server
+
+from .application import Application
+
 
 class Environment(Base):
     icon = "fas fa-leaf"
-    TYPE = Choices((0, 'Dev'), (1, 'Integration'), (2, 'Test'), (3, 'Pre-production'), (4, 'Production'))
+
+    TYPE = (
+        ('Dev', (
+            ("0", 'Dev'),
+            )
+        ),
+        ('Project', (
+            ("1", 'Integration'),
+            ("2", 'Test'),
+            )
+        ),
+        ("3", 'Pre-production'),
+        ("4", 'Production'),
+    )
 
     name = models.CharField("Name", max_length=200, blank=False, unique=False)
 
-    type = models.IntegerField(choices=TYPE, default=0)
+    type = models.CharField(choices=TYPE, max_length=10)
 
     application = models.ForeignKey(Application, on_delete=models.PROTECT, verbose_name="Application",
                                     limit_choices_to=Base.LIMIT_STATUS,
@@ -26,8 +40,12 @@ class Environment(Base):
                                      limit_choices_to=Base.LIMIT_STATUS,
                                      default=None, blank=True, related_name="env_servers")
 
-    identification_fields = ['type', 'get_partner', 'application']
+    identification_fields = ['get_type', 'get_partner', 'application']
     identification_list_fields = ['servers']
+
+    def get_type(self):
+        return self.get_type_display()
+    get_type.verbose_name = "Type"
 
     def get_partner(self):
         return self.application.partner
